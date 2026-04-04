@@ -119,12 +119,14 @@
         .mega-menu-trigger:hover .mega-menu {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            --tw-translate-y: 0px !important;
         }
         .mega-menu {
             opacity: 0;
             visibility: hidden;
-            transform: translateY(10px);
+            --tw-translate-y: 10px;
+            /* Use Tailwind's standard transform variables to preserve X centering */
+            transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .nav-item-hover:hover {
@@ -169,7 +171,7 @@
         /* Animated Services Section Style (Runable.com style) */
         .animated-services-container {
             position: relative;
-            min-height: 1200vh;
+            min-height: 400vh;
             background-color: #052D40;
         }
         .block-texture {
@@ -373,13 +375,13 @@
 </div>
 </div>
 <!-- Top Navigation -->
-<nav class="sticky top-0 h-16 bg-[#08415C] flex items-center justify-between px-6 md:px-8 w-full max-w-full mx-auto shrink-0 z-40">
+<nav class="sticky top-0 h-16 bg-[#08415C] flex items-center justify-between px-6 md:px-8 w-full max-w-full mx-auto shrink-0 z-40 relative">
 <div class="flex items-center gap-2">
     <img alt="Logo" class="h-14 w-auto object-contain transition-transform duration-300 hover:scale-105" src="Transparent Logo (1).png" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%);">
 </div>
 <div class="hidden md:flex items-center gap-8 h-full">
 <!-- Services Mega Menu Trigger -->
-<div class="mega-menu-trigger h-full flex items-center group relative">
+<div class="mega-menu-trigger h-full flex items-center group">
 <a class="text-white font-medium text-sm flex items-center gap-1 cursor-pointer py-5">Services <span class="material-symbols-outlined text-[18px] chevron-rotate">expand_more</span></a>
 <!-- Services Mega Menu Panel -->
 <div class="mega-menu absolute top-16 left-1/2 -translate-x-1/2 w-screen max-w-[1200px] bg-[#052D40] border-t-2 border-[#CA9703] shadow-2xl overflow-hidden rounded-b-lg">
