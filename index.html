@@ -3,8 +3,69 @@
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>VIZION TOOLS | Certified ERP Implementation || POS Implementation</title>
-<link rel="icon" type="image/png" href="Favicon Transparent.ico">
+    <title>Vizion Tools | Certified ERP Implementation || POS Implementation</title>
+    <link rel="icon" type="image/png" href="Favicon Transparent.ico">
+    
+    <!-- Cal.com embed initialization -->
+    <script type="text/javascript">
+      (function (C, A, L) {
+        let p = function (a, ar) { a.q.push(ar); };
+        let d = C.document;
+        C.Cal = C.Cal || function () {
+          let cal = C.Cal;
+          let ar = arguments;
+          if (!cal.loaded) {
+            cal.q = cal.q || [];
+            cal.loaded = true;
+          }
+          if (ar[0] === L) {
+            const s = d.createElement("script");
+            s.src = "https://cal.com/embed.js";
+            d.head.appendChild(s);
+            s.onload = function () {
+              cal.ns = {};
+              cal.q.forEach(function (ar) {
+                cal.ns[ar[0]] = cal.ns[ar[0]] || function () {
+                  let ns = cal.ns[ar[0]];
+                  ns.q = ns.q || [];
+                  ns.q.push(arguments);
+                };
+              });
+            };
+            return;
+          }
+          p(cal, ar);
+        };
+      })(window, "https://cal.com/embed.js", "init");
+    
+      Cal("init", {origin: "https://app.cal.com"});
+      Cal("ui", {"styles":{"branding":{"brandColor":"#CA9703"}},"hideEventTypeDetails":false,"layout":"month_view"});
+
+      // Extra insurance to prevent page redirects and force popup
+      document.addEventListener("click", function(e) {
+        const target = e.target.closest('a[data-cal-link]');
+        if (target) {
+          e.preventDefault();
+          const link = target.getAttribute('data-cal-link');
+          const config = target.getAttribute('data-cal-config');
+          try {
+            const parsedConfig = config ? JSON.parse(config) : {};
+            Cal("show", {
+              calLink: link,
+              ...parsedConfig
+            });
+          } catch (err) {
+            Cal("show", { calLink: link });
+          }
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('a[href*="cal.com"]').forEach(function(link) {
+          link.removeAttribute("target");
+        });
+      });
+    </script>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Epilogue:wght@400;700&amp;family=Manrope:wght@300;400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -511,7 +572,7 @@
 <a class="text-white/90 font-light hover:text-[#CA9703] text-sm transition-colors duration-200" href="#">About</a>
 </div>
 <div class="flex items-center gap-4">
-<a href="https://cal.com/piyushchandak/30min" class="bg-[#CA9703] text-[#052D40] px-6 py-2 rounded-sm font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all duration-200 inline-block">
+<a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-6 py-2 rounded-sm font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all duration-200 inline-block">
                 Book a Demo
             </a>
 </div>
@@ -545,11 +606,11 @@
             </p>
 <!-- CTAs -->
 <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
-<a href="https://cal.com/piyushchandak/30min" class="group relative px-8 py-4 bg-[#CA9703] text-[#052D40] font-medium text-[15px] rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(202,151,3,0.3)] inline-block">
+<a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="group relative px-8 py-4 bg-[#CA9703] text-[#052D40] font-medium text-[15px] rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(202,151,3,0.3)] inline-block">
 <span class="relative z-10">See How It Works</span>
 <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
 </a>
-<a href="https://cal.com/piyushchandak/30min" class="px-8 py-4 border border-white/30 text-white font-medium text-[15px] rounded-sm hover:bg-white/10 hover:border-white transition-all duration-300 flex items-center gap-2">
+<a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="px-8 py-4 border border-white/30 text-white font-medium text-[15px] rounded-sm hover:bg-white/10 hover:border-white transition-all duration-300 flex items-center gap-2">
                     Book a Free Consultation <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </a>
 </div>
@@ -902,7 +963,7 @@
                                     <span class="text-white/80 text-[13px]">Recipe Control</span>
                                 </div>
                             </div>
-                            <a href="https://cal.com/piyushchandak/30min" class="px-6 py-2.5 border-2 border-[#CA9703] text-[#CA9703] rounded-sm font-bold text-[13px] hover:bg-[#CA9703] hover:text-[#052D40] transition-all inline-block">
+                            <a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="px-6 py-2.5 border-2 border-[#CA9703] text-[#CA9703] rounded-sm font-bold text-[13px] hover:bg-[#CA9703] hover:text-[#052D40] transition-all inline-block">
                                 Book a Demo
                             </a>
                         </div>
@@ -915,27 +976,39 @@
                 </div>
             </div>
 
-            <!-- Card 04: Web Design -->
+            <!-- Card 04: AI Transformation -->
             <div class="sticky top-20 md:top-32 z-40 w-full group">
-                <div class="bg-[#052D40]/90 backdrop-blur-xl rounded-[24px] md:rounded-[36px] border border-[#CA9703]/20 shadow-[0_40px_80px_rgba(0,0,0,0.5)] overflow-hidden">
+                <div class="bg-[#052D40]/90 backdrop-blur-xl rounded-[24px] md:rounded-[36px] border border-[#CA9703]/20 border-t-[#CA9703]/50 shadow-[0_40px_80px_rgba(0,0,0,0.5)] overflow-hidden">
                     <div class="flex flex-col lg:flex-row-reverse items-center">
                         <div class="flex-1 p-6 md:p-12 lg:p-14">
                             <div class="inline-flex items-center gap-3 px-4 py-2 bg-[#08415C]/50 border border-[#CA9703]/20 rounded-full mb-6">
-                                <span class="material-symbols-outlined text-[#CA9703] text-[18px]">brush</span>
-                                <span class="text-[#CA9703] font-medium text-[10px] uppercase tracking-widest">Digital Services</span>
+                                <span class="material-symbols-outlined text-[#CA9703] text-[18px]">smart_toy</span>
+                                <span class="text-[#CA9703] font-medium text-[11px] uppercase tracking-widest" style="font-family: 'DM Sans', sans-serif;">AI & DIGITAL</span>
                             </div>
-                            <h3 class="font-headline font-bold text-white text-[28px] md:text-[36px] leading-tight mb-6">Web Design & Creative</h3>
+                            <h3 class="font-headline font-bold text-white text-[28px] md:text-[36px] leading-tight mb-6">AI Transformation</h3>
                             <p class="font-body font-normal text-white/50 text-[15px] leading-[1.7] mb-8 max-w-lg">
-                                Elevating your digital presence through world-class design, robust development, and strategic marketing.
+                                We help businesses stop doing manually what software can do automatically. From AI-powered web and app solutions to intelligent design and marketing workflows — we bring the tools, you bring the vision.
                             </p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                                <div>
-                                    <h4 class="text-white font-bold text-[12px] uppercase tracking-wider mb-2 opacity-50">Creative</h4>
-                                    <p class="text-white/80 text-[13px]">UI/UX Design, Branding</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6 mb-8">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-1 h-1 rounded-full bg-[#CA9703]"></div>
+                                    <span class="text-white/80 text-[13px]">AI-Powered Web & App</span>
                                 </div>
-                                <div>
-                                    <h4 class="text-white font-bold text-[12px] uppercase tracking-wider mb-2 opacity-50">Development</h4>
-                                    <p class="text-white/80 text-[13px]">Web Apps, E-commerce</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-1 h-1 rounded-full bg-[#CA9703]"></div>
+                                    <span class="text-white/80 text-[13px]">Marketing Automation</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-1 h-1 rounded-full bg-[#CA9703]"></div>
+                                    <span class="text-white/80 text-[13px]">AI Design Workflows</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-1 h-1 rounded-full bg-[#CA9703]"></div>
+                                    <span class="text-white/80 text-[13px]">Digital Ops & Automation</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-1 h-1 rounded-full bg-[#CA9703]"></div>
+                                    <span class="text-white/80 text-[13px]">Custom AI Integration</span>
                                 </div>
                             </div>
                             <button class="text-[#CA9703] font-bold text-[14px] underline underline-offset-8 hover:text-white transition-all">
@@ -949,7 +1022,7 @@
                                 <div class="h-1.5 w-16 bg-[#CA9703]/60 rounded-full"></div>
                             </div>
                             <div class="mt-12 opacity-10">
-                                <span class="material-symbols-outlined text-white text-[100px]">brush</span>
+                                <span class="material-symbols-outlined text-white text-[100px]">smart_toy</span>
                             </div>
                         </div>
                     </div>
@@ -957,7 +1030,6 @@
             </div>
         </div>
     </div>
-</div>
         <div class="relative mt-24">
             <div class="bg-gradient-to-r from-[#08415C] to-[#052D40] border border-[#CA9703]/20 rounded-[32px] md:rounded-[48px] p-10 md:p-20 overflow-hidden relative shadow-2xl">
                 <div class="absolute right-0 top-0 w-1/3 h-full bg-[#CA9703]/5 blur-[100px]"></div>
@@ -980,7 +1052,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col items-center gap-4">
-                        <a href="https://cal.com/piyushchandak/30min" class="bg-[#CA9703] text-[#052D40] px-10 py-5 rounded-sm font-black text-[16px] tracking-wide hover:scale-105 transition-all shadow-[0_20px_40px_rgba(202,151,3,0.3)] inline-block">
+                        <a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-10 py-5 rounded-sm font-black text-[16px] tracking-wide hover:scale-105 transition-all shadow-[0_20px_40px_rgba(202,151,3,0.3)] inline-block">
                             BECOME A SALES PARTNER &rarr;
                         </a>
                         <p class="text-white/30 text-[12px] italic">Already talking to a client? Get in touch directly.</p>
@@ -1484,7 +1556,7 @@
                 </p>
 
                 <div class="flex flex-wrap gap-4">
-                    <a href="https://cal.com/piyushchandak/30min" class="bg-[#CA9703] text-[#052D40] px-8 py-4 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
+                    <a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-8 py-4 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
                         Book a Free Consultation
                     </a>
                 </div>
@@ -1571,11 +1643,8 @@
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-            <a href="https://cal.com/piyushchandak/30min" class="w-full sm:w-auto bg-[#CA9703] text-[#052D40] px-10 py-4 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
+            <a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="w-full sm:w-auto bg-[#CA9703] text-[#052D40] px-10 py-4 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
                 Book a Free Consultation
-            </a>
-            <a href="https://cal.com/piyushchandak/30min" class="w-full sm:w-auto bg-transparent border border-white/20 text-white px-10 py-4 rounded-sm font-body font-medium text-[16px] hover:bg-white/5 active:scale-95 transition-all inline-block">
-                Talk to Sales
             </a>
         </div>
 
@@ -1640,8 +1709,8 @@
                 <a href="index.html" class="block group -ml-2">
                     <img src="Transparent Logo (1).png" alt="Vizion Tools" class="h-24 w-auto object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
                 </a>
-                <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[240px]">
-                    "One Platform. Every Operation."
+                <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[320px]">
+                    "Transforming businesses through custom software, AI automation, and digital solutions, built to deliver real results and long-term growth."
                 </p>
                 <!-- Social Icons -->
                 <div class="flex items-center gap-4">
@@ -1713,7 +1782,7 @@
                     </p>
                 </div>
                 <div class="pt-4">
-                    <a href="https://cal.com/piyushchandak/30min" class="bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
+                    <a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
                         Book a Demo
                     </a>
                 </div>
