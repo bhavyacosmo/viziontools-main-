@@ -245,7 +245,7 @@
 <a class="text-white/90 font-light hover:text-[#CA9703] text-sm transition-colors duration-200" href="#">About</a>
 </div>
 <div class="flex items-center gap-4">
-<a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-6 py-2 rounded-sm font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all duration-200 inline-block">
+<a href="javascript:void(0)" data-cal-namespace="VizionBooking" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-6 py-2 rounded-sm font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all duration-200 inline-block">
                 Book a Demo
             </a>
 </div>
@@ -435,7 +435,7 @@
                     </p>
                 </div>
                 <div class="pt-4">
-                    <a href="https://cal.com/piyushchandak/30min" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
+                    <a href="javascript:void(0)" data-cal-namespace="VizionBooking" data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
                         Book a Demo
                     </a>
                 </div>
@@ -550,11 +550,16 @@
     };
   })(window, "https://cal.com/embed.js", "init");
 
-  Cal("init", {origin: "https://app.cal.com"});
-  Cal("ui", {"styles":{"branding":{"brandColor":"#CA9703"}},"hideEventTypeDetails":false,"layout":"month_view"});
+  // Initialize with explicit namespace
+  Cal("init", "VizionBooking", {origin: "https://app.cal.com"});
+  Cal("VizionBooking", "ui", {"styles":{"branding":{"brandColor":"#CA9703"}},"hideEventTypeDetails":false,"layout":"month_view"});
   
-  // Attempt to auto-link all booking project elements
-  Cal("autolink", true);
+  // Force all links to respect the popup namespace
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('a[data-cal-link]').forEach(function(link) {
+      link.setAttribute("data-cal-namespace", "VizionBooking");
+    });
+  });
 </script>
 
 <div id="fixed-image-container"></div>
