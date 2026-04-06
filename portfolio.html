@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portfolio | VIZION TOOLS</title>
+<link rel="icon" type="image/png" href="Favicon Transparent.ico">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Epilogue:wght@400;700&amp;family=Manrope:wght@300;400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "primary-container": "#ca9703", "on-background": "#001e2d", "background": "#f5faff" },
+                    fontFamily: { "headline": ["Bricolage Grotesque", "sans-serif"], "body": ["DM Sans", "sans-serif"] },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24 }
+        .grid-overlay { background-size: 60px 60px; background-image: linear-gradient(to right, rgba(202, 151, 3, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.05) 1px, transparent 1px) }
+        .marquee-animation { animation: marquee 40s linear infinite }
+        .marquee-slow { animation-duration: 50s; }
+        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+
+        /* Mega Menu Specifics */
+        .mega-menu-trigger:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            --tw-translate-y: 0px !important;
+        }
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            --tw-translate-y: 10px;
+            /* Use Tailwind's standard transform variables to preserve X centering */
+            transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-item-hover:hover {
+            border-left: 2px solid #CA9703;
+            padding-left: 0.75rem;
+            background-color: rgba(202, 151, 3, 0.05);
+        }
+        .nav-item-hover {
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+        .mega-menu-trigger:hover .chevron-rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Filter Chips */
+        .filter-chip { padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 500; border: 1.5px solid rgba(255, 255, 255, 0.2); background: transparent; color: white; transition: all 0.3s ease; cursor: pointer; }
+        .filter-chip.active { background: #CA9703; color: #08415C; border-color: #CA9703; font-weight: 700; box-shadow: 0 8px 20px rgba(202,151,3,0.3); }
+
+        /* Editorial Project Rows */
+        .project-list-container { width: 100%; background-color: #F7F4EF; }
+        .project-row {
+            min-height: 180px; width: 100%; display: flex; align-items: center; padding: 3vw 6vw;
+            position: relative; border-bottom: 1px solid rgba(8, 65, 92, 0.08); cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .project-row:hover { background-color: #CA9703; }
+        .project-row:hover .project-title { transform: scale(1.02); color: #08415C; }
+        .project-row:hover .project-desc { color: #08415C; opacity: 0.8; }
+        .project-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 3.5vw; font-weight: 800; color: #08415C; line-height: 1; transition: all 0.4s ease; }
+        .project-desc { font-family: 'DM Sans', sans-serif; font-size: 1.1vw; color: rgba(8, 65, 92, 0.6); max-width: 50vw; line-height: 1.6; transition: all 0.4s ease; }
+        .project-tags { margin-left: auto; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+        .row-tag { padding: 6px 14px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(8, 65, 92, 0.05); color: #08415C; border: 1px solid rgba(8, 65, 92, 0.1); }
+
+        #fixed-image-container { height: 32vw; width: 24vw; border-radius: 24px; position: fixed; z-index: 99; right: 6vw; top: 50%; display: none; pointer-events: none; background-size: cover; background-position: center; transform: translateY(-50%); transition: all 0.4s ease; box-shadow: 0 50px 120px rgba(0,0,0,0.3); border: 6px solid white; }
+        #show-more-btn { background: transparent; border: 2.5px solid #CA9703; color: #CA9703; padding: 14px 40px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease; cursor: pointer; }
+        #show-more-btn:hover { background: #CA9703; color: #08415C; transform: translateY(-3px); }
+        .hidden-project { display: none !important; }
+
+        /* Talk Stats */
+        .talk-stats-container { background-color: #052D40; color: white; padding: 6vw 0; position: relative; overflow: hidden; }
+        .talk-stats-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 4vw; margin: 0 4vw 6vw 4vw; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4vw; }
+        .talk-stats-heading { font-family: 'Bricolage Grotesque', sans-serif; font-size: 4.5vw; font-weight: 800; line-height: 1.1; max-width: 60%; }
+        .talk-stats-subtext { font-family: 'DM Sans', sans-serif; font-size: 1.2vw; color: rgba(255,255,255,0.6); max-width: 30%; line-height: 1.6; }
+        .talk-stats-grid { display: flex !important; flex-direction: row !important; width: 100% !important; padding: 0 4vw !important; }
+        .stat-card { flex: 1; padding: 3vw 1vw; display: flex; flex-direction: column; align-items: center; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
+        .stat-card:last-child { border-right: none; }
+        .stat-card .icon { color: #CA9703; font-size: 3vw; margin-bottom: 1.5vw; }
+        .stat-card .number { font-family: 'Bricolage Grotesque', sans-serif; font-size: 4vw; font-weight: 800; color: #CA9703; line-height: 1; }
+        .stat-card .label { font-family: 'DM Sans', sans-serif; font-size: 1vw; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-top: 1vw; }
+
+        /* Global Presence SYNC */
+        .location-card { background: rgba(8, 65, 92, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(202, 151, 3, 0.1); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; border-radius: 24px; }
+        .location-card:hover { border-color: #CA9703; transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+        .iso-watermark { position: absolute; bottom: -10px; right: -5px; font-size: 80px; font-weight: 900; color: rgba(202, 151, 3, 0.05); line-height: 1; transition: all 0.5s ease; font-family: 'Bricolage Grotesque', sans-serif; pointer-events: none; user-select: none; }
+        .location-card:hover .iso-watermark { color: rgba(202, 151, 3, 0.1); transform: scale(1.1) rotate(-5deg); }
+
+        @media (max-width: 1024px) {
+            .talk-stats-top { flex-direction: column; align-items: flex-start; gap: 2rem; }
+            .talk-stats-heading { font-size: 8vw; max-width: 100%; }
+            .talk-stats-subtext { font-size: 4vw; max-width: 100%; }
+            .talk-stats-grid { flex-wrap: wrap !important; }
+            .stat-card { flex: 0 0 50%; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
+            .stat-card:nth-child(2n) { border-right: none; }
+            .stat-card:nth-child(n+3) { border-bottom: none; }
+            .stat-card .icon { font-size: 40px; }
+            .stat-card .number { font-size: 50px; }
+            .stat-card .label { font-size: 12px; }
+        }
+    </style>
+</head>
+<body class="bg-[#F7F4EF] font-body selection:bg-[#CA9703] overflow-x-hidden">
+
+<!-- Announcement Bar -->
+<div class="w-full bg-[#CA9703] text-[#08415C] font-medium text-[11px] md:text-[12px] relative z-50 shrink-0">
+<div class="overflow-hidden whitespace-nowrap flex">
+<div class="flex marquee-animation py-1.5">
+<div class="flex items-center gap-12 px-6 shrink-0">
+<span class="font-medium text-[12px] md:text-[13px] font-['DM_Sans']">
+                        Vizion Tools is now an official Odoo partner — Serving 500+ businesses across US, UAE, Saudi &amp; India.
+                    </span>
+<span class="opacity-30">•</span>
+<span class="font-medium text-[12px] md:text-[13px] font-['DM_Sans']">
+                        Vizion tools is offering free onboarding, implementation and support upto 30 hours for business with any existing software subscriptions.
+                    </span>
+<span class="opacity-30">•</span>
+</div>
+<div class="flex items-center gap-12 px-6 shrink-0">
+<span class="font-medium text-[12px] md:text-[13px] font-['DM_Sans']">
+                        Vizion Tools is now an official Odoo partner — Serving 500+ businesses across US, UAE, Saudi &amp; India.
+                    </span>
+<span class="opacity-30">•</span>
+<span class="font-medium text-[12px] md:text-[13px] font-['DM_Sans']">
+                        Vizion tools is offering free onboarding, implementation and support upto 30 hours for business with any existing software subscriptions.
+                    </span>
+<span class="opacity-30">•</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Navigation -->
+<nav class="sticky top-0 h-16 bg-[#08415C] flex items-center justify-between px-6 md:px-8 w-full max-w-full mx-auto shrink-0 z-40 relative">
+<div class="flex items-center gap-2">
+    <a href="index.html" class="block group">
+        <img alt="Logo" class="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105" src="download.png">
+    </a>
+</div>
+<div class="hidden md:flex items-center gap-8 h-full">
+<!-- Services Mega Menu Trigger -->
+<div class="mega-menu-trigger h-full flex items-center group">
+<a class="text-white font-medium text-sm flex items-center gap-1 cursor-pointer py-5">Services <span class="material-symbols-outlined text-[18px] chevron-rotate">expand_more</span></a>
+<!-- Services Mega Menu Panel -->
+<div class="mega-menu absolute top-16 left-1/2 -translate-x-1/2 w-screen max-w-[1200px] bg-[#052D40] border-t-2 border-[#CA9703] shadow-2xl overflow-hidden rounded-b-lg">
+<div class="grid grid-cols-12 p-8 gap-8">
+<!-- Column 1: ERP -->
+<div class="col-span-6">
+<h3 class="font-headline font-bold text-[#CA9703] text-xs tracking-widest uppercase mb-6">ERP &amp; Management</h3>
+<div class="flex flex-col gap-4">
+<a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="https://odoovizion.com/">
+<span class="material-symbols-outlined text-[#CA9703]">layers</span>
+<div class="">
+<p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">ERP</p>
+<p class="text-white/50 text-[12px] mt-0.5">Custom Odoo implementation &amp; scaling.</p>
+</div>
+</a>
+<a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="https://vizionpos.com/">
+<span class="material-symbols-outlined text-[#CA9703]">shopping_cart</span>
+<div>
+<p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">POS - Retail</p>
+<p class="text-white/50 text-[12px] mt-0.5">Inventory sync across multiple outlets.</p>
+</div>
+</a>
+<a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="https://vizionpos.com/">
+<span class="material-symbols-outlined text-[#CA9703]">restaurant</span>
+<div>
+<p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">POS - Restaurant</p>
+<p class="text-white/50 text-[12px] mt-0.5">Tables, kitchen, and billing integrated.</p>
+</div>
+</a>
+</div>
+</div>
+<!-- Column 2: Digital Services -->
+<div class="col-span-6 border-l border-white/10 pl-8">
+<h3 class="font-headline font-bold text-[#CA9703] text-xs tracking-widest uppercase mb-6">Digital Services</h3>
+<div class="flex flex-col gap-4">
+<a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="#">
+<span class="material-symbols-outlined text-[#CA9703]">terminal</span>
+<div>
+<p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">Web Design &amp; Dev</p>
+<p class="text-white/50 text-[12px] mt-0.5">High-performance custom web solutions.</p>
+</div>
+</a><a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="#"><span class="material-symbols-outlined text-[#CA9703]">smartphone</span><div><p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">App Design &amp; Dev</p><p class="text-white/50 text-[12px] mt-0.5">Custom mobile solutions.</p></div></a><a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="#"><span class="material-symbols-outlined text-[#CA9703]">auto_awesome</span><div><p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">AI Transformation</p><p class="text-white/50 text-[12px] mt-0.5">Future-proof your ops.</p></div></a>
+<a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="#">
+<span class="material-symbols-outlined text-[#CA9703]">palette</span>
+<div>
+<p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">Graphic Design</p>
+<p class="text-white/50 text-[12px] mt-0.5">Brand identity and visual communication.</p>
+</div>
+</a>
+<a class="nav-item-hover flex items-start gap-3 p-2 rounded-sm group/item" href="#">
+<span class="material-symbols-outlined text-[#CA9703]">campaign</span>
+<div>
+<p class="text-white font-medium text-sm group-hover/item:text-[#CA9703]">Social Media Mgmt</p>
+<p class="text-white/50 text-[12px] mt-0.5">Strategic growth for your digital presence.</p>
+</div>
+</a>
+</div>
+</div>
+<!-- Column 3: Featured -->
+</div>
+</div>
+</div>
+<!-- Industries Mega Menu Trigger -->
+<div class="mega-menu-trigger h-full flex items-center group relative">
+<a class="text-white/90 font-light hover:text-[#CA9703] text-sm flex items-center gap-1 cursor-pointer py-5 transition-colors">
+                    Industries <span class="material-symbols-outlined text-[18px] chevron-rotate">expand_more</span>
+</a>
+<!-- Industries Mega Menu Panel -->
+<div class="mega-menu absolute top-16 left-0 w-64 bg-[#052D40] border-t-2 border-[#CA9703] shadow-2xl rounded-b-lg overflow-hidden">
+<div class="p-4 flex flex-col gap-1">
+<a class="nav-item-hover flex items-center gap-3 p-3 rounded-sm text-white group/ind" href="#">
+<span class="material-symbols-outlined text-[#CA9703]/70 group-hover/ind:text-[#CA9703] text-xl">store</span>
+<span class="text-sm font-medium">Retail</span>
+</a>
+<a class="nav-item-hover flex items-center gap-3 p-3 rounded-sm text-white group/ind" href="#">
+<span class="material-symbols-outlined text-[#CA9703]/70 group-hover/ind:text-[#CA9703] text-xl">lunch_dining</span>
+<span class="text-sm font-medium">Restaurants</span>
+</a>
+<a class="nav-item-hover flex items-center gap-3 p-3 rounded-sm text-white group/ind" href="#">
+<span class="material-symbols-outlined text-[#CA9703]/70 group-hover/ind:text-[#CA9703] text-xl">factory</span>
+<span class="text-sm font-medium">Manufacturing</span>
+</a>
+<a class="nav-item-hover flex items-center gap-3 p-3 rounded-sm text-white group/ind" href="#">
+<span class="material-symbols-outlined text-[#CA9703]/70 group-hover/ind:text-[#CA9703] text-xl">work</span>
+<span class="text-sm font-medium">Professional Services</span>
+</a>
+<a class="nav-item-hover flex items-center gap-3 p-3 rounded-sm text-white group/ind" href="#">
+<span class="material-symbols-outlined text-[#CA9703]/70 group-hover/ind:text-[#CA9703] text-xl">shopping_bag</span>
+<span class="text-sm font-medium">E-commerce</span>
+</a>
+</div>
+</div>
+</div>
+<a class="text-white/90 font-light hover:text-[#CA9703] text-sm transition-colors duration-200" href="#">About</a>
+</div>
+<div class="flex items-center gap-4">
+<a href="https://cal.com/piyushchandak/30min" class="bg-[#CA9703] text-[#052D40] px-6 py-2 rounded-sm font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all duration-200 inline-block">
+                Book a Demo
+            </a>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative pt-24 pb-20 bg-[#052D40] overflow-hidden">
+    <div class="absolute inset-0 grid-overlay opacity-20"></div>
+    <div class="container mx-auto px-6 relative z-10">
+        <h1 class="font-headline font-extrabold text-white text-[84px] leading-[0.9] tracking-tight mb-12">Innovation in Every Line, Creativity in Every Pixel</h1>
+        <div class="space-y-8 mt-16 p-10 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
+            <div>
+                <p class="text-[#CA9703] font-bold text-[12px] uppercase tracking-[0.3em] mb-5">By Industry</p>
+                <div id="industry-filters" class="flex flex-wrap gap-3">
+                    <div class="filter-chip active" data-filter="all">All Industries</div>
+                    <div class="filter-chip" data-filter="Ecommerce">Ecommerce</div>
+                    <div class="filter-chip" data-filter="Mobile">Mobile</div>
+                    <div class="filter-chip" data-filter="Finance">Finance</div>
+                    <div class="filter-chip" data-filter="Healthcare">Healthcare</div>
+                    <div class="filter-chip" data-filter="Travel">Travel</div>
+                </div>
+            </div>
+            <div>
+                <p class="text-[#CA9703] font-bold text-[12px] uppercase tracking-[0.3em] mb-5">By Technology</p>
+                <div id="tech-filters" class="flex flex-wrap gap-3">
+                    <div class="filter-chip active" data-filter="all">All Technologies</div>
+                    <div class="filter-chip" data-filter="Ecommerce Tech">Ecommerce Tech</div>
+                    <div class="filter-chip" data-filter="Mobile App Dev">Mobile App Dev</div>
+                    <div class="filter-chip" data-filter="Full Stack Dev">Full Stack Dev</div>
+                    <div class="filter-chip" data-filter="AI Solutions">AI Solutions</div>
+                    <div class="filter-chip" data-filter="ERP & CRM">ERP & CRM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="project-list-container">
+    <div id="project-list-items">
+        <div class="project-row" data-industry="Ecommerce" data-tech="Ecommerce Tech" data-image="https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Fashion Store</h2><p class="project-desc">An elegant e-commerce platform offering a seamless shopping experience for fashion lovers.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Ecommerce Tech</span></div></div>
+        <div class="project-row" data-industry="Finance" data-tech="ERP & CRM" data-image="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">ERP Wholesale Portal</h2><p class="project-desc">A comprehensive ERP portal for wholesale businesses, streamlining order and inventory management.</p></div><div class="project-tags"><span class="row-tag">Finance</span><span class="row-tag">ERP & CRM</span></div></div>
+        <div class="project-row" data-industry="Mobile" data-tech="Mobile App Dev" data-image="https://images.unsplash.com/photo-1526367790999-0150786486a9?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Food Delivery</h2><p class="project-desc">An app and platform for easy food ordering from diverse restaurants with real-time tracking.</p></div><div class="project-tags"><span class="row-tag">Mobile</span><span class="row-tag">Mobile App Dev</span></div></div>
+        <div class="project-row" data-industry="Ecommerce" data-tech="Ecommerce Tech" data-image="https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Customer-Cart</h2><p class="project-desc">An innovative shopping cart solution enhancing the online shopping experience simplified.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Ecommerce Tech</span></div></div>
+        <div class="project-row" data-industry="Ecommerce" data-tech="Full Stack Dev" data-image="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Store Fixture</h2><p class="project-desc">Effective design and equipping solutions for retail store spaces and management systems.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Full Stack Dev</span></div></div>
+        <div class="project-row" data-industry="Travel" data-tech="Full Stack Dev" data-image="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Homeshare</h2><p class="project-desc">A flexible home-sharing platform connecting hosts and guests for short or long term stays.</p></div><div class="project-tags"><span class="row-tag">Travel</span><span class="row-tag">Full Stack Dev</span></div></div>
+        <div class="project-row" data-industry="Ecommerce" data-tech="Ecommerce Tech" data-image="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Auto Parts Store</h2><p class="project-desc">An online store offering a wide range of high-quality original auto parts for all vehicles.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Ecommerce Tech</span></div></div>
+        <div class="project-row" data-industry="Ecommerce" data-tech="Mobile App Dev" data-image="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Online Fashion Store</h2><p class="project-desc">Your destination for trendy fashion with a high-end digital catalog and checkout.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Mobile App Dev</span></div></div>
+        
+        <div class="project-row hidden-project" data-industry="Mobile" data-tech="Mobile App Dev" data-image="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Electronics App</h2><p class="project-desc">The ultimate app for buying and selling electronics with verified buyer reviews.</p></div><div class="project-tags"><span class="row-tag">Mobile</span><span class="row-tag">Mobile App Dev</span></div></div>
+        <div class="project-row hidden-project" data-industry="Ecommerce" data-tech="Full Stack Dev" data-image="https://images.unsplash.com/photo-1556742049-13da73367575?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Marketplace App</h2><p class="project-desc">A high-scale vendor marketplace for local and international trade automation.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Full Stack Dev</span></div></div>
+        <div class="project-row hidden-project" data-industry="Education" data-tech="Full Stack Dev" data-image="https://images.unsplash.com/photo-1491845339243-ea4025b64267?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Online Bookstore</h2><p class="project-desc">A vast digital library offering diverse books and educational digital resources.</p></div><div class="project-tags"><span class="row-tag">Education</span><span class="row-tag">Full Stack Dev</span></div></div>
+        <div class="project-row hidden-project" data-industry="Finance" data-tech="ERP & CRM" data-image="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Real Estate Portal</h2><p class="project-desc">Advanced platform for easily searching, selling, and renting properties globally.</p></div><div class="project-tags"><span class="row-tag">Finance</span><span class="row-tag">ERP & CRM</span></div></div>
+        <div class="project-row hidden-project" data-industry="Healthcare" data-tech="Ecommerce Tech" data-image="https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Dietary Store</h2><p class="project-desc">An e-commerce store offering a curated selection of high-end health supplements.</p></div><div class="project-tags"><span class="row-tag">Healthcare</span><span class="row-tag">Ecommerce Tech</span></div></div>
+        <div class="project-row hidden-project" data-industry="Finance" data-tech="AI Solutions" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200"><div class="flex flex-col"><h2 class="project-title">Software Dashboard</h2><p class="project-desc">Powerful dashboard providing comprehensive data insights and operational management.</p></div><div class="project-tags"><span class="row-tag">Finance</span><span class="row-tag">AI Solutions</span></div></div>
+    </div>
+    <div class="flex justify-center py-20"><button id="show-more-btn">Explore All Success Stories</button></div>
+</section>
+
+<!-- Talk Stats -->
+<section id="talk-stats" class="talk-stats-container">
+    <div class="talk-stats-top">
+        <h2 class="talk-stats-heading">Want to talk about your project?</h2>
+        <p class="talk-stats-subtext">Shake hands with our team! They are there to help you out and advise you on your business development.</p>
+    </div>
+    <div class="talk-stats-grid">
+        <div class="stat-card"><span class="material-symbols-outlined icon">receipt_long</span><span class="number count-up" data-target="250">0</span><span class="label">Projects Executed</span></div>
+        <div class="stat-card"><span class="material-symbols-outlined icon">star_rate</span><span class="number count-up" data-target="100">0</span><span class="label">Happy Clients</span></div>
+        <div class="stat-card"><span class="material-symbols-outlined icon">public</span><span class="number count-up" data-target="5">0</span><span class="label">Global Presence</span></div>
+        <div class="stat-card"><span class="material-symbols-outlined icon">handshake</span><span class="number count-up" data-target="98">0</span><span class="label">Positive Feedback</span></div>
+    </div>
+</section>
+
+<!-- Running Line (Marquee Ribbon) -->
+<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-4 shrink-0 relative z-10">
+    <div class="flex marquee-animation marquee-slow whitespace-nowrap">
+        <!-- Main Content -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[14px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+        <!-- Repeat for seamless loop -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[14px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER SYNCED FROM INDEX.HTML -->
+<footer class="bg-[#08415C] pt-24 pb-12 relative overflow-hidden">
+    <div class="container mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            <!-- Col 1: Branding -->
+            <div class="space-y-8 text-center md:text-left">
+                <a href="index.html" class="block group -ml-2">
+                    <img src="Transparent Logo (1).png" class="h-24 mx-auto md:mx-0 object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
+                </a>
+                <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[240px]">
+                    "One Platform. Every Operation."
+                </p>
+                <!-- Social Icons -->
+                <div class="flex items-center gap-4 justify-center md:justify-start">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <!-- X (Twitter) -->
+                    <a href="https://x.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848s.012-3.584.07-4.849c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441c.795 0 1.439-.645 1.439-1.441s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/company/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <!-- Pinterest -->
+                    <a href="https://uk.pinterest.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.966 7.398 6.931 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C24.02 5.367 18.637 0 12.017 0z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/@viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Services -->
+            <div class="space-y-6">
+                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Services</h4>
+                <ul class="space-y-4">
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Odoo ERP</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Zoho ERP</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS \u2014 Retail</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS \u2014 Restaurant</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Web Design & Development</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Graphic Design</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Social Media Management</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Company -->
+            <div class="space-y-6">
+                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Company</h4>
+                <ul class="space-y-4">
+                    <li><a href="index.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Industries</a></li>
+                    <li><a href="portfolio.html" class="font-body font-normal text-[#CA9703] text-[14px] hover:text-white transition-colors font-bold">Portfolio</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Case Studies</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Blog</a></li>
+                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4: Contact -->
+            <div class="space-y-6">
+                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Contact</h4>
+                <div class="space-y-4 text-[#8A9AAD] text-[14px]">
+                    <p class="font-body font-normal flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[18px]">mail</span>
+                        hello@viziontools.com
+                    </p>
+                    <p class="font-body font-normal flex items-center gap-3">
+                        <span class="material-symbols-outlined text-[18px]">location_on</span>
+                        City, Location Name
+                    </p>
+                </div>
+                <div class="pt-4">
+                    <a href="https://cal.com/piyushchandak/30min" class="bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
+                        Book a Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Presence Section (New UI Format) -->
+        <div class="mb-24 mt-8">
+            <div class="text-center mb-16">
+                <span class="font-body font-medium text-[11px] text-[#CA9703] uppercase tracking-[0.2em] mb-4 block">GLOBAL PRESENCE</span>
+                <h2 class="font-headline font-bold text-white text-[32px] md:text-[42px] leading-tight mb-4">Serving clients worldwide.</h2>
+                <p class="font-body font-light text-[#8A9AAD] text-[16px] max-w-2xl mx-auto">Our offices across four continents ensure seamless localized support and enterprise execution.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Location: US -->
+                <div class="location-card p-8 group">
+                    <div class="iso-watermark">US</div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
+                                <span class="material-symbols-outlined text-[18px]">location_on</span>
+                            </span>
+                            <h4 class="font-headline font-bold text-white text-[18px]">United States</h4>
+                        </div>
+                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">600 East St Suite 103, New Britain, CT 06051, United States</p>
+                        <a href="tel:+19292044923" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
+                            <span class="material-symbols-outlined text-[16px]">phone</span>
+                            +1 (929) 204-4923
+                        </a>
+                    </div>
+                </div>
+                <!-- Location: Egypt -->
+                <div class="location-card p-8 group">
+                    <div class="iso-watermark">EG</div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
+                                <span class="material-symbols-outlined text-[18px]">location_on</span>
+                            </span>
+                            <h4 class="font-headline font-bold text-white text-[18px]">Egypt</h4>
+                        </div>
+                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">1-109 King Faisal St, Abu Qatadah, Boulaq Al Dakrour, Giza</p>
+                        <a href="tel:+201026739595" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
+                            <span class="material-symbols-outlined text-[16px]">phone</span>
+                            +20-102-673-9595
+                        </a>
+                    </div>
+                </div>
+                <!-- Location: India -->
+                <div class="location-card p-8 group">
+                    <div class="iso-watermark">IN</div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
+                                <span class="material-symbols-outlined text-[18px]">location_on</span>
+                            </span>
+                            <h4 class="font-headline font-bold text-white text-[18px]">India</h4>
+                        </div>
+                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">7th floor, Trend workspace, Dickenson Rd, Bengaluru, KA 560042</p>
+                        <a href="tel:+918861118415" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
+                            <span class="material-symbols-outlined text-[16px]">phone</span>
+                            +91 88611 18415
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p class="font-body font-light text-[13px] text-white/30">
+                &copy; 2026 Vizion Tools. All rights reserved.
+            </p>
+            <div class="flex items-center gap-6">
+                <a href="#" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Privacy Policy</a>
+                <span class="w-1 h-1 rounded-full bg-white/10"></span>
+                <a href="#" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="fixed-image-container"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const rows = document.querySelectorAll('.project-row');
+        const showMoreBtn = document.querySelector('#show-more-btn');
+        let showAll = false;
+        let activeInd = 'all';
+        let activeTech = 'all';
+
+        function refreshView() {
+            let visibleCount = 0;
+            rows.forEach(row => {
+                const ind = row.getAttribute('data-industry') || '';
+                const tech = row.getAttribute('data-tech') || '';
+                const matchInd = (activeInd === 'all' || ind === activeInd);
+                const matchTech = (activeTech === 'all' || tech === activeTech);
+
+                if (matchInd && matchTech) {
+                    if (showAll) { row.classList.remove('hidden-project'); }
+                    else {
+                        if (visibleCount < 8) { row.classList.remove('hidden-project'); visibleCount++; }
+                        else { row.classList.add('hidden-project'); }
+                    }
+                } else {
+                    row.classList.add('hidden-project');
+                }
+            });
+            const matches = Array.from(rows).filter(r => {
+                const i = r.getAttribute('data-industry') || '';
+                const t = r.getAttribute('data-tech') || '';
+                return (activeInd === 'all' || i === activeInd) && (activeTech === 'all' || t === activeTech);
+            }).length;
+            showMoreBtn.parentElement.style.display = (showAll || matches <= 8) ? 'none' : 'flex';
+        }
+
+        document.querySelectorAll('.filter-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                chip.parentElement.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                const filterType = chip.parentElement.id;
+                const value = chip.getAttribute('data-filter');
+                if (filterType === 'industry-filters') activeInd = value;
+                else activeTech = value;
+                refreshView();
+            });
+        });
+
+        showMoreBtn.addEventListener('click', () => { showAll = true; refreshView(); });
+
+        const fixedImage = document.querySelector('#fixed-image-container');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                fixedImage.style.backgroundImage = `url(${row.getAttribute('data-image')})`;
+                fixedImage.style.display = 'block';
+                setTimeout(() => { fixedImage.style.opacity = '1'; fixedImage.style.transform = 'translateY(-50%) scale(1)'; }, 10);
+            });
+            row.addEventListener('mouseleave', () => {
+                fixedImage.style.opacity = '0'; fixedImage.style.transform = 'translateY(-50%) scale(0.95)';
+                setTimeout(() => { if(fixedImage.style.opacity==='0') fixedImage.style.display='none'; }, 400);
+            });
+        });
+
+        // --- Counting Logic ---
+        const counts = document.querySelectorAll('.count-up');
+        let animated = false;
+        const startAnim = () => {
+            counts.forEach(n => {
+                const target = +n.dataset.target;
+                const duration = 2000;
+                const startTime = performance.now();
+                const step = (time) => {
+                    const progress = Math.min((time - startTime) / duration, 1);
+                    const ease = 1 - Math.pow(1 - progress, 3);
+                    const cur = Math.floor(ease * target);
+                    n.innerText = cur + (cur >= target ? (target === 100 || target === 250 ? '+' : (target === 98 ? '%' : '')) : '');
+                    if (progress < 1) requestAnimationFrame(step);
+                    else n.innerText = target + (target === 100 || target === 250 ? '+' : (target === 98 ? '%' : ''));
+                };
+                requestAnimationFrame(step);
+            });
+        };
+        const obs = new IntersectionObserver(entries => { if(entries[0].isIntersecting && !animated) { startAnim(); animated = true; } }, { threshold: 0.3 });
+        obs.observe(document.querySelector('#talk-stats'));
+
+        refreshView();
+    });
+</script>
+</body> </html>
