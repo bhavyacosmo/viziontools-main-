@@ -109,7 +109,19 @@
             .stat-card .icon { font-size: 50px; }
             .stat-card .number { font-size: 60px; }
             .stat-card .label { font-size: 14px; }
+            
+            /* Enhanced Project Row Styling for Mobile */
+            .project-row { padding: 8vw 6vw; min-height: 120px; }
+            .project-title { font-size: 24px; margin-bottom: 8px; }
+            .project-desc { font-size: 14px; max-width: 100%; line-height: 1.5; }
+            .project-tags { display: none; } /* Hide tags on mobile to save space */
         }
+        
+        /* Mobile Navigation Utilities */
+        .translate-x-full { transform: translateX(100%); }
+        .translate-x-0 { transform: translateX(0%); }
+        .transition-transform { transition-property: transform; }
+        .duration-500 { transition-duration: 500ms; }
     </style>
 </head>
 <body class="bg-[#F7F4EF] font-body selection:bg-[#CA9703] overflow-x-hidden">
@@ -143,11 +155,17 @@
 </div>
 <!-- Top Navigation -->
 <nav class="sticky top-0 h-16 bg-[#08415C] flex items-center justify-between px-6 md:px-8 w-full max-w-full mx-auto shrink-0 z-40 relative">
-<div class="flex items-center gap-2">
+<div class="flex items-center gap-4">
     <a href="index.html" class="block group">
         <img alt="Logo" class="h-10 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105" src="download.png">
     </a>
 </div>
+
+<!-- Mobile Menu Toggle (Hamburger) -->
+<button id="mobile-menu-toggle" class="md:hidden flex items-center justify-center p-2 text-white hover:text-[#CA9703] transition-colors z-50">
+    <span class="material-symbols-outlined text-[32px] menu-icon">menu</span>
+    <span class="material-symbols-outlined text-[32px] close-icon hidden">close</span>
+</button>
 <div class="hidden md:flex items-center gap-8 h-full">
 <!-- Services Mega Menu Trigger -->
 <div class="mega-menu-trigger h-full flex items-center group">
@@ -246,19 +264,109 @@
 </div>
 <a class="text-white/90 font-light hover:text-[#CA9703] text-sm transition-colors duration-200" href="#">About</a>
 </div>
-<div class="flex items-center gap-4">
-<a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] px-6 py-2 rounded-sm font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all duration-200 inline-block">
-                Book a Demo
-            </a>
+<div class="hidden md:flex items-center gap-4">
+    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] px-6 py-2 rounded-sm font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all duration-200 inline-block">
+        Book a Demo
+    </a>
 </div>
 </nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-navigation" class="fixed inset-0 bg-[#052D40]/98 backdrop-blur-xl z-[45] transform translate-x-full transition-transform duration-500 md:hidden flex flex-col p-8 pt-24 overflow-y-auto">
+    <div class="flex flex-col gap-6">
+        <!-- Mobile Services Accordion -->
+        <div class="mobile-dropdown">
+            <button class="mobile-dropdown-trigger w-full flex items-center justify-between text-white font-headline font-bold text-2xl py-4 border-b border-white/10 uppercase tracking-tight">
+                Services <span class="material-symbols-outlined transition-transform">expand_more</span>
+            </button>
+            <div class="mobile-dropdown-content hidden flex flex-col gap-4 py-6">
+                <!-- ERP Group -->
+                <div class="mb-4">
+                    <h4 class="text-[#CA9703] text-[10px] font-bold uppercase tracking-widest mb-4">ERP & Management</h4>
+                    <div class="grid gap-3">
+                        <a href="https://odoovizion.com/" class="flex items-center gap-3 p-3 bg-white/5 rounded-sm">
+                            <span class="material-symbols-outlined text-[#CA9703]">layers</span>
+                            <span class="text-white text-sm">ERP / Odoo</span>
+                        </a>
+                        <a href="https://vizionpos.com/" class="flex items-center gap-3 p-3 bg-white/5 rounded-sm">
+                            <span class="material-symbols-outlined text-[#CA9703]">shopping_cart</span>
+                            <span class="text-white text-sm">POS - Retail</span>
+                        </a>
+                        <a href="https://vizionpos.com/" class="flex items-center gap-3 p-3 bg-white/5 rounded-sm">
+                            <span class="material-symbols-outlined text-[#CA9703]">restaurant</span>
+                            <span class="text-white text-sm">POS - Restaurant</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- Digital Group -->
+                <div>
+                    <h4 class="text-[#CA9703] text-[10px] font-bold uppercase tracking-widest mb-4">Digital Services</h4>
+                    <div class="grid gap-3">
+                        <a href="#" class="flex items-center gap-3 p-3 bg-white/5 rounded-sm">
+                            <span class="material-symbols-outlined text-[#CA9703]">terminal</span>
+                            <span class="text-white text-sm">Web Design & Dev</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-3 p-3 bg-white/5 rounded-sm">
+                            <span class="material-symbols-outlined text-[#CA9703]">smartphone</span>
+                            <span class="text-white text-sm">App Design & Dev</span>
+                        </a>
+                        <a href="#" class="flex items-center gap-3 p-3 bg-white/5 rounded-sm">
+                            <span class="material-symbols-outlined text-[#CA9703]">auto_awesome</span>
+                            <span class="text-white text-sm">AI Transformation</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Industries Accordion -->
+        <div class="mobile-dropdown">
+            <button class="mobile-dropdown-trigger w-full flex items-center justify-between text-white font-headline font-bold text-2xl py-4 border-b border-white/10 uppercase tracking-tight">
+                Industries <span class="material-symbols-outlined transition-transform">expand_more</span>
+            </button>
+            <div class="mobile-dropdown-content hidden grid gap-3 py-6">
+                <a class="flex items-center gap-3 p-3 bg-white/5 rounded-sm text-white" href="#">
+                    <span class="material-symbols-outlined text-[#CA9703]/70 text-xl">store</span>
+                    <span class="text-sm">Retail</span>
+                </a>
+                <a class="flex items-center gap-3 p-3 bg-white/5 rounded-sm text-white" href="#">
+                    <span class="material-symbols-outlined text-[#CA9703]/70 text-xl">lunch_dining</span>
+                    <span class="text-sm">Restaurants</span>
+                </a>
+                <a class="flex items-center gap-3 p-3 bg-white/5 rounded-sm text-white" href="#">
+                    <span class="material-symbols-outlined text-[#CA9703]/70 text-xl">factory</span>
+                    <span class="text-sm">Manufacturing</span>
+                </a>
+                <a class="flex items-center gap-3 p-3 bg-white/5 rounded-sm text-white" href="#">
+                    <span class="material-symbols-outlined text-[#CA9703]/70 text-xl">work</span>
+                    <span class="text-sm">Professional Services</span>
+                </a>
+                <a class="flex items-center gap-3 p-3 bg-white/5 rounded-sm text-white" href="#">
+                    <span class="material-symbols-outlined text-[#CA9703]/70 text-xl">shopping_bag</span>
+                    <span class="text-sm">E-commerce</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Standard Links -->
+        <a href="index.html#about" class="text-white font-headline font-bold text-2xl py-4 border-b border-white/10 uppercase tracking-tight">About</a>
+        <a href="portfolio.html" class="text-white font-headline font-bold text-2xl py-4 border-b border-white/10 uppercase tracking-tight">Portfolio</a>
+
+        <!-- Mobile CTA -->
+        <div class="mt-12">
+            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] w-full text-center py-5 rounded-sm font-black text-[16px] tracking-wide inline-block">
+                BOOK A DEMO
+            </a>
+        </div>
+    </div>
+</div>
 
 <!-- Hero Section -->
 <section class="relative pt-24 pb-20 bg-[#052D40] overflow-hidden">
     <div class="absolute inset-0 grid-overlay opacity-20"></div>
     <div class="container mx-auto px-6 relative z-10">
-        <h1 class="font-headline font-extrabold text-white text-[84px] leading-[0.9] tracking-tight mb-12">Innovation in Every Line, Creativity in Every Pixel</h1>
-        <div class="space-y-8 mt-16 p-10 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
+        <h1 class="font-headline font-extrabold text-white text-[42px] sm:text-[60px] md:text-[84px] leading-[1.1] md:leading-[0.9] tracking-tight mb-8 md:mb-12">Innovation in Every Line, Creativity in Every Pixel</h1>
+        <div class="space-y-8 mt-12 md:mt-16 p-6 md:p-10 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
             <div>
                 <p class="text-[#CA9703] font-bold text-[12px] uppercase tracking-[0.3em] mb-5">By Industry</p>
                 <div id="industry-filters" class="flex flex-wrap gap-3">
@@ -656,6 +764,50 @@
         };
         const obs = new IntersectionObserver(entries => { if(entries[0].isIntersecting && !animated) { startAnim(); animated = true; } }, { threshold: 0.3 });
         obs.observe(document.querySelector('#talk-stats'));
+
+
+        // --- Mobile Menu Toggle Logic ---
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileNavigation = document.getElementById('mobile-navigation');
+
+        if (mobileMenuToggle && mobileNavigation) {
+            const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
+            const closeIcon = mobileMenuToggle.querySelector('.close-icon');
+
+            mobileMenuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = mobileNavigation.classList.contains('translate-x-0');
+                
+                if (isOpen) {
+                    mobileNavigation.classList.remove('translate-x-0');
+                    mobileNavigation.classList.add('translate-x-full');
+                    if (menuIcon) menuIcon.classList.remove('hidden');
+                    if (closeIcon) closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileNavigation.classList.add('translate-x-0');
+                    mobileNavigation.classList.remove('translate-x-full');
+                    if (menuIcon) menuIcon.classList.add('hidden');
+                    if (closeIcon) closeIcon.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        }
+
+        // --- Mobile Dropdown Accordion Logic ---
+        const dropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
+        
+        dropdownTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const content = trigger.nextElementSibling;
+                const icon = trigger.querySelector('.material-symbols-outlined');
+                
+                if (content && icon) {
+                    content.classList.toggle('hidden');
+                    icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            });
+        });
 
         refreshView();
     });
