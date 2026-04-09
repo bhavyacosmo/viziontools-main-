@@ -1,31 +1,122 @@
 <!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Brand Identity & Graphic Design Services | VizionTools</title>
+    <meta name="description" content="Strategic brand identity, logo design, UI/UX & pitch decks for growing businesses. Design that builds commercial trust. Talk to VizionTools today.">
+    <link rel="icon" type="image/png" href="Favicon Transparent.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Portfolio | VIZION TOOLS</title>
-<link rel="icon" type="image/png" href="Favicon Transparent.ico">
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&amp;family=Epilogue:wght@400;700&amp;family=Manrope:wght@300;400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    colors: { "primary-container": "#ca9703", "on-background": "#001e2d", "background": "#f5faff" },
-                    fontFamily: { "headline": ["Bricolage Grotesque", "sans-serif"], "body": ["DM Sans", "sans-serif"] },
+                    colors: {
+                        "primary-gold": "#CA9703",
+                        "dark-teal": "#08415C",
+                        "warm-amber": "#CD8E33",
+                        "deep-navy": "#052D40",
+                        "off-white": "#F7F4EF",
+                        "pure-white": "#FFFFFF",
+                        "muted-silver": "#8A9AAD"
+                    },
+                    fontFamily: {
+                        "headline": ["Bricolage Grotesque", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
                 },
             },
         }
     </script>
-<style>
-        .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24 }
-        .grid-overlay { background-size: 60px 60px; background-image: linear-gradient(to right, rgba(202, 151, 3, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.05) 1px, transparent 1px) }
-        .marquee-animation { animation: marquee 40s linear infinite }
-        .marquee-slow { animation-duration: 50s; }
-        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        .grid-overlay {
+            background-size: 60px 60px;
+            background-image: linear-gradient(to right, rgba(202, 151, 3, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.05) 1px, transparent 1px)
+        }
+        .noise-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBOMjkHA1Zur3sJoMBF0Jf1Iur_c-YVX56NrigEVmWWM9aBjdyODPVTcMW9AVTnBIyyboRBJQyX0sIjihkvuf_3EXRurAjr0QakaXPrvyiW2pdOhZTKEoVN9qXSPbTQ3aMEqfsvfKM9bnVkBq8y_Tj-v0cB41G9qv3i0eJD2PtEbDqyVCVE5353wax-fs8nD-KNpArA9CeR2ggLwBbPPKdjSe90h1msDG1xiUt99pYK7D1esh54GZhk6l11Z1kbRUnZlluxIWlcCKN6);
+            opacity: 0.03
+        }
+        .marquee-animation {
+            animation: marquee 40s linear infinite
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Graphic Design Specific UI */
+        .design-shape {
+            position: absolute;
+            opacity: 0.1;
+            filter: blur(40px);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .floating-element {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -20px); }
+            100% { transform: translate(0, 0px); }
+        }
+        .staggered-narrative-img {
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .staggered-narrative-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+        }
+        .spotlight-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .spotlight-card:hover {
+            border-color: #CA9703;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .spotlight-radial {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(202, 151, 3, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .spotlight-card:hover .spotlight-radial {
+            opacity: 1;
+        }
 
-        /* Mega Menu Specifics */
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Nav & Footer Sync */
         .mega-menu-trigger:hover .mega-menu {
             opacity: 1;
             visibility: visible;
@@ -35,7 +126,6 @@
             opacity: 0;
             visibility: hidden;
             --tw-translate-y: 10px;
-            /* Use Tailwind's standard transform variables to preserve X centering */
             transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -48,83 +138,32 @@
             border-left: 2px solid transparent;
             transition: all 0.2s ease;
         }
-        .chevron-rotate {
-            transition: transform 0.3s ease;
+        .chevron-rotate { transition: transform 0.3s ease; }
+        .mega-menu-trigger:hover .chevron-rotate { transform: rotate(180deg); }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(8, 65, 92, 0.1);
         }
-        .mega-menu-trigger:hover .chevron-rotate {
+        .faq-trigger:hover .faq-title {
+            color: #CA9703;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-bottom 0.3s ease;
+        }
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
             transform: rotate(180deg);
+            color: #CA9703;
         }
-
-        /* Filter Chips */
-        .filter-chip { padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 500; border: 1.5px solid rgba(255, 255, 255, 0.2); background: transparent; color: white; transition: all 0.3s ease; cursor: pointer; }
-        .filter-chip.active { background: #CA9703; color: #08415C; border-color: #CA9703; font-weight: 700; box-shadow: 0 8px 20px rgba(202,151,3,0.3); }
-
-        /* Editorial Project Rows */
-        .project-list-container { width: 100%; background-color: #F7F4EF; }
-        .project-row {
-            min-height: 180px; width: 100%; display: flex; align-items: center; padding: 3vw 6vw;
-            position: relative; border-bottom: 1px solid rgba(8, 65, 92, 0.08); cursor: pointer; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .project-row:hover { background-color: #CA9703; }
-        .project-row:hover .project-title { transform: scale(1.02); color: #08415C; }
-        .project-row:hover .project-desc { color: #08415C; opacity: 0.8; }
-        .project-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 3.5vw; font-weight: 800; color: #08415C; line-height: 1; transition: all 0.4s ease; }
-        .project-desc { font-family: 'DM Sans', sans-serif; font-size: 1.1vw; color: rgba(8, 65, 92, 0.6); max-width: 50vw; line-height: 1.6; transition: all 0.4s ease; }
-        .project-tags { margin-left: auto; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
-        .row-tag { padding: 6px 14px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(8, 65, 92, 0.05); color: #08415C; border: 1px solid rgba(8, 65, 92, 0.1); }
-
-        #fixed-image-container { height: 32vw; width: 24vw; border-radius: 24px; position: fixed; z-index: 99; right: 6vw; top: 50%; display: none; pointer-events: none; background-size: cover; background-position: center; transform: translateY(-50%); transition: all 0.4s ease; box-shadow: 0 50px 120px rgba(0,0,0,0.3); border: 6px solid white; }
-        #show-more-btn { background: transparent; border: 2.5px solid #CA9703; color: #CA9703; padding: 14px 40px; border-radius: 6px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; transition: all 0.3s ease; cursor: pointer; }
-        #show-more-btn:hover { background: #CA9703; color: #08415C; transform: translateY(-3px); }
-        .hidden-project { display: none !important; }
-
-        /* Talk Stats */
-        .talk-stats-container { background-color: #052D40; color: white; padding: 10vw 0; position: relative; overflow: hidden; }
-        .talk-stats-top { display: flex; justify-content: space-between; align-items: center; gap: 6vw; margin: 0 6vw 10vw 6vw; padding-bottom: 6vw; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .talk-stats-heading { font-family: 'Bricolage Grotesque', sans-serif; font-size: 5vw; font-weight: 800; line-height: 1.1; flex: 1; max-width: 50%; }
-        .talk-stats-content-right { flex: 1; max-width: 40%; display: flex; flex-direction: column; gap: 2rem; }
-        .talk-stats-subtext { font-family: 'DM Sans', sans-serif; font-size: 1.2vw; color: rgba(255,255,255,0.6); line-height: 1.6; }
-        .talk-stats-grid { display: flex !important; flex-direction: row !important; width: 100% !important; padding: 0 6vw !important; }
-        .stat-card { flex: 1; padding: 3vw 1vw; display: flex; flex-direction: column; align-items: center; text-align: center; border-right: 1px solid rgba(255,255,255,0.1); }
-        .stat-card:last-child { border-right: none; }
-        .stat-card .icon { color: #CA9703; font-size: 3vw; margin-bottom: 1.5vw; }
-        .stat-card .number { font-family: 'Bricolage Grotesque', sans-serif; font-size: 4vw; font-weight: 800; color: #CA9703; line-height: 1; }
-        .stat-card .label { font-family: 'DM Sans', sans-serif; font-size: 1vw; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-top: 1vw; }
-
-        /* Global Presence SYNC */
-        .location-card { background: rgba(8, 65, 92, 0.4); backdrop-filter: blur(10px); border: 1px solid rgba(202, 151, 3, 0.1); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; border-radius: 24px; }
-        .location-card:hover { border-color: #CA9703; transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-        .iso-watermark { position: absolute; bottom: -10px; right: -5px; font-size: 80px; font-weight: 900; color: rgba(202, 151, 3, 0.05); line-height: 1; transition: all 0.5s ease; font-family: 'Bricolage Grotesque', sans-serif; pointer-events: none; user-select: none; }
-        .location-card:hover .iso-watermark { color: rgba(202, 151, 3, 0.1); transform: scale(1.1) rotate(-5deg); }
-
-        @media (max-width: 1024px) {
-            .talk-stats-top { flex-direction: column; align-items: flex-start; gap: 3rem; margin-bottom: 12vw; padding-bottom: 10vw; }
-            .talk-stats-heading { font-size: 10vw; max-width: 100%; }
-            .talk-stats-content-right { max-width: 100%; }
-            .talk-stats-subtext { font-size: 4.5vw; }
-            .talk-stats-grid { flex-wrap: wrap !important; }
-            .stat-card { flex: 0 0 50%; border-right: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); }
-            .stat-card:nth-child(2n) { border-right: none; }
-            .stat-card:nth-child(n+3) { border-bottom: none; }
-            .stat-card .icon { font-size: 50px; }
-            .stat-card .number { font-size: 60px; }
-            .stat-card .label { font-size: 14px; }
-            
-            /* Enhanced Project Row Styling for Mobile */
-            .project-row { padding: 8vw 6vw; min-height: 120px; }
-            .project-title { font-size: 24px; margin-bottom: 8px; }
-            .project-desc { font-size: 14px; max-width: 100%; line-height: 1.5; }
-            .project-tags { display: none; } /* Hide tags on mobile to save space */
-        }
-        
-        /* Mobile Navigation Utilities */
-        .translate-x-full { transform: translateX(100%); }
-        .translate-x-0 { transform: translateX(0%); }
-        .transition-transform { transition-property: transform; }
-        .duration-500 { transition-duration: 500ms; }
     </style>
 </head>
-<body class="bg-[#F7F4EF] font-body selection:bg-[#CA9703] overflow-x-hidden">
+<body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
 
 <!-- Announcement Bar -->
 <div class="w-full bg-[#CA9703] text-[#08415C] font-medium text-[11px] md:text-[12px] relative z-50 shrink-0">
@@ -360,87 +399,325 @@
         </div>
     </div>
 </div>
+<!-- Creative Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24 px-6">
+    <div class="absolute inset-0 grid-overlay opacity-10"></div>
+    <div class="absolute inset-0 noise-texture pointer-events-none"></div>
+    
+    <!-- Parallax Background Shapes -->
+    <div class="design-shape bg-primary-gold w-96 h-96 top-[-10%] left-[-10%] rounded-full floating-element"></div>
+    <div class="design-shape bg-warm-amber w-[500px] h-[500px] bottom-[-20%] right-[-10%] rounded-full floating-element" style="animation-delay: -2s;"></div>
 
-<!-- Hero Section -->
-<section class="relative pt-24 pb-20 bg-[#052D40] overflow-hidden">
-    <div class="absolute inset-0 grid-overlay opacity-20"></div>
-    <div class="container mx-auto px-6 relative z-10">
-        <h1 class="font-headline font-extrabold text-white text-[42px] sm:text-[60px] md:text-[84px] leading-[1.1] md:leading-[0.9] tracking-tight mb-8 md:mb-12">Innovation in Every Line, Creativity in Every Pixel</h1>
-        <div class="space-y-8 mt-12 md:mt-16 p-6 md:p-10 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl">
-            <div>
-                <p class="text-[#CA9703] font-bold text-[12px] uppercase tracking-[0.3em] mb-5">By Industry</p>
-                <div id="industry-filters" class="flex flex-wrap gap-3">
-                    <div class="filter-chip active" data-filter="all">All Industries</div>
-                    <div class="filter-chip" data-filter="Ecommerce">Ecommerce</div>
-                    <div class="filter-chip" data-filter="Mobile">Mobile</div>
-                    <div class="filter-chip" data-filter="Finance">Finance</div>
-                    <div class="filter-chip" data-filter="Healthcare">Healthcare</div>
-                    <div class="filter-chip" data-filter="Travel">Travel</div>
-                </div>
+    <div class="relative z-10 container mx-auto text-center max-w-5xl">
+        <div class="mb-8 flex justify-center" data-aos>
+            <span class="text-primary-gold font-medium text-[12px] tracking-[0.4em] uppercase px-5 py-2 border border-primary-gold/30 rounded-full bg-primary-gold/5">
+                Strategic Visual Credibility
+            </span>
+        </div>
+        
+        <h1 class="font-headline font-extrabold text-pure-white text-[44px] md:text-[84px] leading-[1.05] tracking-tight mb-8" data-aos>
+            Your Brand Is Either Building Trust or <span class="text-primary-gold italic">Eroding It.</span> Design Determines Which.
+        </h1>
+        
+        <p class="text-muted-silver font-body font-light text-[18px] md:text-[24px] leading-relaxed max-w-3xl mx-auto mb-12" data-aos>
+            Inconsistent logos and off-brand decks are revenue problems. VizionTools builds brand identities for businesses that need to look the part.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6" data-aos>
+            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer group bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[16px] uppercase tracking-widest hover:shadow-[0_0_50px_rgba(202,151,3,0.4)] transition-all">
+                Book a Free Brand Review
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Page Intro Section -->
+<section class="bg-off-white py-24 md:py-32 relative overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center mb-16" data-aos>
+            <span class="font-headline font-bold text-primary-gold text-xs tracking-widest uppercase mb-6 block">DESIGN IS A SALES VARIABLE</span>
+            <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[60px] leading-tight text-center">Brand perception is visual credibility at every touchpoint.</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6 text-lg leading-relaxed text-dark-teal/70" data-aos>
+                <p>Strategic design is not about aesthetics. It is about authority. The trust cue when a buyer arrives on your website or the autority signal when your deck opens in a board meeting.</p>
+                <p>VizionTools delivers services grounded in business context. We start by understanding your market position—then we design systems that advance those goals consistently.</p>
             </div>
-            <div>
-                <p class="text-[#CA9703] font-bold text-[12px] uppercase tracking-[0.3em] mb-5">By Technology</p>
-                <div id="tech-filters" class="flex flex-wrap gap-3">
-                    <div class="filter-chip active" data-filter="all">All Technologies</div>
-                    <div class="filter-chip" data-filter="Ecommerce Tech">Ecommerce Tech</div>
-                    <div class="filter-chip" data-filter="Mobile App Dev">Mobile App Dev</div>
-                    <div class="filter-chip" data-filter="Full Stack Dev">Full Stack Dev</div>
-                    <div class="filter-chip" data-filter="AI Solutions">AI Solutions</div>
-                    <div class="filter-chip" data-filter="ERP & CRM">ERP & CRM</div>
+            <div class="relative" data-aos>
+                <!-- Visual placeholder representing "Brand Authority" -->
+                <div class="bg-dark-teal p-1 rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="bg-deep-navy p-12 aspect-square flex flex-col justify-center gap-8">
+                        <div class="h-2 w-32 bg-primary-gold rounded-full"></div>
+                        <div class="h-24 w-full bg-white/5 rounded-2xl border border-white/10"></div>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="h-16 bg-white/5 rounded-xl"></div>
+                            <div class="h-16 bg-primary-gold rounded-xl"></div>
+                            <div class="h-16 bg-white/5 rounded-xl"></div>
+                        </div>
+                        <div class="h-2 w-48 bg-white/10 rounded-full"></div>
+                    </div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-primary-gold p-6 rounded-2xl shadow-xl floating-element">
+                    <span class="material-symbols-outlined text-[48px] text-deep-navy">verified</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Portfolio Grid -->
-<section class="project-list-container">
-    <div id="project-list-items">
-        <div class="project-row" data-industry="Ecommerce" data-tech="Ecommerce Tech" data-image="1"><div class="flex flex-col"><h2 class="project-title">Fashion Store</h2><p class="project-desc">An elegant e-commerce platform offering a seamless shopping experience for fashion lovers.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Ecommerce Tech</span></div></div>
-        <div class="project-row" data-industry="Finance" data-tech="ERP & CRM" data-image="2"><div class="flex flex-col"><h2 class="project-title">ERP Wholesale Portal</h2><p class="project-desc">A comprehensive ERP portal for wholesale businesses, streamlining order and inventory management.</p></div><div class="project-tags"><span class="row-tag">Finance</span><span class="row-tag">ERP & CRM</span></div></div>
-        <div class="project-row" data-industry="Mobile" data-tech="Mobile App Dev" data-image="3"><div class="flex flex-col"><h2 class="project-title">Food Delivery</h2><p class="project-desc">An app and platform for easy food ordering from diverse restaurants with real-time tracking.</p></div><div class="project-tags"><span class="row-tag">Mobile</span><span class="row-tag">Mobile App Dev</span></div></div>
-        <div class="project-row" data-industry="Ecommerce" data-tech="Ecommerce Tech" data-image="4"><div class="flex flex-col"><h2 class="project-title">Customer-Cart</h2><p class="project-desc">An innovative shopping cart solution enhancing the online shopping experience simplified.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Ecommerce Tech</span></div></div>
-        <div class="project-row" data-industry="Ecommerce" data-tech="Full Stack Dev" data-image="5"><div class="flex flex-col"><h2 class="project-title">Store Fixture</h2><p class="project-desc">Effective design and equipping solutions for retail store spaces and management systems.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Full Stack Dev</span></div></div>
-        <div class="project-row" data-industry="Travel" data-tech="Full Stack Dev" data-image="6"><div class="flex flex-col"><h2 class="project-title">Homeshare</h2><p class="project-desc">A flexible home-sharing platform connecting hosts and guests for short or long term stays.</p></div><div class="project-tags"><span class="row-tag">Travel</span><span class="row-tag">Full Stack Dev</span></div></div>
-        <div class="project-row" data-industry="Ecommerce" data-tech="Ecommerce Tech" data-image="7"><div class="flex flex-col"><h2 class="project-title">Auto Parts Store</h2><p class="project-desc">An online store offering a wide range of high-quality original auto parts for all vehicles.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Ecommerce Tech</span></div></div>
-        <div class="project-row" data-industry="Ecommerce" data-tech="Mobile App Dev" data-image="8"><div class="flex flex-col"><h2 class="project-title">Online Fashion Store</h2><p class="project-desc">Your destination for trendy fashion with a high-end digital catalog and checkout.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Mobile App Dev</span></div></div>
+<!-- Staggered Visual Narrative Feature Sections (4 H2 Blocks) -->
+<section class="bg-deep-navy py-24 md:py-32 overflow-hidden">
+    <div class="container mx-auto px-6 space-y-32">
         
-        <div class="project-row hidden-project" data-industry="Mobile" data-tech="Mobile App Dev" data-image="9"><div class="flex flex-col"><h2 class="project-title">Electronics App</h2><p class="project-desc">The ultimate app for buying and selling electronics with verified buyer reviews.</p></div><div class="project-tags"><span class="row-tag">Mobile</span><span class="row-tag">Mobile App Dev</span></div></div>
-        <div class="project-row hidden-project" data-industry="Ecommerce" data-tech="Full Stack Dev" data-image="10"><div class="flex flex-col"><h2 class="project-title">Marketplace App</h2><p class="project-desc">A high-scale vendor marketplace for local and international trade automation.</p></div><div class="project-tags"><span class="row-tag">Ecommerce</span><span class="row-tag">Full Stack Dev</span></div></div>
-        <div class="project-row hidden-project" data-industry="Education" data-tech="Full Stack Dev" data-image="11"><div class="flex flex-col"><h2 class="project-title">Online Bookstore</h2><p class="project-desc">A vast digital library offering diverse books and educational digital resources.</p></div><div class="project-tags"><span class="row-tag">Education</span><span class="row-tag">Full Stack Dev</span></div></div>
-        <div class="project-row hidden-project" data-industry="Finance" data-tech="ERP & CRM" data-image="12"><div class="flex flex-col"><h2 class="project-title">Real Estate Portal</h2><p class="project-desc">Advanced platform for easily searching, selling, and renting properties globally.</p></div><div class="project-tags"><span class="row-tag">Finance</span><span class="row-tag">ERP & CRM</span></div></div>
-        <div class="project-row hidden-project" data-industry="Healthcare" data-tech="Ecommerce Tech" data-image="13"><div class="flex flex-col"><h2 class="project-title">Dietary Store</h2><p class="project-desc">An e-commerce store offering a curated selection of high-end health supplements.</p></div><div class="project-tags"><span class="row-tag">Healthcare</span><span class="row-tag">Ecommerce Tech</span></div></div>
-        <div class="project-row hidden-project" data-industry="Finance" data-tech="AI Solutions" data-image="14"><div class="flex flex-col"><h2 class="project-title">Software Dashboard</h2><p class="project-desc">Powerful dashboard providing comprehensive data insights and operational management.</p></div><div class="project-tags"><span class="row-tag">Finance</span><span class="row-tag">AI Solutions</span></div></div>
+        <!-- Feature 1: Brand Identity -->
+        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
+            <div class="order-2 md:order-1" data-aos>
+                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
+                    <div class="bg-off-white aspect-video rounded-[30px] flex items-center justify-center p-12">
+                         <div class="text-center">
+                             <div class="w-16 h-16 bg-primary-gold rounded-full mx-auto mb-6 flex items-center justify-center">
+                                 <span class="material-symbols-outlined text-deep-navy">all_inclusive</span>
+                             </div>
+                             <p class="font-headline font-black text-2xl text-dark-teal tracking-tighter mb-1 uppercase">THE LOGO SYSTEM</p>
+                             <div class="h-1 w-12 bg-dark-teal/20 mx-auto"></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 space-y-8" data-aos>
+                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Brand Identity That Reflects Where Your Business Is Going</h2>
+                <p class="text-muted-silver text-lg leading-relaxed">A logo is not a brand. We build coherent visual systems: logo suite, systems, typography, and documentation for consistent market positioning.</p>
+                <ul class="space-y-4 text-muted-silver">
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Full Brand Guidelines (Rules & Values)</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Logo Suite (Primary, Monochrome, Stacked)</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Asset Delivery (SVG, PNG, PDF, EPS)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 2: Collateral -->
+        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
+            <div class="space-y-8" data-aos>
+                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Collateral That Performs in the Field and the Inbox</h2>
+                <p class="text-muted-silver text-lg leading-relaxed">Service one-pagers designed for the buyer's decision stage and email templates integrated with your marketing automations.</p>
+                <ul class="space-y-4 text-muted-silver">
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Sales and Product One-Pagers</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Trade Show & Print-Ready Materials</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Banner Ads & Event Collateral</li>
+                </ul>
+            </div>
+            <div data-aos>
+                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
+                    <div class="bg-dark-teal aspect-[3/4] rounded-[30px] p-8 flex flex-col gap-6">
+                        <div class="h-4 w-1/2 bg-primary-gold/40 rounded-full"></div>
+                        <div class="flex-1 bg-white/5 rounded-2xl"></div>
+                        <div class="h-10 w-full bg-primary-gold rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature 3: Pitch Decks -->
+        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
+             <div class="order-2 md:order-1" data-aos>
+                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
+                    <div class="bg-primary-gold aspect-video rounded-[30px] flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 grid-overlay"></div>
+                        <div class="relative z-10 w-3/4 space-y-4">
+                            <div class="h-2 w-20 bg-deep-navy rounded-full"></div>
+                            <div class="h-8 w-full bg-deep-navy rounded-lg"></div>
+                            <div class="flex gap-2">
+                                <div class="h-12 w-12 bg-deep-navy/20 rounded-lg"></div>
+                                <div class="h-12 w-full bg-deep-navy rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 space-y-8" data-aos>
+                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Pitch Decks That Communicate Ambition With Clarity</h2>
+                <p class="text-muted-silver text-lg leading-relaxed">Investors see hundreds of decks. We design visually authoritative decks for Series A, enterprise sales, and corporate presentations.</p>
+                <ul class="space-y-4 text-muted-silver">
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Slide Hierarchy Optimization</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Advanced Data Visualization</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> PowerPoint, Keynote & Google Slides Ready</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature 4: UI/UX -->
+        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
+            <div class="space-y-8" data-aos>
+                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">UI/UX Design for Digital Products</h2>
+                <p class="text-muted-silver text-lg leading-relaxed">High-fidelity Figma prototypes with interactive components, handed off to developers with precise documentation.</p>
+                <ul class="space-y-4 text-muted-silver">
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Wireframing & Interaction Design</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> High-Fidelity Interactive Prototypes</li>
+                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Component Library & Developer Handoff</li>
+                </ul>
+            </div>
+            <div data-aos>
+                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
+                    <div class="bg-deep-navy aspect-square rounded-[30px] p-8 space-y-4">
+                        <div class="flex gap-4 mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="h-2 w-1/3 bg-white/10 rounded-full"></div>
+                        <div class="grid grid-cols-2 gap-4 h-1/2">
+                            <div class="bg-white/5 rounded-2xl border border-white/5"></div>
+                            <div class="bg-primary-gold/10 rounded-2xl border border-primary-gold/20"></div>
+                        </div>
+                        <div class="h-8 w-full bg-primary-gold rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="flex justify-center py-20"><button id="show-more-btn">Explore All Success Stories</button></div>
 </section>
 
-<!-- Talk Stats -->
-<section id="talk-stats" class="talk-stats-container">
-    <div class="talk-stats-top">
-        <h2 class="talk-stats-heading">Want to talk about your project?</h2>
-        <div class="talk-stats-content-right">
-            <p class="talk-stats-subtext">Shake hands with our team! They are there to help you out and advise you on your business development.</p>
-            <div class="">
-                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block uppercase tracking-wider">
-                    Book a Free Consultation
+<!-- Who It's For (Spotlight Effects) -->
+<section class="bg-off-white py-24 md:py-32">
+    <div class="container mx-auto px-6">
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl text-center mb-20" data-aos>Who is this for?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="spotlight-card p-10 rounded-[32px] group" data-aos>
+                <div class="spotlight-radial"></div>
+                <span class="material-symbols-outlined text-[56px] text-primary-gold mb-8 group-hover:scale-110 transition-transform">rocket_launch</span>
+                <h3 class="font-headline font-bold text-2xl text-dark-teal mb-4">Growth-Stage SMBs</h3>
+                <p class="text-dark-teal/70 leading-relaxed">Preparing for enterprise sales or fundraising. Your product is ready—but your brand isn't matching that level of credibility.</p>
+            </div>
+
+            <div class="spotlight-card p-10 rounded-[32px] group" data-aos>
+                <div class="spotlight-radial"></div>
+                <span class="material-symbols-outlined text-[56px] text-primary-gold mb-8 group-hover:scale-110 transition-transform">language</span>
+                <h3 class="font-headline font-bold text-2xl text-dark-teal mb-4">Market Entry / Relaunch</h3>
+                <p class="text-dark-teal/70 leading-relaxed">Design positioning-aligned brand identities for new contexts, ensuring your brand communicates clearly to a new audience.</p>
+            </div>
+
+            <div class="spotlight-card p-10 rounded-[32px] group" data-aos>
+                <div class="spotlight-radial"></div>
+                <span class="material-symbols-outlined text-[56px] text-primary-gold mb-8 group-hover:scale-110 transition-transform">design_services</span>
+                <h3 class="font-headline font-bold text-2xl text-dark-teal mb-4">Product Teams</h3>
+                <p class="text-dark-teal/70 leading-relaxed">Teams that need UI/UX designers without the overhead. We embed in your product cycle as your design partner.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof -->
+<section class="bg-dark-teal py-24 relative overflow-hidden">
+    <div class="absolute inset-0 grid-overlay opacity-10"></div>
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto" data-aos>
+            <span class="material-symbols-outlined text-primary-gold text-[64px] mb-8">format_quote</span>
+            <h2 class="font-headline italic text-pure-white text-[24px] md:text-[34px] font-light leading-relaxed mb-10">
+                "We went into our Series A raise with a deck VizionTools designed. Three investors commented specifically on the quality of the presentation. The deck got us in more rooms."
+            </h2>
+            <div class="flex items-center justify-center gap-4">
+                <div class="text-left border-l-2 border-primary-gold pl-6 py-2">
+                    <p class="text-pure-white font-bold">Co-Founder</p>
+                    <p class="text-muted-silver text-sm">FinTech Startup, UAE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section (5 Questions) -->
+<section class="bg-off-white py-24 md:py-32">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="font-headline font-bold text-dark-teal text-4xl mb-12 text-center" data-aos>Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl transition-colors">What is included in a brand identity engagement?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 leading-relaxed">It includes discovery and positioning brief, logo design with revision rounds, color and typography system, brand guidelines document, and full asset delivery. Scope is documented before we begin.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you design for print as well as digital?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 leading-relaxed">Yes. All deliverables are provided in print-ready formats (PDF, EPS, CMYK) alongside digital formats (SVG, PNG, RGB). We work with your printer specifications when required.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl transition-colors">Can you redesign our existing brand without starting from scratch?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 leading-relaxed">Yes. Brand refinement and evolution engagements are available for businesses that have a working identity but need it modernized or prioritized for consistency across touchpoints.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl transition-colors">How long does a brand identity project take?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 leading-relaxed">A focused brand identity project runs 3–5 weeks. Larger brand systems with extensive collateral run 6–10 weeks. Pitch deck design is typically a 1–2 week engagement.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you offer ongoing design retainers?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 leading-relaxed">Yes. Monthly design retainers are available for businesses that need ongoing collateral, social graphics, and digital asset production on a consistent, predictable cadence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="bg-off-white py-24 px-6 relative overflow-hidden">
+    <div class="container mx-auto">
+        <div class="bg-dark-teal rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden border border-primary-gold" data-aos>
+            <div class="absolute inset-0 bg-deep-navy opacity-50"></div>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[60px] leading-tight mb-8 uppercase tracking-tighter">
+                    Your Brand Should Open <span class="text-primary-gold italic">Doors</span>, Not Create Doubt.
+                </h2>
+                <p class="text-muted-silver text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                    If your visual identity is out-of-date or doesn't represent your quality, it's a fixable problem. Let's show you what strategic design can change.
+                </p>
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:scale-105 transition-all outline-none inline-block">
+                    Book a Free Brand Review Call
                 </a>
             </div>
         </div>
     </div>
-    <div class="talk-stats-grid">
-        <div class="stat-card"><span class="material-symbols-outlined icon">receipt_long</span><span class="number count-up" data-target="250">0</span><span class="label">Projects Executed</span></div>
-        <div class="stat-card"><span class="material-symbols-outlined icon">star_rate</span><span class="number count-up" data-target="100">0</span><span class="label">Happy Clients</span></div>
-        <div class="stat-card"><span class="material-symbols-outlined icon">public</span><span class="number count-up" data-target="5">0</span><span class="label">Global Presence</span></div>
-        <div class="stat-card"><span class="material-symbols-outlined icon">handshake</span><span class="number count-up" data-target="98">0</span><span class="label">Positive Feedback</span></div>
-    </div>
 </section>
 
 <!-- Running Line (Marquee Ribbon) -->
-<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-4 shrink-0 relative z-10">
+<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
     <div class="flex marquee-animation marquee-slow whitespace-nowrap">
         <!-- Main Content -->
-        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[14px] uppercase tracking-wider">
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
             <span>ERP</span> <span class="opacity-40">·</span>
             <span>ODOO</span> <span class="opacity-40">·</span>
             <span>ZOHO</span> <span class="opacity-40">·</span>
@@ -454,7 +731,7 @@
             <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
         </div>
         <!-- Repeat for seamless loop -->
-        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[14px] uppercase tracking-wider">
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
             <span>ERP</span> <span class="opacity-40">·</span>
             <span>ODOO</span> <span class="opacity-40">·</span>
             <span>ZOHO</span> <span class="opacity-40">·</span>
@@ -470,20 +747,20 @@
     </div>
 </div>
 
-<!-- FOOTER SYNCED FROM INDEX.HTML -->
 <footer class="bg-[#08415C] pt-24 pb-12 relative overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-            <!-- Col 1: Branding -->
-            <div class="space-y-8 text-center md:text-left">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
+            
+            <!-- Col 1: Brand -->
+            <div class="space-y-8">
                 <a href="index.html" class="block group -ml-2">
-                    <img src="Transparent Logo (1).png" class="h-24 mx-auto md:mx-0 object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
+                    <img src="Transparent Logo (1).png" alt="Vizion Tools" class="h-24 w-auto object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
                 </a>
                 <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[320px]">
                     "Transforming businesses through custom software, AI automation, and digital solutions, built to deliver real results and long-term growth."
                 </p>
                 <!-- Social Icons -->
-                <div class="flex items-center gap-4 justify-center md:justify-start">
+                <div class="flex items-center gap-4">
                     <!-- Facebook -->
                     <a href="https://www.facebook.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z"/></svg>
@@ -531,7 +808,7 @@
                 <ul class="space-y-4">
                     <li><a href="https://viziontools.com/about-us/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">About Us</a></li>
                     <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Industries</a></li>
-                    <li><a href="portfolio.html" class="font-body font-normal text-[#CA9703] text-[14px] hover:text-white transition-colors font-bold">Portfolio</a></li>
+                    <li><a href="portfolio.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Portfolio</a></li>
                     <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Case Studies</a></li>
                     <li><a href="https://viziontools.com/blog/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Blog</a></li>
                     <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Careers</a></li>
@@ -548,7 +825,7 @@
                     </p>
                     <p class="font-body font-normal flex items-center gap-3">
                         <span class="material-symbols-outlined text-[18px]">location_on</span>
-                         New Britain, United States
+                        New Britain, United States
                     </p>
                 </div>
                 <div class="pt-4">
@@ -557,8 +834,9 @@
                     </a>
                 </div>
             </div>
-        </div>
 
+        </div>
+        
         <!-- Global Presence Section (New UI Format) -->
         <div class="mb-24 mt-8">
             <div class="text-center mb-16">
@@ -566,6 +844,7 @@
                 <h2 class="font-headline font-bold text-white text-[32px] md:text-[42px] leading-tight mb-4">Serving clients worldwide.</h2>
                 <p class="font-body font-light text-[#8A9AAD] text-[16px] max-w-2xl mx-auto">Our offices across four continents ensure seamless localized support and enterprise execution.</p>
             </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Location: US -->
                 <div class="location-card p-8 group">
@@ -584,6 +863,7 @@
                         </a>
                     </div>
                 </div>
+
                 <!-- Location: Egypt -->
                 <div class="location-card p-8 group">
                     <div class="iso-watermark">EG</div>
@@ -601,6 +881,7 @@
                         </a>
                     </div>
                 </div>
+
                 <!-- Location: India -->
                 <div class="location-card p-8 group">
                     <div class="iso-watermark">IN</div>
@@ -635,181 +916,82 @@
     </div>
 </footer>
 
-    <!-- Cal.com Universal Embed Initialization -->
-    <script type="text/javascript" id="cal-com-script">
-      (function (C, A, L) {
-        let p = function (a, ar) { a.q.push(ar); };
-        let d = C.document; C.Cal = C.Cal || function () {
-          let cal = C.Cal; let ar = arguments;
-          if (!cal.loaded) {
-            cal.ns = {}; cal.q = cal.q || [];
-            const s = d.createElement("script");
-            s.src = A; s.async = true;
-            s.onload = () => {
-              console.info("[Cal.com Debug] Script loaded.");
-              // Preload for instant opening
-              Cal("preload", { calLink: "piyushchandak/30min" });
-            };
-            d.head.appendChild(s);
-            cal.loaded = true;
-          }
-          if (ar[0] === L) {
-            const sn = ar[1];
-            const obj = [sn, { q: [] }];
-            cal.q.push(obj);
-            return;
-          }
-          p(cal, ar);
-        };
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-
-      // Global Initialization
-      Cal("init", "piyushchandak/30min", { origin: "https://cal.com" });
-
-      // UI Configuration
-      Cal("ui", {
-        theme: "dark",
-        styles: { branding: { brandColor: "#CA9703" } },
-        hideEventTypeDetails: false,
-        layout: "month_view"
-      });
-
-      // Preload for instant responsiveness
-      Cal("preload", { calLink: "piyushchandak/30min" });
-
-      console.info("[Cal.com Debug] Cal.com (piyushchandak/30min) initialized and preloaded.");
-    </script>
-
-<div id="fixed-image-container"></div>
-
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const rows = document.querySelectorAll('.project-row');
-        const showMoreBtn = document.querySelector('#show-more-btn');
-        let showAll = false;
-        let activeInd = 'all';
-        let activeTech = 'all';
-
-        function refreshView() {
-            let visibleCount = 0;
-            rows.forEach(row => {
-                const ind = row.getAttribute('data-industry') || '';
-                const tech = row.getAttribute('data-tech') || '';
-                const matchInd = (activeInd === 'all' || ind === activeInd);
-                const matchTech = (activeTech === 'all' || tech === activeTech);
-
-                if (matchInd && matchTech) {
-                    if (showAll) { row.classList.remove('hidden-project'); }
-                    else {
-                        if (visibleCount < 8) { row.classList.remove('hidden-project'); visibleCount++; }
-                        else { row.classList.add('hidden-project'); }
-                    }
-                } else {
-                    row.classList.add('hidden-project');
-                }
-            });
-            const matches = Array.from(rows).filter(r => {
-                const i = r.getAttribute('data-industry') || '';
-                const t = r.getAttribute('data-tech') || '';
-                return (activeInd === 'all' || i === activeInd) && (activeTech === 'all' || t === activeTech);
-            }).length;
-            showMoreBtn.parentElement.style.display = (showAll || matches <= 8) ? 'none' : 'flex';
-        }
-
-        document.querySelectorAll('.filter-chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                chip.parentElement.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-                chip.classList.add('active');
-                const filterType = chip.parentElement.id;
-                const value = chip.getAttribute('data-filter');
-                if (filterType === 'industry-filters') activeInd = value;
-                else activeTech = value;
-                refreshView();
-            });
+    // Navigation & Mobile Menu Logic
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileNavigation = document.getElementById('mobile-navigation');
+    
+    if(mobileMenuToggle && mobileNavigation) {
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpen = mobileNavigation.classList.contains('translate-x-0');
+            mobileNavigation.classList.toggle('translate-x-0');
+            mobileNavigation.classList.toggle('translate-x-full');
+            mobileMenuToggle.querySelector('.menu-icon').classList.toggle('hidden');
+            mobileMenuToggle.querySelector('.close-icon').classList.toggle('hidden');
+            document.body.style.overflow = isOpen ? '' : 'hidden';
         });
+    }
 
-        showMoreBtn.addEventListener('click', () => { showAll = true; refreshView(); });
-
-        const fixedImage = document.querySelector('#fixed-image-container');
-        rows.forEach(row => {
-            row.addEventListener('mouseenter', () => {
-                fixedImage.style.backgroundImage = `url(${row.getAttribute('data-image')})`;
-                fixedImage.style.display = 'block';
-                setTimeout(() => { fixedImage.style.opacity = '1'; fixedImage.style.transform = 'translateY(-50%) scale(1)'; }, 10);
-            });
-            row.addEventListener('mouseleave', () => {
-                fixedImage.style.opacity = '0'; fixedImage.style.transform = 'translateY(-50%) scale(0.95)';
-                setTimeout(() => { if(fixedImage.style.opacity==='0') fixedImage.style.display='none'; }, 400);
-            });
+    // FAQ Accordion Logic
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const item = trigger.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
         });
-
-        // --- Counting Logic ---
-        const counts = document.querySelectorAll('.count-up');
-        let animated = false;
-        const startAnim = () => {
-            counts.forEach(n => {
-                const target = +n.dataset.target;
-                const duration = 2000;
-                const startTime = performance.now();
-                const step = (time) => {
-                    const progress = Math.min((time - startTime) / duration, 1);
-                    const ease = 1 - Math.pow(1 - progress, 3);
-                    const cur = Math.floor(ease * target);
-                    n.innerText = cur + (cur >= target ? (target === 100 || target === 250 ? '+' : (target === 98 ? '%' : '')) : '');
-                    if (progress < 1) requestAnimationFrame(step);
-                    else n.innerText = target + (target === 100 || target === 250 ? '+' : (target === 98 ? '%' : ''));
-                };
-                requestAnimationFrame(step);
-            });
-        };
-        const obs = new IntersectionObserver(entries => { if(entries[0].isIntersecting && !animated) { startAnim(); animated = true; } }, { threshold: 0.3 });
-        obs.observe(document.querySelector('#talk-stats'));
-
-
-        // --- Mobile Menu Toggle Logic ---
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const mobileNavigation = document.getElementById('mobile-navigation');
-
-        if (mobileMenuToggle && mobileNavigation) {
-            const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
-            const closeIcon = mobileMenuToggle.querySelector('.close-icon');
-
-            mobileMenuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = mobileNavigation.classList.contains('translate-x-0');
-                
-                if (isOpen) {
-                    mobileNavigation.classList.remove('translate-x-0');
-                    mobileNavigation.classList.add('translate-x-full');
-                    if (menuIcon) menuIcon.classList.remove('hidden');
-                    if (closeIcon) closeIcon.classList.add('hidden');
-                    document.body.style.overflow = '';
-                } else {
-                    mobileNavigation.classList.add('translate-x-0');
-                    mobileNavigation.classList.remove('translate-x-full');
-                    if (menuIcon) menuIcon.classList.add('hidden');
-                    if (closeIcon) closeIcon.classList.remove('hidden');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-        }
-
-        // --- Mobile Dropdown Accordion Logic ---
-        const dropdownTriggers = document.querySelectorAll('.mobile-dropdown-trigger');
-        
-        dropdownTriggers.forEach(trigger => {
-            trigger.addEventListener('click', () => {
-                const content = trigger.nextElementSibling;
-                const icon = trigger.querySelector('.material-symbols-outlined');
-                
-                if (content && icon) {
-                    content.classList.toggle('hidden');
-                    icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-                }
-            });
-        });
-
-        refreshView();
     });
+
+    // Spotlight Effect Tracker
+    document.querySelectorAll('.spotlight-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            card.style.setProperty('--mouse-x', `${x}%`);
+            card.style.setProperty('--mouse-y', `${y}%`);
+        });
+    });
+
+    // AOS Initialization
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
 </script>
-</body> </html>
+
+<!-- Cal.com Universal Embed -->
+<script type="text/javascript" id="cal-com-script">
+  (function (C, A, L) {
+    let p = function (a, ar) { a.q.push(ar); };
+    let d = C.document; C.Cal = C.Cal || function () {
+      let cal = C.Cal; let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {}; cal.q = cal.q || [];
+        const s = d.createElement("script");
+        s.src = A; s.async = true;
+        s.onload = () => { Cal("preload", { calLink: "piyushchandak/30min" }); };
+        d.head.appendChild(s);
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const sn = ar[1];
+        const obj = [sn, { q: [] }];
+        cal.q.push(obj);
+        return;
+      }
+      p(cal, ar);
+    };
+  })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", "piyushchandak/30min", { origin: "https://cal.com" });
+  Cal("ui", { theme: "dark", styles: { branding: { brandColor: "#CA9703" } }, layout: "month_view" });
+</script>
+
+</body>
+</html>
