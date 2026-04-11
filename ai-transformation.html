@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -145,6 +147,130 @@
             transform: rotate(180deg);
             color: #CA9703;
         }
+
+        /* Expanding Panel Accordion Styles */
+        .accordion-container {
+            display: flex;
+            width: 100%;
+            height: 600px;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        .ai-panel {
+            position: relative;
+            flex: 1;
+            height: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+        }
+        .ai-panel.active {
+            flex: 5;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: #CA9703;
+        }
+        .ai-panel .panel-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+        }
+        .ai-panel.active .panel-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+            height: auto;
+            overflow: visible;
+            transition: all 0.5s ease 0.4s;
+        }
+        .ai-panel .panel-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            white-space: nowrap;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            pointer-events: none;
+        }
+        .ai-panel.active .panel-label {
+            opacity: 0;
+            transform: translate(-50%, -100%) rotate(-90deg);
+        }
+        .ai-panel:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(202, 151, 3, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container {
+                flex-direction: column;
+                height: auto;
+                min-height: 800px;
+            }
+            .ai-panel {
+                flex: none;
+                height: 120px;
+                width: 100%;
+            }
+            .ai-panel.active {
+                flex: none;
+                height: 450px;
+            }
+            .ai-panel .panel-label {
+                transform: translate(-50%, -50%) rotate(0deg);
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Footer Locations */
+        .location-card {
+            background: rgba(8, 65, 92, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(202, 151, 3, 0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        .location-card:hover {
+            border-color: #CA9703;
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        .iso-watermark {
+            position: absolute;
+            bottom: -10px;
+            right: -5px;
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(202, 151, 3, 0.05);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+        .location-card:hover .iso-watermark {
+            color: rgba(202, 151, 3, 0.1);
+            transform: scale(1.1) rotate(-5deg);
+        }
     </style>
 </head>
 <body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
@@ -169,7 +295,7 @@
             </span>
         </div>
         
-        <h1 class="font-headline font-extrabold text-pure-white text-[44px] md:text-[88px] leading-[1.05] tracking-tight mb-8" data-aos>
+        <h1 class="font-headline font-extrabold text-pure-white text-[44px] md:text-[88px] leading-[1.05] tracking-tight mb-8">
             Your Team Is Doing Work That <span class="text-primary-gold glow-text italic">Shouldn't Require</span> a Human Anymore.
         </h1>
         
@@ -229,57 +355,62 @@
 <section class="bg-deep-navy py-24 md:py-32 relative overflow-hidden">
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-gold/20 to-transparent"></div>
     <div class="container mx-auto px-6">
-        <h2 class="text-center font-headline font-bold text-pure-white text-[32px] md:text-[56px] mb-20" data-aos>Automation Layers</h2>
+        <h2 class="text-center font-headline font-bold text-pure-white text-[32px] md:text-[56px] mb-8" data-aos>Automation Layers</h2>
+        <p class="text-center text-muted-silver max-w-2xl mx-auto mb-16" data-aos>Click or hover over each layer to explore our implementation strategy.</p>
         
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px] md:auto-rows-[380px]">
+        <div class="accordion-container">
             
-            <!-- Block 1: ERP & Ops -->
-            <div class="md:col-span-7 bento-card p-10 flex flex-col justify-end group" data-aos>
-                <div class="mb-auto">
-                    <span class="material-symbols-outlined text-primary-gold text-[48px] mb-6">database</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl mb-4">Automate Your ERP and Operations Workflows</h2>
-                </div>
-                <div class="space-y-4">
-                    <p class="text-muted-silver leading-relaxed">Your Odoo or Zoho system already has the data. We build logic to act on it: route POs to managers, generate POs from inventory lows, and automate invoice triggers.</p>
-                    <div class="flex flex-wrap gap-2 pt-4">
-                        <span class="text-[10px] uppercase font-bold text-primary-gold bg-primary-gold/10 px-3 py-1 rounded-full">Conditional Routing</span>
-                        <span class="text-[10px] uppercase font-bold text-primary-gold bg-primary-gold/10 px-3 py-1 rounded-full">Scheduled Reporting</span>
+            <!-- Panel 1: ERP & Ops -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">OPERATIONS</div>
+                <div class="panel-content space-y-6">
+                    <span class="material-symbols-outlined text-primary-gold text-[48px]">database</span>
+                    <h3 class="font-headline font-bold text-pure-white text-4xl">ERP & Operations</h3>
+                    <p class="text-muted-silver leading-relaxed text-lg">Your Odoo or Zoho system already has the data. We build logic to act on it: route POs, automate approvals, and generate predictive inventory reports.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-[11px] uppercase font-bold text-primary-gold bg-primary-gold/10 px-4 py-2 rounded-full border border-primary-gold/20">Conditional Routing</span>
+                        <span class="text-[11px] uppercase font-bold text-primary-gold bg-primary-gold/10 px-4 py-2 rounded-full border border-primary-gold/20">Auto-Invoicing</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Block 2: Marketing -->
-            <div class="md:col-span-5 bento-card p-10 flex flex-col justify-end group bg-gradient-to-br from-[#08415C]/50 to-transparent" data-aos>
-                <div class="mb-auto">
-                    <span class="material-symbols-outlined text-primary-gold text-[40px] mb-6">campaign</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl mb-4">Marketing Automation</h2>
+            <!-- Panel 2: Marketing -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">MARKETING</div>
+                <div class="panel-content space-y-6">
+                    <span class="material-symbols-outlined text-primary-gold text-[48px]">campaign</span>
+                    <h3 class="font-headline font-bold text-pure-white text-4xl">Marketing Logic</h3>
+                    <p class="text-muted-silver leading-relaxed text-lg">Behavior-based journeys, automated social scheduling, and lead scoring that runs autonomously while your team focuses on growth.</p>
+                    <ul class="text-primary-gold/80 font-bold space-y-2 text-sm italic">
+                        <li>/ CRM Trigger Events</li>
+                        <li>/ Behavioral Lead Scoring</li>
+                    </ul>
                 </div>
-                <p class="text-muted-silver text-sm leading-relaxed mb-6">Behavior-based journeys, automated social scheduling, and lead routing that runs while your team sleeps.</p>
-                <ul class="text-[12px] text-primary-gold/80 font-bold space-y-2">
-                    <li class="flex items-center gap-2">/ CRM Trigger Events</li>
-                    <li class="flex items-center gap-2">/ Behavioral Lead Scoring</li>
-                </ul>
             </div>
 
-            <!-- Block 3: AI Features -->
-            <div class="md:col-span-5 bento-card p-10 flex flex-col justify-end group" data-aos>
-                <div class="mb-auto">
-                    <span class="material-symbols-outlined text-primary-gold text-[40px] mb-6">smart_toy</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl mb-4">AI-Powered Features</h2>
+            <!-- Panel 3: AI Product -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">INTEGRATION</div>
+                <div class="panel-content space-y-6">
+                    <span class="material-symbols-outlined text-primary-gold text-[48px]">smart_toy</span>
+                    <h3 class="font-headline font-bold text-pure-white text-4xl">AI-Powered Features</h3>
+                    <p class="text-muted-silver leading-relaxed text-lg">Embedding LLM-based chat, predictive logic, and personalized recommendation engines directly into your existing app ecosystem.</p>
                 </div>
-                <p class="text-muted-silver text-sm leading-relaxed">Embedding LLM-based chat, predictive logic, and recommendation engines directly into your applications.</p>
             </div>
 
-            <!-- Block 4: Design & Content -->
-            <div class="md:col-span-7 bento-card p-10 flex flex-col justify-end group border-r-warm-amber/20" data-aos>
-                <div class="mb-auto">
-                    <span class="material-symbols-outlined text-primary-gold text-[48px] mb-6">draw</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl mb-4">Speed Up Creative Production</h2>
-                </div>
-                <div class="grid md:grid-cols-2 gap-8 items-center">
-                    <p class="text-muted-silver leading-relaxed">AI-assisted copy generation, automated asset resizing, and GPT-powered report drafting that eliminates repetitive production work.</p>
-                    <div class="p-4 border border-white/10 rounded-xl bg-white/5 animate-float flex items-center justify-center">
-                        <span class="material-symbols-outlined text-warm-amber text-[64px]">auto_fix_high</span>
+            <!-- Panel 4: Creative -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">CREATIVE</div>
+                <div class="panel-content space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div class="space-y-6">
+                            <span class="material-symbols-outlined text-primary-gold text-[48px]">draw</span>
+                            <h3 class="font-headline font-bold text-pure-white text-4xl">Creative Speed</h3>
+                            <p class="text-muted-silver leading-relaxed text-lg text-pretty">AI-assisted copy generation, automated asset resizing, and GPT-powered report drafting that eliminates repetitive production work.</p>
+                        </div>
+                        <div class="hidden md:flex p-6 border border-white/10 rounded-2xl bg-white/5 animate-float">
+                            <span class="material-symbols-outlined text-warm-amber text-[64px]">auto_fix_high</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -341,61 +472,61 @@
 <!-- FAQ Section (5 Questions) -->
 <section class="bg-off-white py-24 md:py-32">
     <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-headline font-bold text-dark-teal text-4xl mb-12 text-center" data-aos>Frequently Asked Questions</h2>
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>Frequently Asked Questions</h2>
         
         <div class="space-y-4">
             <!-- FAQ 1 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do I need an existing ERP or CRM to benefit from automation?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do I need an existing ERP or CRM to benefit from automation?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Not necessarily. Some automation workflows operate independently. However, high-leverage automation usually builds on a structured data layer — which is why we often recommend ERP implementation alongside automation design.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Not necessarily. Some automation workflows operate independently. However, high-leverage automation usually builds on a structured data layer — which is why we often recommend ERP implementation alongside automation design.</p>
                 </div>
             </div>
 
             <!-- FAQ 2 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">What tools do you use for automation?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What tools do you use for automation?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">We use native Odoo/Zoho engines, n8n, Zapier (where appropriate), Python scripting, and custom API integrations. Tool selection depends on your technical stack and specific requirements.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We use native Odoo/Zoho engines, n8n, Zapier (where appropriate), Python scripting, and custom API integrations. Tool selection depends on your technical stack and specific requirements.</p>
                 </div>
             </div>
 
             <!-- FAQ 3 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Can you build a custom AI feature into our existing website?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can you build a custom AI feature into our existing website?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. We integrate OpenAI, Anthropic, and other LLM APIs into existing web applications — adding chatbots, content generation layers, intelligent search, and recommendation engines.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. We integrate OpenAI, Anthropic, and other LLM APIs into existing web applications — adding chatbots, content generation layers, intelligent search, and recommendation engines.</p>
                 </div>
             </div>
 
             <!-- FAQ 4 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">How do you measure ROI on automation projects?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How do you measure ROI on automation projects?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">We document current manual process time costs before implementation, then measure against post-automation baselines. Most clients see full cost recovery within 3–6 months.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We document current manual process time costs before implementation, then measure against post-automation baselines. Most clients see full cost recovery within 3–6 months.</p>
                 </div>
             </div>
 
             <!-- FAQ 5 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Is AI transformation suitable for small businesses?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Is AI transformation suitable for small businesses?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Absolutely. Every hour saved for a 10–50 employee business has a direct impact on growth capacity. High-ROI automation is often most transformative for agile SMB teams.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Absolutely. Every hour saved for a 10–50 employee business has a direct impact on growth capacity. High-ROI automation is often most transformative for agile SMB teams.</p>
                 </div>
             </div>
         </div>
@@ -408,15 +539,31 @@
         <div class="bg-deep-navy rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden border border-primary-gold/10" data-aos>
             <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-primary-gold/5 pointer-events-none"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[64px] leading-tight mb-8">
+                <h2 class="font-headline font-extrabold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
                     Find Out What You're Paying to <span class="text-primary-gold">Do Manually.</span>
                 </h2>
-                <p class="text-muted-silver text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
                     Most clients are surprised by how much low-hanging fruit exists. We run a free AI audit to identify the highest-value opportunities for your business.
                 </p>
-                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:brightness-110 shadow-2xl transition-all">
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-2xl inline-block">
                     Book a Free Automation Audit
                 </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -641,8 +788,83 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+    // Premium AI Animations (GSAP)
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Text Stagger
+    gsap.fromTo("h1", 
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" }
+    );
+
+    // Expanding Accordion Logic
+    function toggleAIPanel(panel) {
+        document.querySelectorAll('.ai-panel').forEach(p => p.classList.remove('active'));
+        panel.classList.add('active');
+        
+        // Internal Content Animation
+        const content = panel.querySelector('.panel-content');
+        gsap.fromTo(content, 
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 }
+        );
+    }
+
+    // Hover Support for Desktop
+    document.querySelectorAll('.ai-panel').forEach(panel => {
+        panel.addEventListener('mouseenter', () => {
+            if (!panel.classList.contains('active')) {
+                toggleAIPanel(panel);
+            }
+        });
+    });
+
+    // Return to Neutral state on Mouse Leave
+    const accordion = document.querySelector('.accordion-container');
+    if (accordion) {
+        accordion.addEventListener('mouseleave', () => {
+            document.querySelectorAll('.ai-panel').forEach(p => p.classList.remove('active'));
+        });
+    }
+
+    // Ensure first panel content is ready for animation if clicked
+    window.addEventListener('load', () => {
+        // We start neutral, so no initial animation needed
+    });
 </script>
 
+    <!-- Cal.com Global Initialization -->
+    <script>
+        (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const sn = ar[1];
+                    const obj = [sn, { q: [] }];
+                    cal.q.push(obj);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", { origin: "https://cal.com" });
+        Cal("ui", { 
+            "theme": "dark", 
+            "styles": { "branding": { "brandColor": "#CA9703" } }, 
+            "hideEventTypeDetails": true, 
+            "layout": "month_view" 
+        });
+    </script>
     <script src="js/components.js"></script>
 
 </body>

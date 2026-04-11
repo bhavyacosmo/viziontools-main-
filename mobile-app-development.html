@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -144,6 +146,32 @@
             transform: rotate(180deg);
             color: #CA9703;
         }
+
+        /* Card Stacking Styles */
+        .stack-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20vh; /* Increased gap for scroll runway */
+            padding-bottom: 30vh;
+        }
+        .stack-card {
+            position: sticky;
+            top: 15vh;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            transform-origin: center top;
+            will-change: transform, opacity;
+            box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 768px) {
+            .stack-card {
+                top: 10vh;
+            }
+            .stack-container {
+                gap: 15vh;
+            }
+        }
     </style>
 </head>
 <body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
@@ -158,26 +186,49 @@
     <!-- Background Glow -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-gold/10 blur-[150px] rounded-full pointer-events-none"></div>
 
-    <div class="relative z-10 container mx-auto px-6 text-center">
-        <div class="mb-8 flex justify-center" data-aos>
-            <span class="text-primary-gold font-medium text-[12px] tracking-[0.2em] uppercase px-4 py-1 border border-primary-gold/20 rounded-full bg-primary-gold/5">
-                Native & Cross-Platform Mobility
-            </span>
-        </div>
+    <div class="relative z-10 container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="hero-content text-left">
+                <div class="mb-8 flex">
+                    <span class="text-primary-gold font-medium text-[12px] tracking-[0.2em] uppercase px-4 py-1 border border-primary-gold/20 rounded-full bg-primary-gold/5">
+                        Native & Cross-Platform Mobility
+                    </span>
+                </div>
+                
+                <h1 class="font-headline font-extrabold text-pure-white text-[44px] md:text-[72px] leading-[1.05] tracking-tight mb-8">
+                    Your Business Needs a Mobile App That <span class="text-primary-gold">Actually Works.</span>
+                </h1>
+                
+                <p class="text-muted-silver font-body font-light text-[18px] md:text-[20px] leading-relaxed mb-12 max-w-xl">
+                    VizionTools builds custom applications engineered around your exact operational triggers, not just another shortcut on a home screen.
+                </p>
         
-        <h1 class="font-headline font-extrabold text-pure-white text-[48px] md:text-[84px] leading-[1.05] tracking-tight mb-8 max-w-5xl mx-auto" data-aos>
-            Your Business Process Needs a Mobile App. Your Team Needs One That <span class="text-primary-gold">Actually Works.</span>
-        </h1>
-        
-        <p class="text-muted-silver font-body font-light text-[18px] md:text-[22px] leading-relaxed max-w-3xl mx-auto mb-12" data-aos>
-            Cobbled-together mobile tools create operational drag that compounds daily. VizionTools builds custom applications engineered around your exact workflow.
-        </p>
+                <div class="flex flex-col sm:flex-row items-center justify-start gap-6">
+                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer group relative px-10 py-5 bg-primary-gold text-deep-navy font-bold text-[16px] rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(202,151,3,0.4)]">
+                        <span class="relative z-10">Book a Free App Scoping Call</span>
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+                </div>
+            </div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6" data-aos>
-            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer group relative px-10 py-5 bg-primary-gold text-deep-navy font-bold text-[16px] rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(202,151,3,0.4)]">
-                <span class="relative z-10">Book a Free App Scoping Call</span>
-                <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-            </a>
+            <!-- Visual Column (Mobile Mockup) -->
+            <div class="hidden lg:flex justify-center items-center">
+                <div class="floating-device relative p-8 bg-gradient-to-br from-primary-gold/20 to-transparent rounded-[40px] border border-white/10 shadow-2xl backdrop-blur-xl">
+                    <div class="w-72 h-[550px] bg-[#052D40] rounded-[32px] border-[6px] border-[#08415C] shadow-inner flex flex-col items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-4 w-20 h-1 bg-white/20 rounded-full"></div>
+                        <span class="material-symbols-outlined text-primary-gold text-[120px] animate-pulse">developer_mode_tv</span>
+                        <div class="mt-8 space-y-4 px-6 w-full">
+                            <div class="h-2 w-3/4 bg-white/10 rounded"></div>
+                            <div class="h-2 w-1/2 bg-white/10 rounded"></div>
+                            <div class="h-32 w-full bg-primary-gold/5 rounded-xl border border-primary-gold/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary-gold/40 text-[48px]">analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -220,68 +271,81 @@
     </div>
 </section>
 
-<!-- Feature Sections (4 H2 Blocks) -->
+<!-- Feature Sections (Stacking Cards) -->
 <section class="bg-deep-navy py-24 md:py-32 relative overflow-hidden">
     <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="max-w-4xl mx-auto text-center mb-20" data-aos>
+            <span class="font-headline font-bold text-primary-gold text-xs tracking-widest uppercase mb-6 block">Capabilities</span>
+            <h2 class="font-headline font-bold text-pure-white text-[36px] md:text-[56px] leading-tight mb-8">Four ways we solve mobile challenges.</h2>
+        </div>
+
+        <div class="stack-container">
             
-            <!-- Block 1: Customer-Facing -->
-            <div class="location-card p-10 group" data-aos>
-                <div class="iso-watermark">CUST</div>
-                <div class="flex flex-col gap-6 relative z-10">
-                    <span class="material-symbols-outlined text-primary-gold text-[48px]">phone_iphone</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl">Customer-Facing Apps That Drive Retention</h2>
-                    <p class="text-muted-silver leading-relaxed">A branded mobile app with account management, order tracking, and push notifications is the infrastructure that keeps customers from defaulting to a competitor.</p>
-                    <ul class="space-y-3 text-muted-silver text-sm">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Order history & real-time tracking in-app</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Loyalty points integrated with POS or ERP</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Triggered push notification campaigns</li>
-                    </ul>
+            <!-- Card 1: Customer-Facing -->
+            <div class="stack-card" style="z-index: 10;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">CUST</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">phone_iphone</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">Customer-Facing Apps That Drive Retention</h2>
+                        <p class="text-muted-silver leading-relaxed">A branded mobile app with account management, order tracking, and push notifications is the infrastructure that keeps customers from defaulting to a competitor.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Order history & real-time tracking in-app</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Loyalty points integrated with POS or ERP</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Triggered push notification campaigns</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Block 2: Operational -->
-            <div class="location-card p-10 group" data-aos>
-                <div class="iso-watermark">OPS</div>
-                <div class="flex flex-col gap-6 relative z-10">
-                    <span class="material-symbols-outlined text-primary-gold text-[48px]">fact_check</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl">Operational Apps That Eliminate Paper</h2>
-                    <p class="text-muted-silver leading-relaxed">Eliminate paper forms and WhatsApp updates. Capture structured data in the field and sync it to your ERP or CRM in real time for full visibility.</p>
-                    <ul class="space-y-3 text-muted-silver text-sm">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Digital forms with field validation & offline support</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> GPS-tagged tasks for field service workflows</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Real-time sync to Odoo, Zoho, or custom back-ends</li>
-                    </ul>
+            <!-- Card 2: Operational -->
+            <div class="stack-card" style="z-index: 20;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">OPS</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">fact_check</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">Operational Apps That Eliminate Paper</h2>
+                        <p class="text-muted-silver leading-relaxed">Eliminate paper forms and WhatsApp updates. Capture structured data in the field and sync it to your ERP or CRM in real time for full visibility.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Digital forms with field validation & offline support</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> GPS-tagged tasks for field service workflows</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Real-time sync to Odoo, Zoho, or custom back-ends</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Block 3: POS Companion -->
-            <div class="location-card p-10 group" data-aos>
-                <div class="iso-watermark">POS</div>
-                <div class="flex flex-col gap-6 relative z-10">
-                    <span class="material-symbols-outlined text-primary-gold text-[48px]">point_of_sale</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl">POS Companion & Mobile Checkout</h2>
-                    <p class="text-muted-silver leading-relaxed">Turn tablets into portable order-entry terminals. Tableside ordering for restaurants and queue-busting checkout for retail environments.</p>
-                    <ul class="space-y-3 text-muted-silver text-sm">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Live KDS routing for tableside order entry</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Mobile payment with digital receipting</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Floor-based inventory look-up & accounts</li>
-                    </ul>
+            <!-- Card 3: POS Companion -->
+            <div class="stack-card" style="z-index: 30;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">POS</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">point_of_sale</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">POS Companion & Mobile Checkout</h2>
+                        <p class="text-muted-silver leading-relaxed">Turn tablets into portable order-entry terminals. Tableside ordering for restaurants and queue-busting checkout for retail environments.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Live KDS routing for tableside order entry</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Mobile payment with digital receipting</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Floor-based inventory look-up & accounts</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Block 4: Delivery -->
-            <div class="location-card p-10 group" data-aos>
-                <div class="iso-watermark">FIELD</div>
-                <div class="flex flex-col gap-6 relative z-10">
-                    <span class="material-symbols-outlined text-primary-gold text-[48px]">local_shipping</span>
-                    <h2 class="font-headline font-bold text-pure-white text-3xl">Delivery & Field Service Visibility</h2>
-                    <p class="text-muted-silver leading-relaxed">Route optimization, live GPS tracking, and digital proof-of-delivery. Dispatchers and customers see real-time status as it happens.</p>
-                    <ul class="space-y-3 text-muted-silver text-sm">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Live GPS tracking for dispatchers & customers</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Digital signature & photo proof-of-delivery</li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Automated arrival & completion notifications</li>
-                    </ul>
+            <!-- Card 4: Delivery -->
+            <div class="stack-card" style="z-index: 40;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">FIELD</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">local_shipping</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">Delivery & Field Service Visibility</h2>
+                        <p class="text-muted-silver leading-relaxed">Route optimization, live GPS tracking, and digital proof-of-delivery. Dispatchers and customers see real-time status as it happens.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Live GPS tracking for dispatchers & customers</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Digital signature & photo proof-of-delivery</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Automated arrival & completion notifications</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -339,50 +403,50 @@
 <!-- FAQ Section -->
 <section class="bg-off-white py-24 md:py-32">
     <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-headline font-bold text-dark-teal text-4xl mb-12 text-center" data-aos>Frequently Asked Questions</h2>
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>Frequently Asked Questions</h2>
         
         <div class="space-y-4">
             <!-- FAQ 1 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you build for iOS, Android, or both?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you build for iOS, Android, or both?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Both, typically as a single codebase using React Native for cost efficiency. For applications requiring platform-specific performance, we build natively in Swift for iOS or Kotlin for Android.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Both, typically as a single codebase using React Native for cost efficiency. For applications requiring platform-specific performance, we build natively in Swift for iOS or Kotlin for Android.</p>
                 </div>
             </div>
 
             <!-- FAQ 2 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">How long does a mobile app build take?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How long does a mobile app build take?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">A focused internal tool or companion app takes 8–12 weeks. A full customer-facing app with complex integrations runs 16–24 weeks. We scope and timeline before development begins.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">A focused internal tool or companion app takes 8–12 weeks. A full customer-facing app with complex integrations runs 16–24 weeks. We scope and timeline before development begins.</p>
                 </div>
             </div>
 
             <!-- FAQ 3 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Can the app work offline?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can the app work offline?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. We architect offline-first functionality for field and delivery apps where connectivity is unreliable. Data queues locally and syncs when connection is restored.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. We architect offline-first functionality for field and delivery apps where connectivity is unreliable. Data queues locally and syncs when connection is restored.</p>
                 </div>
             </div>
 
             <!-- FAQ 4 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Can the app integrate with Odoo or Zoho?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can the app integrate with Odoo or Zoho?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. API integration with Odoo, Zoho, and other third-party platforms is a core part of our mobile development process, ensuring your app speaks to your back-office systems.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. API integration with Odoo, Zoho, and other third-party platforms is a core part of our mobile development process, ensuring your app speaks to your back-office systems.</p>
                 </div>
             </div>
         </div>
@@ -395,15 +459,31 @@
         <div class="bg-dark-teal rounded-3xl p-12 md:p-24 text-center relative overflow-hidden" data-aos>
             <div class="absolute inset-0 grid-overlay opacity-5"></div>
             <div class="relative z-10 max-w-3xl mx-auto">
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[56px] leading-[1.1] mb-8">
+                <h2 class="font-headline font-extrabold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
                     Your Operations Should Run on an App Built for Them — Not Around Them.
                 </h2>
-                <p class="text-muted-silver text-lg md:text-xl mb-12">
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
                     Every workaround your team uses today is a cost you're paying silently. Let VizionTools scope your requirements and provide a clear architecture and timeline.
                 </p>
-                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-5 rounded-sm font-bold text-[18px] hover:brightness-110 transition-all inline-block shadow-xl">
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
                     Book a Free App Scoping Call
                 </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -633,7 +713,72 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+    // Premium Animations (GSAP) - Features Stacking
+    gsap.registerPlugin(ScrollTrigger);
+
+    const cards = gsap.utils.toArray(".stack-card");
+    
+    cards.forEach((card, i) => {
+        // We only want to animate the card that is BEING covered
+        if (i < cards.length - 1) {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: cards[i + 1], // Trigger when the NEXT card starts coming up
+                    start: "top 80%",
+                    end: "top 15%",
+                    scrub: true,
+                },
+                scale: 0.9,
+                opacity: 0.4,
+                ease: "none"
+            });
+        }
+    });
+
+    // Hero Decoration Animation (Subtle float)
+    if (document.querySelector(".floating-device")) {
+        gsap.to(".floating-device", {
+            y: 20,
+            duration: 2.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    }
 </script>
+
+    <!-- Cal.com Global Initialization -->
+    <script>
+        (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const sn = ar[1];
+                    const obj = [sn, { q: [] }];
+                    cal.q.push(obj);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", { sn: "30min", origin: "https://cal.com" });
+        Cal("ui", { 
+            "theme": "dark", 
+            "styles": { "branding": { "brandColor": "#CA9703" } }, 
+            "hideEventTypeDetails": true, 
+            "layout": "month_view" 
+        });
+    </script>
 
     <script src="js/components.js"></script>
 

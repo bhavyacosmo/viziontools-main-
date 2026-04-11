@@ -98,6 +98,136 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #052D40; }
         ::-webkit-scrollbar-thumb { background: #CA9703; border-radius: 4px; }
+
+        /* Global Presence Refined Styles */
+        .location-card {
+            background: rgba(8, 65, 92, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(202, 151, 3, 0.2);
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            transition: all 0.5s ease;
+        }
+
+        .location-card:hover {
+            border-color: #CA9703;
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .iso-watermark {
+            position: absolute;
+            bottom: -10px;
+            right: -5px;
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(202, 151, 3, 0.05);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        .location-card:hover .iso-watermark {
+            color: rgba(202, 151, 3, 0.1);
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* Sticky Reveal Section Refined */
+        .sticky-reveal-section {
+            height: 450vh; /* More height for slower, smoother reveal */
+            position: relative;
+            background: radial-gradient(circle at 30% 50%, rgba(202, 151, 3, 0.08) 0%, transparent 70%), #052D40;
+        }
+
+        .sticky-pin-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .split-layout {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            padding: 0 8% 0 10%; /* More left padding */
+            gap: 10%; /* Huge gap */
+        }
+
+        .left-content {
+            flex: 0 0 35%; /* Slightly smaller */
+            text-align: left;
+            z-index: 20;
+        }
+
+        .right-content {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Align cards to the right */
+            position: relative;
+        }
+
+        .reveal-card-stack {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Constrain width to prevent overflow */
+            height: 600px;
+            perspective: 2000px;
+        }
+
+        .reveal-card {
+            position: absolute;
+            top: 50%;
+            right: 0; /* Align to right edge of container */
+            width: 100%;
+            height: 100%;
+            transform: translateY(100px) scale(0.8) rotateX(15deg) rotateY(-5deg);
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 48px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.5);
+        }
+
+        .reveal-card-bg-icon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 240px;
+            opacity: 0.05;
+            color: #CA9703;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .reveal-card.active {
+            pointer-events: auto;
+        }
+
+        @media (max-width: 1024px) {
+            .sticky-reveal-section { height: auto !important; }
+            .sticky-pin-container { height: auto !important; position: relative !important; padding: 4rem 1.5rem !important; }
+            .split-layout { flex-direction: column; padding: 0; gap: 4rem; }
+            .left-content { flex: none; width: 100%; text-align: center; }
+            .right-content { height: auto !important; width: 100%; }
+            .reveal-card-stack { height: auto !important; display: flex; flex-direction: column; gap: 2rem; perspective: none; }
+            .reveal-card { position: relative !important; top: auto !important; left: auto !important; width: 100% !important; transform: none !important; opacity: 1 !important; padding: 2rem !important; }
+            .reveal-card-bg-icon { font-size: 100px; }
+        }
     </style>
 </head>
 <body class="selection:bg-primary-gold selection:text-deep-navy">
@@ -121,7 +251,7 @@
                     Industrial Scale Architecture
                 </span>
             </div>
-            <h1 class="font-headline font-extrabold text-white text-[48px] md:text-[80px] lg:text-[100px] leading-[1] tracking-tighter mb-8 stagger-hero" data-aos="fade-right">
+            <h1 class="font-headline font-extrabold text-white text-[32px] md:text-[56px] lg:text-[72px] leading-[1.1] tracking-tighter mb-8 stagger-hero" data-aos="fade-right">
                 Six Tools. Zero Visibility. <br/> <span class="gradient-text">The End of Fragmentation.</span>
             </h1>
             <p class="text-muted-silver font-body font-light text-[18px] md:text-[26px] leading-relaxed max-w-3xl mb-12 stagger-hero" data-aos="fade-up" data-aos-delay="200">
@@ -362,39 +492,65 @@
     </div>
 </section>
 
-<!-- WHO THIS IS FOR (FULL SECTION) -->
-<section class="bg-dark-teal py-32 relative overflow-hidden">
+<!-- WHO THIS IS FOR (STIKY REVEAL SECTION) -->
+<section class="sticky-reveal-section">
     <div class="absolute inset-0 grid-overlay opacity-5"></div>
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="text-center mb-24" data-aos="fade-down">
-             <h2 class="font-headline font-bold text-white text-[40px] md:text-[64px] mb-6">Who This Is <span class="text-primary-gold italic">Actively For.</span></h2>
-             <p class="text-white/60 text-xl max-w-2xl mx-auto">Scaling a manufacturing business requires enterprise logic long before it requires enterprise costs.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-10">
-            <!-- Profile 1 -->
-            <div class="p-12 glass-card rounded-[40px] hover:translate-y-[-10px] transition-transform duration-500" data-aos="fade-up">
-                <div class="w-16 h-16 bg-primary-gold/20 rounded-2xl flex items-center justify-center mb-10">
-                    <span class="material-symbols-outlined text-primary-gold text-4xl">factory</span>
+    <div class="sticky-pin-container">
+        <div class="container mx-auto px-6 h-full flex items-center">
+            <div class="split-layout">
+                <!-- Left Side: Sticky Title -->
+                <div class="left-content">
+                    <span class="text-primary-gold font-bold text-sm tracking-[0.4em] uppercase mb-6 block">Target Profiles</span>
+                    <h2 class="font-headline font-bold text-white text-[48px] md:text-[72px] leading-[1.1] mb-8">
+                        Who This Is <br/>
+                        <span class="text-primary-gold italic">Actively For.</span>
+                    </h2>
+                    <p class="text-white/40 text-xl leading-relaxed max-w-md font-light">
+                        Scaling a manufacturing business requires enterprise logic long before it requires enterprise costs. We build for the floor.
+                    </p>
+                    <div class="mt-12 w-24 h-1 bg-primary-gold/30"></div>
                 </div>
-                <h3 class="text-white font-headline font-bold text-2xl mb-6">SMB Manufacturers <br/> (20–300 employees)</h3>
-                <p class="text-white/60 leading-relaxed text-lg">You've outgrown Excel and QuickBooks, but you don't need a half-million-dollar ERP. Odoo gives you enterprise-grade manufacturing management at a cost structure that makes sense.</p>
-            </div>
-            <!-- Profile 2 -->
-            <div class="p-12 glass-card rounded-[40px] hover:translate-y-[-10px] transition-transform duration-500" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-16 h-16 bg-primary-gold/20 rounded-2xl flex items-center justify-center mb-10">
-                    <span class="material-symbols-outlined text-primary-gold text-4xl">warehouse</span>
+
+                <!-- Right Side: Reveal Cards -->
+                <div class="right-content">
+                    <div class="reveal-card-stack">
+                        <!-- Profile 1 -->
+                        <div class="reveal-card">
+                            <span class="material-symbols-outlined reveal-card-bg-icon">factory</span>
+                            <div class="relative z-10">
+                                <div class="w-20 h-20 bg-primary-gold/20 rounded-2xl flex items-center justify-center mb-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-5xl">factory</span>
+                                </div>
+                                <h3 class="text-white font-headline font-bold text-[32px] md:text-[42px] leading-tight mb-6">SMB Manufacturers <br/> (20–300 employees)</h3>
+                                <p class="text-white/60 leading-relaxed text-xl md:text-2xl font-light">You've outgrown Excel and QuickBooks, but you don't need a half-million-dollar ERP. Odoo gives you enterprise-grade management at a cost that makes sense.</p>
+                            </div>
+                        </div>
+
+                        <!-- Profile 2 -->
+                        <div class="reveal-card">
+                            <span class="material-symbols-outlined reveal-card-bg-icon">warehouse</span>
+                            <div class="relative z-10">
+                                <div class="w-20 h-20 bg-primary-gold/20 rounded-2xl flex items-center justify-center mb-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-5xl">warehouse</span>
+                                </div>
+                                <h3 class="text-white font-headline font-bold text-[32px] md:text-[42px] leading-tight mb-6">Distribution & <br/> Multi-warehouse</h3>
+                                <p class="text-white/60 leading-relaxed text-xl md:text-2xl font-light">When inventory moves between facilities, the tracking problem is identical to manufacturing. We configure logic to match your actual architecture.</p>
+                            </div>
+                        </div>
+
+                        <!-- Profile 3 -->
+                        <div class="reveal-card">
+                            <span class="material-symbols-outlined reveal-card-bg-icon">trending_up</span>
+                            <div class="relative z-10">
+                                <div class="w-20 h-20 bg-primary-gold/20 rounded-2xl flex items-center justify-center mb-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-5xl">trending_up</span>
+                                </div>
+                                <h3 class="text-white font-headline font-bold text-[32px] md:text-[42px] leading-tight mb-6">Founders Preparing <br/> for Scaled Growth</h3>
+                                <p class="text-white/60 leading-relaxed text-xl md:text-2xl font-light">Clean operational data separates businesses that can demonstrate scale from those that merely claim it. Build your foundation today.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-white font-headline font-bold text-2xl mb-6">Distribution <br/> Multi-warehouse</h3>
-                <p class="text-white/60 leading-relaxed text-lg">When inventory moves between three warehouses and six customers, the tracking problem is identical to manufacturing. Vizion configures logic to match your actual warehouse architecture.</p>
-            </div>
-            <!-- Profile 3 -->
-            <div class="p-12 glass-card rounded-[40px] hover:translate-y-[-10px] transition-transform duration-500" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-16 h-16 bg-primary-gold/20 rounded-2xl flex items-center justify-center mb-10">
-                    <span class="material-symbols-outlined text-primary-gold text-4xl">trending_up</span>
-                </div>
-                <h3 class="text-white font-headline font-bold text-2xl mb-6">Founders Preparing <br/> for Scaled Growth</h3>
-                <p class="text-white/60 leading-relaxed text-lg">Clean operational data — real BOM costs, accurate inventory valuation, procurement paper trails — is what separates businesses that can demonstrate scale from those that claim it.</p>
             </div>
         </div>
     </div>
@@ -403,7 +559,7 @@
 <!-- FAQ (FULL SECTION) -->
 <section class="bg-white py-24 md:py-32">
     <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-6xl mb-20 text-center" data-aos="fade-up">Manufacturing FAQ</h2>
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos="fade-up">Manufacturing FAQ</h2>
         <div class="space-y-4">
             <!-- FAQ 1 -->
             <div class="faq-item" data-aos="fade-up">
@@ -463,15 +619,31 @@
 <section class="bg-deep-navy py-24 md:py-48 relative overflow-hidden">
     <div class="container mx-auto px-6 text-center relative z-20">
         <div class="max-w-4xl mx-auto" id="cta-final">
-            <h2 class="font-headline font-bold text-white text-[40px] md:text-[80px] leading-none mb-8" data-aos="zoom-in">
+            <h2 class="font-headline font-extrabold text-white text-[36px] md:text-[64px] leading-[1.05] mb-8" data-aos="zoom-in">
                 Let's Talk About <span class="text-primary-gold italic">Your Floor.</span>
             </h2>
-            <p class="text-muted-silver text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-light" data-aos="fade-up">
+            <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12" data-aos="fade-up">
                 Most manufacturers we talk to have the same three problems — they just show up in different tools. Map your gaps in 30 minutes.
             </p>
-            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:brightness-110 shadow-lg inline-block transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="200">
+            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block transition-transform duration-300 hover:scale-105" data-aos="fade-up" data-aos-delay="200">
                 Book a Free Consultation
             </a>
+
+            <!-- Trust Line -->
+            <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                    <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                    No commitment required
+                </div>
+                <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                    <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                    Setup walkthrough included
+                </div>
+                <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                    <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                    Dedicated implementation support
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -750,9 +922,79 @@
         }
     });
 
+    // Sticky Reveal Cards Animation
+    const cards = gsap.utils.toArray('.reveal-card');
+    
+    // Only run animation on desktop (LG breakpoint and up)
+    if (window.innerWidth >= 1024) {
+        // Set initial states
+        cards.forEach((card, index) => {
+            if (index > 0) {
+                gsap.set(card, { 
+                    opacity: 0, 
+                    scale: 0.8, 
+                    y: 100, 
+                    yPercent: -50, 
+                    rotateX: 15,
+                    rotateY: -5
+                });
+            } else {
+                gsap.set(card, { 
+                    opacity: 1, 
+                    scale: 1, 
+                    y: 0, 
+                    yPercent: -50, 
+                    rotateX: 0,
+                    rotateY: 0
+                });
+                card.classList.add('active');
+            }
+        });
+
+        const revealTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".sticky-reveal-section",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+                invalidateOnRefresh: true,
+            }
+        });
+
+        cards.forEach((card, index) => {
+            if (index > 0) {
+                revealTl.to(card, {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotateX: 0,
+                    rotateY: 0,
+                    duration: 1,
+                    onStart: () => card.classList.add('active'),
+                    onReverseComplete: () => card.classList.remove('active')
+                }, index);
+                
+                // Fade out previous card
+                revealTl.to(cards[index-1], {
+                    opacity: 0,
+                    scale: 0.7,
+                    y: -100,
+                    filter: "blur(20px)",
+                    duration: 0.5
+                }, index);
+            }
+        });
+    }
+
 </script>
 
     <script src="../js/components.js"></script>
 
+    <!-- Cal.com Universal Embed Initialization -->
+    <script>
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const sn = ar[1]; const obj = [sn, { q: [] }]; cal.q.push(obj); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", { origin: "https://cal.com" });
+    Cal("ui", { "theme": "dark", "styles": { "branding": { "brandColor": "#CA9703" } }, "hideEventTypeDetails": true, "layout": "month_view" });
+    </script>
 </body>
 </html>

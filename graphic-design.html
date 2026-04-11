@@ -14,6 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -161,6 +163,70 @@
             transform: rotate(180deg);
             color: #CA9703;
         }
+
+        /* Premium Sticky Horizontal Scroll */
+        .section-height {
+            width: 100%;
+        }
+        .pin-container {
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        .horizontal-track {
+            display: flex;
+            gap: 4rem;
+            padding-left: 10vw;
+            padding-right: 10vw;
+            will-change: transform;
+        }
+        .scroll-card {
+            flex-shrink: 0;
+            width: 85vw;
+        }
+        @media (min-width: 1024px) {
+            .scroll-card {
+                width: 75vw;
+                max-width: 1200px;
+            }
+        }
+        /* Hide default scrollbars for the track */
+        .horizontal-track::-webkit-scrollbar { display: none; }
+
+        /* Footer Locations */
+        .location-card {
+            background: rgba(8, 65, 92, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(202, 151, 3, 0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        .location-card:hover {
+            border-color: #CA9703;
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        .iso-watermark {
+            position: absolute;
+            bottom: -10px;
+            right: -5px;
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(202, 151, 3, 0.05);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+        .location-card:hover .iso-watermark {
+            color: rgba(202, 151, 3, 0.1);
+            transform: scale(1.1) rotate(-5deg);
+        }
     </style>
 </head>
 <body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
@@ -234,118 +300,95 @@
     </div>
 </section>
 
-<!-- Staggered Visual Narrative Feature Sections (4 H2 Blocks) -->
-<section class="bg-deep-navy py-24 md:py-32 overflow-hidden">
-    <div class="container mx-auto px-6 space-y-32">
+<!-- Premium Sticky Horizontal Scroll Section -->
+<section id="design-services" class="bg-deep-navy section-height">
+    <div class="pin-container">
+        <div class="absolute top-0 left-0 w-full p-24 text-center z-20 pointer-events-none">
+            <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl tracking-tight" data-aos>Core Design Services</h2>
+        </div>
         
-        <!-- Feature 1: Brand Identity -->
-        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
-            <div class="order-2 md:order-1" data-aos>
-                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
-                    <div class="bg-off-white aspect-video rounded-[30px] flex items-center justify-center p-12">
-                         <div class="text-center">
-                             <div class="w-16 h-16 bg-primary-gold rounded-full mx-auto mb-6 flex items-center justify-center">
-                                 <span class="material-symbols-outlined text-deep-navy">all_inclusive</span>
-                             </div>
-                             <p class="font-headline font-black text-2xl text-dark-teal tracking-tighter mb-1 uppercase">THE LOGO SYSTEM</p>
-                             <div class="h-1 w-12 bg-dark-teal/20 mx-auto"></div>
-                         </div>
+        <div class="horizontal-track">
+            
+            <!-- Feature 1: Brand Identity -->
+            <div class="scroll-card">
+                <div class="grid md:grid-cols-2 items-center gap-12 bg-white/5 p-8 md:p-12 rounded-[48px] border border-white/10 h-full backdrop-blur-sm">
+                    <div class="space-y-6">
+                        <span class="text-primary-gold font-headline font-bold tracking-widest uppercase text-xs">01. Identity</span>
+                        <h3 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Brand Identity Systems</h3>
+                        <p class="text-muted-silver text-lg leading-relaxed">Coherent visual systems: logo suites, color strategy, typography, and documentation for consistent market authority.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Full Brand Guidelines</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Responsive Logo Suite</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Asset Delivery (SVG/PDF/PNG)</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-video border border-white/10 shadow-2xl">
+                        <img src="design_f1.png" alt="Brand Identity" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
-            <div class="order-1 md:order-2 space-y-8" data-aos>
-                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Brand Identity That Reflects Where Your Business Is Going</h2>
-                <p class="text-muted-silver text-lg leading-relaxed">A logo is not a brand. We build coherent visual systems: logo suite, systems, typography, and documentation for consistent market positioning.</p>
-                <ul class="space-y-4 text-muted-silver">
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Full Brand Guidelines (Rules & Values)</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Logo Suite (Primary, Monochrome, Stacked)</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Asset Delivery (SVG, PNG, PDF, EPS)</li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- Feature 2: Collateral -->
-        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
-            <div class="space-y-8" data-aos>
-                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Collateral That Performs in the Field and the Inbox</h2>
-                <p class="text-muted-silver text-lg leading-relaxed">Service one-pagers designed for the buyer's decision stage and email templates integrated with your marketing automations.</p>
-                <ul class="space-y-4 text-muted-silver">
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Sales and Product One-Pagers</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Trade Show & Print-Ready Materials</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Banner Ads & Event Collateral</li>
-                </ul>
-            </div>
-            <div data-aos>
-                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
-                    <div class="bg-dark-teal aspect-[3/4] rounded-[30px] p-8 flex flex-col gap-6">
-                        <div class="h-4 w-1/2 bg-primary-gold/40 rounded-full"></div>
-                        <div class="flex-1 bg-white/5 rounded-2xl"></div>
-                        <div class="h-10 w-full bg-primary-gold rounded-lg"></div>
+            <!-- Feature 2: Collateral -->
+            <div class="scroll-card">
+                <div class="grid md:grid-cols-2 items-center gap-12 bg-white/5 p-8 md:p-12 rounded-[48px] border border-white/10 h-full backdrop-blur-sm">
+                    <div class="space-y-6">
+                        <span class="text-primary-gold font-headline font-bold tracking-widest uppercase text-xs">02. Assets</span>
+                        <h3 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Marketing Collateral</h3>
+                        <p class="text-muted-silver text-lg leading-relaxed">Service one-pagers and brochures designed for the buyer's decision stage, ensuring your sales team looks the part.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Sales & Product One-Pagers</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Print-Ready Brochures</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Digital Marketing Assets</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-video border border-white/10 shadow-2xl">
+                        <img src="design_f2.png" alt="Marketing Collateral" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Feature 3: Pitch Decks -->
-        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
-             <div class="order-2 md:order-1" data-aos>
-                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
-                    <div class="bg-primary-gold aspect-video rounded-[30px] flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 grid-overlay"></div>
-                        <div class="relative z-10 w-3/4 space-y-4">
-                            <div class="h-2 w-20 bg-deep-navy rounded-full"></div>
-                            <div class="h-8 w-full bg-deep-navy rounded-lg"></div>
-                            <div class="flex gap-2">
-                                <div class="h-12 w-12 bg-deep-navy/20 rounded-lg"></div>
-                                <div class="h-12 w-full bg-deep-navy rounded-lg"></div>
-                            </div>
-                        </div>
+            <!-- Feature 3: Pitch Decks -->
+            <div class="scroll-card">
+                <div class="grid md:grid-cols-2 items-center gap-12 bg-white/5 p-8 md:p-12 rounded-[48px] border border-white/10 h-full backdrop-blur-sm">
+                    <div class="space-y-6">
+                        <span class="text-primary-gold font-headline font-bold tracking-widest uppercase text-xs">03. Narrative</span>
+                        <h3 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Investor Pitch Decks</h3>
+                        <p class="text-muted-silver text-lg leading-relaxed">Visually authoritative decks for Series A, enterprise sales, and corporate presentations that communicate ambition with clarity.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Slide Hierarchy Optimization</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Data Visualization Design</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Keynote & PowerPoint Ready</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-video border border-white/10 shadow-2xl">
+                        <img src="design_f3.png" alt="Pitch Decks" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
-            <div class="order-1 md:order-2 space-y-8" data-aos>
-                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">Pitch Decks That Communicate Ambition With Clarity</h2>
-                <p class="text-muted-silver text-lg leading-relaxed">Investors see hundreds of decks. We design visually authoritative decks for Series A, enterprise sales, and corporate presentations.</p>
-                <ul class="space-y-4 text-muted-silver">
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Slide Hierarchy Optimization</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Advanced Data Visualization</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> PowerPoint, Keynote & Google Slides Ready</li>
-                </ul>
-            </div>
-        </div>
 
-        <!-- Feature 4: UI/UX -->
-        <div class="grid md:grid-cols-2 items-center gap-16 lg:gap-24">
-            <div class="space-y-8" data-aos>
-                <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">UI/UX Design for Digital Products</h2>
-                <p class="text-muted-silver text-lg leading-relaxed">High-fidelity Figma prototypes with interactive components, handed off to developers with precise documentation.</p>
-                <ul class="space-y-4 text-muted-silver">
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Wireframing & Interaction Design</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> High-Fidelity Interactive Prototypes</li>
-                    <li class="flex items-center gap-3"><span class="w-2 h-2 bg-primary-gold rounded-full"></span> Component Library & Developer Handoff</li>
-                </ul>
-            </div>
-            <div data-aos>
-                <div class="bg-white/5 p-4 rounded-[40px] border border-white/10 staggered-narrative-img">
-                    <div class="bg-deep-navy aspect-square rounded-[30px] p-8 space-y-4">
-                        <div class="flex gap-4 mb-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <div class="h-2 w-1/3 bg-white/10 rounded-full"></div>
-                        <div class="grid grid-cols-2 gap-4 h-1/2">
-                            <div class="bg-white/5 rounded-2xl border border-white/5"></div>
-                            <div class="bg-primary-gold/10 rounded-2xl border border-primary-gold/20"></div>
-                        </div>
-                        <div class="h-8 w-full bg-primary-gold rounded-lg"></div>
+            <!-- Feature 4: UI/UX -->
+            <div class="scroll-card">
+                <div class="grid md:grid-cols-2 items-center gap-12 bg-white/5 p-8 md:p-12 rounded-[48px] border border-white/10 h-full backdrop-blur-sm">
+                    <div class="space-y-6">
+                        <span class="text-primary-gold font-headline font-bold tracking-widest uppercase text-xs">04. Product</span>
+                        <h3 class="font-headline font-bold text-pure-white text-3xl md:text-5xl leading-tight">UI/UX Design</h3>
+                        <p class="text-muted-silver text-lg leading-relaxed">High-fidelity Figma prototypes with interactive components, handed off to developers with precise technical documentation.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Wireframing & Wireflow</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> High-Fidelity Prototypes</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Component Library Systems</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl overflow-hidden aspect-video border border-white/10 shadow-2xl">
+                        <img src="design_f4.png" alt="UI/UX Design" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </section>
+
 
 <!-- Who It's For (Spotlight Effects) -->
 <section class="bg-off-white py-24 md:py-32">
@@ -400,61 +443,61 @@
 <!-- FAQ Section (5 Questions) -->
 <section class="bg-off-white py-24 md:py-32">
     <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-headline font-bold text-dark-teal text-4xl mb-12 text-center" data-aos>Frequently Asked Questions</h2>
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>Frequently Asked Questions</h2>
         
         <div class="space-y-4">
             <!-- FAQ 1 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">What is included in a brand identity engagement?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What is included in a brand identity engagement?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">It includes discovery and positioning brief, logo design with revision rounds, color and typography system, brand guidelines document, and full asset delivery. Scope is documented before we begin.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">It includes discovery and positioning brief, logo design with revision rounds, color and typography system, brand guidelines document, and full asset delivery. Scope is documented before we begin.</p>
                 </div>
             </div>
 
             <!-- FAQ 2 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you design for print as well as digital?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you design for print as well as digital?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. All deliverables are provided in print-ready formats (PDF, EPS, CMYK) alongside digital formats (SVG, PNG, RGB). We work with your printer specifications when required.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. All deliverables are provided in print-ready formats (PDF, EPS, CMYK) alongside digital formats (SVG, PNG, RGB). We work with your printer specifications when required.</p>
                 </div>
             </div>
 
             <!-- FAQ 3 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Can you redesign our existing brand without starting from scratch?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can you redesign our existing brand without starting from scratch?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. Brand refinement and evolution engagements are available for businesses that have a working identity but need it modernized or prioritized for consistency across touchpoints.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. Brand refinement and evolution engagements are available for businesses that have a working identity but need it modernized or prioritized for consistency across touchpoints.</p>
                 </div>
             </div>
 
             <!-- FAQ 4 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">How long does a brand identity project take?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How long does a brand identity project take?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">A focused brand identity project runs 3–5 weeks. Larger brand systems with extensive collateral run 6–10 weeks. Pitch deck design is typically a 1–2 week engagement.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">A focused brand identity project runs 3–5 weeks. Larger brand systems with extensive collateral run 6–10 weeks. Pitch deck design is typically a 1–2 week engagement.</p>
                 </div>
             </div>
 
             <!-- FAQ 5 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you offer ongoing design retainers?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you offer ongoing design retainers?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. Monthly design retainers are available for businesses that need ongoing collateral, social graphics, and digital asset production on a consistent, predictable cadence.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. Monthly design retainers are available for businesses that need ongoing collateral, social graphics, and digital asset production on a consistent, predictable cadence.</p>
                 </div>
             </div>
         </div>
@@ -467,15 +510,31 @@
         <div class="bg-dark-teal rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden border border-primary-gold" data-aos>
             <div class="absolute inset-0 bg-deep-navy opacity-50"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[60px] leading-tight mb-8 uppercase tracking-tighter">
+                <h2 class="font-headline font-bold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto uppercase tracking-tighter">
                     Your Brand Should Open <span class="text-primary-gold italic">Doors</span>, Not Create Doubt.
                 </h2>
-                <p class="text-muted-silver text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
                     If your visual identity is out-of-date or doesn't represent your quality, it's a fixable problem. Let's show you what strategic design can change.
                 </p>
-                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:scale-105 transition-all outline-none inline-block">
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl outline-none inline-block">
                     Book a Free Brand Review Call
                 </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -710,9 +769,65 @@
         });
     }, { threshold: 0.1 });
 
+    // Premium Sticky Horizontal Scroll Animation
+    gsap.registerPlugin(ScrollTrigger);
+
+    const track = document.querySelector('.horizontal-track');
+    
+    if (track) {
+        const getScrollAmount = () => {
+            let trackWidth = track.scrollWidth;
+            return -(trackWidth - window.innerWidth);
+        };
+
+        const tween = gsap.to(track, {
+            x: getScrollAmount,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".section-height",
+                start: "top top",
+                end: () => `+=${track.scrollWidth}`,
+                pin: true,
+                scrub: 1,
+                invalidateOnRefresh: true,
+            }
+        });
+    }
+
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
 </script>
 
+    <!-- Cal.com Global Initialization -->
+    <script>
+        (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const sn = ar[1];
+                    const obj = [sn, { q: [] }];
+                    cal.q.push(obj);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", { origin: "https://cal.com" });
+        Cal("ui", { 
+            "theme": "dark", 
+            "styles": { "branding": { "brandColor": "#CA9703" } }, 
+            "hideEventTypeDetails": true, 
+            "layout": "month_view" 
+        });
+    </script>
     <script src="js/components.js"></script>
 
 </body>

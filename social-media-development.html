@@ -121,6 +121,38 @@
         .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding-bottom 0.3s ease; }
         .faq-item.active .faq-content { max-height: 500px; padding-bottom: 1.5rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); color: #CA9703; }
+
+        .location-card {
+            background: rgba(8, 65, 92, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(202, 151, 3, 0.1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+        }
+        .location-card:hover {
+            border-color: #CA9703;
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        .iso-watermark {
+            position: absolute;
+            bottom: -10px;
+            right: -5px;
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(202, 151, 3, 0.05);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+        .location-card:hover .iso-watermark {
+            color: rgba(202, 151, 3, 0.1);
+            transform: scale(1.1) rotate(-5deg);
+        }
     </style>
 </head>
 <body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
@@ -128,9 +160,20 @@
     <div id="navbar-placeholder" class="shrink-0 z-50"></div>
 
 <!-- Social Storm Hero Section -->
-<section class="relative min-h-[90vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24 px-6">
-    <div class="absolute inset-0 grid-overlay opacity-10"></div>
-    <div class="absolute inset-0 noise-texture pointer-events-none"></div>
+<section class="relative min-h-[95vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24 px-6">
+    <!-- Background Image with Cinematic Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="social_hero_bg.png" alt="" class="w-full h-full object-cover opacity-40">
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-navy via-transparent to-deep-navy"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-deep-navy via-transparent to-deep-navy"></div>
+    </div>
+    
+    <div class="absolute inset-0 grid-overlay opacity-10 z-1"></div>
+    <div class="absolute inset-0 noise-texture pointer-events-none z-1"></div>
+    
+    <!-- Ambient Glows -->
+    <div class="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary-gold/10 blur-[150px] rounded-full animate-pulse"></div>
+    <div class="absolute bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-warm-amber/10 blur-[120px] rounded-full animate-pulse" style="animation-delay: -2s;"></div>
     
     <!-- Social Storm Background Feed -->
     <div class="absolute inset-0 flex justify-center gap-12 opacity-10 pointer-events-none blur-sm">
@@ -236,17 +279,8 @@
                 </div>
             </div>
             <div class="hidden md:flex justify-end" data-aos="fade-left">
-                <div class="w-80 h-80 bg-dark-teal rounded-3xl p-8 flex flex-col justify-between border border-white/10 tilt-card">
-                    <div class="flex gap-2">
-                         <div class="w-8 h-8 rounded-full bg-primary-gold/20 flex items-center justify-center"><span class="material-symbols-outlined text-primary-gold text-sm">groups</span></div>
-                         <div class="w-8 h-8 rounded-full bg-white/5"></div>
-                         <div class="w-8 h-8 rounded-full bg-white/5"></div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="h-2 w-full bg-white/10 rounded-full"></div>
-                        <div class="h-2 w-3/4 bg-white/10 rounded-full"></div>
-                        <div class="h-4 w-full bg-primary-gold/30 rounded-md"></div>
-                    </div>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="social_f1.png" alt="Social Strategy" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
         </div>
@@ -254,8 +288,8 @@
         <!-- Feature 2: Content Creation -->
         <div class="grid md:grid-cols-2 gap-24 items-center">
             <div class="hidden md:flex justify-start order-2 md:order-1" data-aos="fade-right">
-                <div class="w-80 h-80 bg-warm-amber/10 rounded-full p-8 flex items-center justify-center border border-warm-amber/20 tilt-card">
-                    <span class="material-symbols-outlined text-warm-amber text-[80px] animate-pulse">movie_edit</span>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="social_f2.png" alt="Content Creation" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
             <div class="space-y-8 order-1 md:order-2" data-aos="fade-left">
@@ -289,13 +323,8 @@
                 </div>
             </div>
             <div class="hidden md:flex justify-end" data-aos="fade-left">
-                <div class="w-80 h-80 bg-deep-navy border border-primary-gold/30 rounded-3xl p-8 tilt-card overflow-hidden">
-                    <div class="flex items-end gap-2 h-full">
-                        <div class="flex-1 bg-white/5 h-[40%]"></div>
-                        <div class="flex-1 bg-white/5 h-[60%]"></div>
-                        <div class="flex-1 bg-primary-gold/40 h-[90%]"></div>
-                        <div class="flex-1 bg-white/5 h-[75%]"></div>
-                    </div>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="social_f3.png" alt="ROI Analytics" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
         </div>
@@ -303,8 +332,8 @@
         <!-- Feature 4: Paid Social -->
         <div class="grid md:grid-cols-2 gap-24 items-center">
             <div class="hidden md:flex justify-start order-2 md:order-1" data-aos="fade-right">
-                <div class="w-80 h-80 bg-primary-gold rounded-[48px] flex flex-col items-center justify-center tilt-card">
-                     <span class="material-symbols-outlined text-deep-navy text-[120px]">ads_click</span>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="social_f4.png" alt="Paid Social" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
             <div class="space-y-8 order-1 md:order-2" data-aos="fade-left">
@@ -372,61 +401,61 @@
 <!-- FAQ Section (5 Questions) -->
 <section class="bg-off-white py-24 md:py-32">
     <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-headline font-bold text-dark-teal text-4xl mb-12 text-center" data-aos>Frequently Asked Questions</h2>
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>Frequently Asked Questions</h2>
         
         <div class="space-y-4">
             <!-- FAQ 1 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Which social platforms do you manage?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Which social platforms do you manage?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">LinkedIn, Instagram, Facebook, TikTok, X (Twitter), and Snapchat. We recommend platform prioritization based on your specific audience and business objectives.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">LinkedIn, Instagram, Facebook, TikTok, X (Twitter), and Snapchat. We recommend platform prioritization based on your specific audience and business objectives.</p>
                 </div>
             </div>
 
             <!-- FAQ 2 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you create the content or do we need to provide it?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you create the content or do we need to provide it?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">We create it. Original copywriting, graphic design, and video concept development are all included. We handle client approvals before anything goes live.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We create it. Original copywriting, graphic design, and video concept development are all included. We handle client approvals before anything goes live.</p>
                 </div>
             </div>
 
             <!-- FAQ 3 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">How do you measure success?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How do you measure success?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">We set KPIs at engagement start—follower growth, reach, CTR, or lead generation. Monthly reports track against these custom baselines.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We set KPIs at engagement start—follower growth, reach, CTR, or lead generation. Monthly reports track against these custom baselines.</p>
                 </div>
             </div>
 
             <!-- FAQ 4 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you manage paid advertising as well as organic?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you manage paid advertising as well as organic?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. Paid social management is available as an add-on or as part of a full managed service for maximum channel efficiency.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. Paid social management is available as an add-on or as part of a full managed service for maximum channel efficiency.</p>
                 </div>
             </div>
 
             <!-- FAQ 5 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">What's included in the onboarding process?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What's included in the onboarding process?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Brand audit, audience research, competitor analysis, pillar definition, and first-month content calendar. Publishing starts within 2 weeks of kick-off.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Brand audit, audience research, competitor analysis, pillar definition, and first-month content calendar. Publishing starts within 2 weeks of kick-off.</p>
                 </div>
             </div>
         </div>
@@ -439,15 +468,31 @@
         <div class="bg-deep-navy rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden group" data-aos>
             <div class="absolute inset-0 bg-primary-gold opacity-0 group-hover:opacity-5 transition-opacity duration-700"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[64px] leading-tight mb-8">
+                <h2 class="font-headline font-bold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
                     Social Media Should Generate <span class="text-primary-gold italic">Pipeline</span> — Not Just Impressions.
                 </h2>
-                <p class="text-muted-silver text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
                     If your social presence isn't converting attention into business outcomes, the strategy is missing. We'll audit your current channels for free.
                 </p>
-                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:scale-105 transition-all shadow-2xl inline-block">
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
                     Get a Free Social Media Audit
                 </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -693,6 +738,37 @@
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
 </script>
 
+    <!-- Cal.com Global Initialization -->
+    <script>
+        (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const sn = ar[1];
+                    const obj = [sn, { q: [] }];
+                    cal.q.push(obj);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", { origin: "https://cal.com" });
+        Cal("ui", { 
+            "theme": "dark", 
+            "styles": { "branding": { "brandColor": "#CA9703" } }, 
+            "hideEventTypeDetails": true, 
+            "layout": "month_view" 
+        });
+    </script>
     <script src="js/components.js"></script>
 </body>
 </html>

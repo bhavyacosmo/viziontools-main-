@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Retail ERP & POS System for Multi-Store Chains | Vizion Tools</title>
-    <meta name="description" content="Stop managing 5 stores with 5 spreadsheets. Vizion Tools builds retail ERP and POS systems that sync inventory, loyalty, and sales data across every location. Book a free consultation.">
-    
+    <meta name="description"
+        content="Stop managing 5 stores with 5 spreadsheets. Vizion Tools builds retail ERP and POS systems that sync inventory, loyalty, and sales data across every location. Book a free consultation.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -42,56 +48,124 @@
         .material-symbols-outlined {
             font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
         }
+
         .grid-overlay {
             background-size: 60px 60px;
             background-image: linear-gradient(to right, rgba(202, 151, 3, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.05) 1px, transparent 1px)
         }
+
         .noise-texture {
             background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBOMjkHA1Zur3sJoMBF0Jf1Iur_c-YVX56NrigEVmWWM9aBjdyODPVTcMW9AVTnBIyyboRBJQyX0sIjihkvuf_3EXRurAjr0QakaXPrvyiW2pdOhZTKEoVN9qXSPbTQ3aMEqfsvfKM9bnVkBq8y_Tj-v0cB41G9qv3i0eJD2PtEbDqyVCVE5353wax-fs8nD-KNpArA9CeR2ggLwBbPPKdjSe90h1msDG1xiUt99pYK7D1esh54GZhk6l11Z1kbRUnZlluxIWlcCKN6);
             opacity: 0.03
         }
+
         .marquee-animation {
             animation: marquee 40s linear infinite
         }
+
         @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         /* Hero Specific Animations */
         .float-animation {
             animation: float 6s ease-in-out infinite;
         }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
         }
+
         .glow-pulse {
             animation: glow-pulse 4s ease-in-out infinite;
         }
+
         @keyframes glow-pulse {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
         }
 
         /* Nav & Footer Sync */
-        .mega-menu-trigger:hover .mega-menu { opacity: 1; visibility: visible; --tw-translate-y: 0px !important; }
+        .mega-menu-trigger:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            --tw-translate-y: 0px !important;
+        }
+
         .mega-menu {
-            opacity: 0; visibility: hidden; --tw-translate-y: 10px;
+            opacity: 0;
+            visibility: hidden;
+            --tw-translate-y: 10px;
             transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0));
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .nav-item-hover:hover { border-left: 2px solid #CA9703; padding-left: 0.75rem; background-color: rgba(202, 151, 3, 0.05); }
-        .nav-item-hover { border-left: 2px solid transparent; transition: all 0.2s ease; }
-        .chevron-rotate { transition: transform 0.3s ease; }
-        .mega-menu-trigger:hover .chevron-rotate { transform: rotate(180deg); }
+
+        .nav-item-hover:hover {
+            border-left: 2px solid #CA9703;
+            padding-left: 0.75rem;
+            background-color: rgba(202, 151, 3, 0.05);
+        }
+
+        .nav-item-hover {
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+
+        .mega-menu-trigger:hover .chevron-rotate {
+            transform: rotate(180deg);
+        }
 
         /* FAQ Accordion */
-        .faq-item { border-bottom: 1px solid rgba(8, 65, 92, 0.1); }
-        .faq-trigger:hover .faq-title { color: #CA9703; }
-        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding-bottom 0.3s ease; }
-        .faq-item.active .faq-content { max-height: 500px; padding-bottom: 1.5rem; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); color: #CA9703; }
+        .faq-item {
+            border-bottom: 1px solid rgba(8, 65, 92, 0.1);
+        }
+
+        .faq-trigger:hover .faq-title {
+            color: #CA9703;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-bottom 0.3s ease;
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #CA9703;
+        }
 
         .location-card {
             background: rgba(8, 65, 92, 0.4);
@@ -102,15 +176,33 @@
             overflow: hidden;
             border-radius: 24px;
         }
-        .location-card:hover { border-color: #CA9703; transform: translateY(-8px); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
-        .iso-watermark {
-            position: absolute; bottom: -10px; right: -5px; font-size: 80px; font-weight: 900;
-            color: rgba(202, 151, 3, 0.05); line-height: 1; pointer-events: none; user-select: none;
-            transition: all 0.5s ease; font-family: 'Bricolage Grotesque', sans-serif;
+
+        .location-card:hover {
+            border-color: #CA9703;
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
-        .location-card:hover .iso-watermark { color: rgba(202, 151, 3, 0.1); transform: scale(1.1) rotate(-5deg); }
+
+        .iso-watermark {
+            position: absolute;
+            bottom: -10px;
+            right: -5px;
+            font-size: 80px;
+            font-weight: 900;
+            color: rgba(202, 151, 3, 0.05);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        .location-card:hover .iso-watermark {
+            color: rgba(202, 151, 3, 0.1);
+            transform: scale(1.1) rotate(-5deg);
+        }
     </style>
-    
+
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
     {
@@ -134,626 +226,836 @@
     }
     </script>
 </head>
-<body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
 
-<!-- Announcement Bar -->
+<body
+    class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
+
+    <!-- Announcement Bar -->
     <div id="navbar-placeholder" class="shrink-0 z-50"></div>
-<!-- Premium Hero Section -->
-<section class="relative min-h-[90vh] flex items-center bg-deep-navy overflow-hidden py-24 px-6 md:px-12">
-    <div class="absolute inset-0 grid-overlay opacity-20"></div>
-    <div class="absolute inset-0 noise-texture pointer-events-none"></div>
-    
-    <!-- Background Ambient Glows -->
-    <div class="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary-gold/10 blur-[150px] rounded-full glow-pulse"></div>
-    <div class="absolute bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-warm-amber/10 blur-[120px] rounded-full glow-pulse" style="animation-delay: -2s;"></div>
+    <!-- Premium Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center bg-deep-navy overflow-hidden py-24 px-6 md:px-12">
+        <div class="absolute inset-0 grid-overlay opacity-20"></div>
+        <div class="absolute inset-0 noise-texture pointer-events-none"></div>
 
-    <div class="container mx-auto relative z-10">
-        <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-            <!-- Left Side: Content -->
-            <div class="lg:w-1/2 text-left" data-aos="fade-right">
-                <div class="mb-8 inline-block">
-                    <span class="text-primary-gold font-bold text-xs tracking-[0.4em] uppercase px-5 py-2 border border-primary-gold/30 rounded-full bg-primary-gold/5 backdrop-blur-sm">
-                        Enterprise Retail Architecture
-                    </span>
+        <!-- Background Ambient Glows -->
+        <div
+            class="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary-gold/10 blur-[150px] rounded-full glow-pulse">
+        </div>
+        <div class="absolute bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-warm-amber/10 blur-[120px] rounded-full glow-pulse"
+            style="animation-delay: -2s;"></div>
+
+        <div class="container mx-auto relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                <!-- Left Side: Content -->
+                <div class="lg:w-1/2 text-left" data-aos="fade-right">
+                    <div class="mb-8 inline-block">
+                        <span
+                            class="text-primary-gold font-bold text-xs tracking-[0.4em] uppercase px-5 py-2 border border-primary-gold/30 rounded-full bg-primary-gold/5 backdrop-blur-sm">
+                            Enterprise Retail Architecture
+                        </span>
+                    </div>
+                    <h1
+                        class="font-headline font-extrabold text-pure-white text-[48px] md:text-[72px] lg:text-[84px] leading-[1.05] tracking-tight mb-8">
+                        Managing Five Stores Manually Isn't a Strategy. <br /> <span
+                            class="text-primary-gold italic">It's a Time Bomb.</span>
+                    </h1>
+                    <p
+                        class="text-muted-silver font-body font-light text-[20px] md:text-[24px] leading-relaxed max-w-2xl mb-12">
+                        Stock discrepancies, end-of-day guesswork, and loyalty programs that die at the door — these
+                        aren't growing pains. They're system problems. Vizion Tools fixes them at the architecture
+                        level.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}'
+                            class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[16px] uppercase tracking-widest hover:brightness-110 shadow-2xl transition-all">
+                            Book a Free Consultation
+                        </a>
+                    </div>
                 </div>
-                <h1 class="font-headline font-extrabold text-pure-white text-[48px] md:text-[72px] lg:text-[84px] leading-[1.05] tracking-tight mb-8">
-                    Managing Five Stores Manually Isn't a Strategy. <br/> <span class="text-primary-gold italic">It's a Time Bomb.</span>
-                </h1>
-                <p class="text-muted-silver font-body font-light text-[20px] md:text-[24px] leading-relaxed max-w-2xl mb-12">
-                    Stock discrepancies, end-of-day guesswork, and loyalty programs that die at the door — these aren't growing pains. They're system problems. Vizion Tools fixes them at the architecture level.
+
+                <!-- Right Side: Visual Component -->
+                <div class="lg:w-1/2 relative flex justify-center items-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="relative w-full max-w-[600px] aspect-square flex items-center justify-center">
+                        <!-- Dashboard Mockup/Visual -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/10 rounded-[40px] border border-white/20 backdrop-blur-3xl shadow-[0_0_100px_rgba(202,151,3,0.1)] float-animation overflow-hidden p-6 md:p-10">
+                            <img src="../retail_dashboard_new.png" alt="Retail Dashboard"
+                                class="w-full h-full object-cover rounded-2xl opacity-90 border border-white/10">
+                        </div>
+
+                        <!-- Decorative Elements -->
+                        <div class="absolute -top-10 -right-10 w-48 h-48 bg-primary-gold/20 blur-[60px] rounded-full">
+                        </div>
+                        <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-warm-amber/20 blur-[60px] rounded-full">
+                        </div>
+
+                        <!-- Floating Data Pills -->
+                        <div class="absolute -right-4 top-1/4 bg-deep-navy/80 border border-primary-gold/30 px-6 py-3 rounded-full backdrop-blur-md shadow-xl float-animation"
+                            style="animation-delay: -1s;">
+                            <span class="text-primary-gold font-bold text-sm">99.8% Sync Accuracy</span>
+                        </div>
+                        <div class="absolute -left-12 bottom-1/4 bg-deep-navy/80 border border-primary-gold/30 px-6 py-3 rounded-full backdrop-blur-md shadow-xl float-animation"
+                            style="animation-delay: -3s;">
+                            <span class="text-primary-gold font-bold text-sm">Real-time Inventory</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Intro Section -->
+    <section class="bg-off-white py-24 md:py-32 relative">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid md:grid-cols-1 gap-12 text-center mb-16" data-aos="fade-up">
+                <span
+                    class="font-headline font-bold text-primary-gold text-xs tracking-[0.3em] uppercase mb-4 block">The
+                    Scaling Crisis</span>
+                <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[56px] leading-tight">
+                    Your spreadsheets <br /> <span class="italic text-primary-gold">were never meant for this.</span>
+                </h2>
+            </div>
+            <div class="space-y-8 text-[18px] md:text-[20px] text-dark-teal/80 leading-relaxed font-light"
+                data-aos="fade-up" data-aos-delay="100">
+                <p>
+                    You open your second store and the spreadsheet breaks. By the fifth location, you're managing five
+                    versions of the same data — and none of them agree. A purchase order gets logged in one place, a
+                    return lands somewhere else, and by Thursday's team call you're reconciling numbers nobody fully
+                    trusts.
                 </p>
-                <div class="flex flex-col sm:flex-row items-center gap-6">
-                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[16px] uppercase tracking-widest hover:brightness-110 shadow-2xl transition-all">
+                <p>
+                    This isn't a people problem. Your ops team is working hard. The problem is that the tools they're
+                    using were designed for one location, not five. Manual end-of-day reconciliation, static inventory
+                    snapshots, loyalty that resets at the door — these are symptoms of a backend that hasn't grown with
+                    the business.
+                </p>
+                <p>
+                    Vizion Tools deploys Odoo's retail suite with configuration built around multi-outlet operations:
+                    real-time inventory sync, unified loyalty, and dashboards that show you exactly what's happening
+                    across every store before 9 AM. As a certified Odoo partner, we don't hand you a license and
+                    disappear — we build the system around how you actually operate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Sections -->
+    <section class="bg-deep-navy py-24 md:py-32 relative overflow-hidden">
+        <div class="absolute inset-0 grid-overlay opacity-5"></div>
+        <div class="container mx-auto px-6">
+
+            <!-- Feature 1: Inventory -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-32 lg:mb-48" data-aos="fade-up">
+                <div class="lg:w-1/2">
+                    <div
+                        class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
+                        <span class="material-symbols-outlined text-primary-gold text-3xl">warehouse</span>
+                    </div>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        The Inventory Problem Doesn't Start at the Register. <br /> <span
+                            class="text-primary-gold italic">It Starts With No Single Source of Truth.</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        When stock levels live in different systems — or worse, different tabs — discrepancies compound
+                        faster than anyone catches them. Odoo's multi-warehouse inventory ties every location to one
+                        backend: stock transfers, reorder points, and cycle counts all run from the same database. What
+                        one store receives, every manager can see.
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Real-time stock sync across all locations the moment a sale, return, or
+                                transfer posts</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Automated reorder triggers set per SKU per location — no more "we ran
+                                out" discoveries</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Variance reporting that flags discrepancies per outlet, per week</p>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                    class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
+                    <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors">
+                    </div>
+                    <div
+                        class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -right-5">
+                        01</div>
+                    <div class="relative z-20 aspect-video rounded-2xl overflow-hidden border border-white/5">
+                        <img src="../retail_inventory.png" alt="Retail Inventory" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 2: Dashboard -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 mb-32 lg:mb-48" data-aos="fade-up">
+                <div class="lg:w-1/2">
+                    <div
+                        class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
+                        <span class="material-symbols-outlined text-primary-gold text-3xl">query_stats</span>
+                    </div>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        Your Managers Are Making Decisions on Yesterday's Data. <br /> <span
+                            class="text-primary-gold italic">That's the Actual Problem.</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        Live sell-through rates don't exist on a spreadsheet updated at close of day. Vizion Tools
+                        configures Odoo's live dashboard suite specifically for retail operations — by location, by
+                        category, by staff performance. Catch shrinkage trends before they become a write-off.
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Per-store, per-hour sales dashboards accessible on any device</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Category-level sell-through rates to identify dead stock</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Shrinkage detection alerts triggered by POS-inventory variance</p>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                    class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
+                    <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors">
+                    </div>
+                    <div
+                        class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -left-5">
+                        02</div>
+                    <div class="relative z-20 aspect-video rounded-2xl overflow-hidden border border-white/5">
+                        <img src="../retail_analytics.png" alt="Sales Analytics" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 3: Loyalty -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-32 lg:mb-48" data-aos="fade-up">
+                <div class="lg:w-1/2">
+                    <div
+                        class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
+                        <span class="material-symbols-outlined text-primary-gold text-3xl">card_membership</span>
+                    </div>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        Loyalty That Stops at the Door Isn't Loyalty. <br /> <span class="text-primary-gold italic">It's
+                            a Gift Card With Extra Steps.</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        A customer who shops your Connaught Place store and visits your Lajpat Nagar outlet expects to
+                        use their points. Odoo's unified loyalty module ties customer accounts to the chain, not the
+                        branch. Points follow the customer across every physical and digital storefront.
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Loyalty accounts linked to customer identity, not store location</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Automated tier calculations based on total chain spend</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Consolidated purchase history available at checkout for any staff
+                                member</p>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                    class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
+                    <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors">
+                    </div>
+                    <div
+                        class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -right-5">
+                        03</div>
+                    <div class="relative z-20 aspect-video rounded-2xl overflow-hidden border border-white/5">
+                        <img src="../retail_loyalty.png" alt="Loyalty System" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature 4: Strategy -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16" data-aos="fade-up">
+                <div class="lg:w-1/2">
+                    <div
+                        class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
+                        <span class="material-symbols-outlined text-primary-gold text-3xl">strategy</span>
+                    </div>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        From Daily Firefighting to Weekly Strategy — <br /> <span class="text-primary-gold italic">What
+                            Changes When the System Works.</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        The average multi-store retail manager spends hours each week reconciling data. That time
+                        doesn't disappear when you deploy an ERP. It gets reallocated. Owners who were pulling reports
+                        are now reading them. The business doesn't run faster — it runs on better information.
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Automated end-of-day reconciliation across POS, inventory, and finance
+                            </p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Weekly performance reviews replace daily data-fixing sessions</p>
+                        </li>
+                        <li class="flex items-start gap-4 text-white/90">
+                            <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
+                            <p class="font-bold">Finance closes monthly books in days, not weeks</p>
+                        </li>
+                    </ul>
+                </div>
+                <div
+                    class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
+                    <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors">
+                    </div>
+                    <div
+                        class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -left-5">
+                        04</div>
+                    <div class="relative z-20 aspect-video rounded-2xl overflow-hidden border border-white/5">
+                        <img src="../retail_strategy.png" alt="Strategy Automation" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stat Callout -->
+    <section class="bg-primary-gold py-20 relative overflow-hidden">
+        <!-- Abstract Design Elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rotate-45 translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-deep-navy/10 -rotate-12 -translate-x-1/4 translate-y-1/4">
+        </div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+                <h2 class="font-headline font-black text-deep-navy text-[56px] md:text-[88px] mb-4 leading-none">40%
+                    REDUCTION</h2>
+                <p class="font-headline font-bold text-deep-navy text-[24px] md:text-[32px] mb-8">In inventory
+                    discrepancies within 90 days.</p>
+                <div class="w-24 h-2 bg-deep-navy mx-auto mb-10"></div>
+                <p class="text-deep-navy/80 text-lg md:text-xl font-medium max-w-3xl mx-auto">
+                    A 12-outlet retail chain in Jaipur after switching from manual tracking to Odoo multi-warehouse
+                    inventory management. No new staff. Same product lines.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="bg-off-white py-24 md:py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span
+                    class="font-headline font-bold text-primary-gold text-xs tracking-[0.3em] uppercase mb-4 block">Candidate
+                    Profiles</span>
+                <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl lg:text-6xl">Who This Is For</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Profile 1 -->
+                <div class="p-10 bg-white border border-dark-teal/5 rounded-3xl shadow-[0_20px_50px_rgba(8,65,92,0.05)] hover:shadow-[0_40px_80px_rgba(8,65,92,0.1)] transition-all duration-500 group"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div
+                        class="w-14 h-14 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-gold transition-colors">
+                        <span
+                            class="material-symbols-outlined text-primary-gold group-hover:text-white text-3xl transition-colors">storefront</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-2xl mb-6">Multi-outlet chains (3–20 locations)</h3>
+                    <p class="text-dark-teal/70 leading-relaxed text-lg">You're past the stage where a single POS
+                        handles everything, but not yet large enough for a custom enterprise build. Odoo scales to
+                        exactly where you are.</p>
+                </div>
+                <!-- Profile 2 -->
+                <div class="p-10 bg-white border border-dark-teal/5 rounded-3xl shadow-[0_20px_50px_rgba(8,65,92,0.05)] hover:shadow-[0_40px_80px_rgba(8,65,92,0.1)] transition-all duration-500 group"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-14 h-14 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-gold transition-colors">
+                        <span
+                            class="material-symbols-outlined text-primary-gold group-hover:text-white text-3xl transition-colors">shopping_cart_checkout</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-2xl mb-6">E-commerce retailers with physical stores</h3>
+                    <p class="text-dark-teal/70 leading-relaxed text-lg">Your online and offline inventory need to talk.
+                        Overselling online because a store sale didn't sync is a customer service crisis waiting to
+                        happen.</p>
+                </div>
+                <!-- Profile 3 -->
+                <div class="p-10 bg-white border border-dark-teal/5 rounded-3xl shadow-[0_20px_50px_rgba(8,65,92,0.05)] hover:shadow-[0_40px_80px_rgba(8,65,92,0.1)] transition-all duration-500 group"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-14 h-14 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-gold transition-colors">
+                        <span
+                            class="material-symbols-outlined text-primary-gold group-hover:text-white text-3xl transition-colors">trending_up</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-2xl mb-6">Retail owners preparing to expand</h3>
+                    <p class="text-dark-teal/70 leading-relaxed text-lg">Opening a third or fifth location on a broken
+                        backend makes every subsequent location harder. Build the infrastructure now and the sixth store
+                        is just configuration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center"
+                data-aos="fade-up">Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What's the
+                            difference between a regular POS and a retail ERP?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">A POS records transactions. A retail ERP
+                            connects those transactions to inventory, finance, loyalty, purchasing, and reporting in
+                            real time. When a sale posts, stock adjusts, revenue books, and reorder logic fires —
+                            automatically.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can Odoo
+                            POS integrate with our existing hardware?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">In most cases, yes. Odoo supports standard
+                            receipt printers, barcode scanners, and cash drawers. Vizion's implementation team assesses
+                            compatibility during the discovery phase before any purchase is made.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How long
+                            does it take to go live on Odoo retail?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">For a 3–5 store chain with clean product
+                            data, a typical deployment runs 6–10 weeks. Larger chains or complex inventory structures
+                            take longer. We provide a detailed project timeline before engagement starts.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What
+                            happens to our current POS data when we migrate?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">Vizion migrates transaction history,
+                            customer records, and loyalty balances as part of standard implementation. Data migration
+                            scope is confirmed during the initial discovery sessions.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Is Odoo
+                            right for luxury retail or fashion specifically?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. Odoo handles variant management (size,
+                            color, material), seasonal collections, consignment, and inter-store transfers — all common
+                            to fashion and specialty retail. Configuration is what makes it work for your category.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="bg-off-white py-24 md:py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="bg-deep-navy rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden border border-primary-gold/10 shadow-2xl"
+                data-aos="zoom-in">
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-primary-gold/10 opacity-50 relative pointer-events-none">
+                </div>
+                <div class="relative z-10 max-w-4xl mx-auto">
+                    <h2
+                        class="font-headline font-extrabold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
+                        Your Stores Shouldn't Run <br class="hidden md:block" /> Harder Than <span
+                            class="text-primary-gold italic">Your System Does.</span>
+                    </h2>
+                    <p
+                        class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
+                        Tell us how you're currently managing inventory across locations. In 30 minutes, we'll show you
+                        exactly where the breakdowns are and what a fix looks like.
+                    </p>
+                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}'
+                        class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block transition-all">
                         Book a Free Consultation
                     </a>
+
+                    <!-- Trust Line -->
+                    <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                        <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                            <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                            No commitment required
+                        </div>
+                        <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                            <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                            Setup walkthrough included
+                        </div>
+                        <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                            <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                            Dedicated implementation support
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Right Side: Visual Component -->
-            <div class="lg:w-1/2 relative flex justify-center items-center" data-aos="zoom-in" data-aos-delay="200">
-                <div class="relative w-full max-w-[600px] aspect-square flex items-center justify-center">
-                    <!-- Dashboard Mockup/Visual -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/10 rounded-[40px] border border-white/20 backdrop-blur-3xl shadow-[0_0_100px_rgba(202,151,3,0.1)] float-animation overflow-hidden p-6 md:p-10">
-                        <img src="../retail_dashboard_new.png" alt="Retail Dashboard" class="w-full h-full object-cover rounded-2xl opacity-90 border border-white/10">
-                    </div>
-                    
-                    <!-- Decorative Elements -->
-                    <div class="absolute -top-10 -right-10 w-48 h-48 bg-primary-gold/20 blur-[60px] rounded-full"></div>
-                    <div class="absolute -bottom-10 -left-10 w-48 h-48 bg-warm-amber/20 blur-[60px] rounded-full"></div>
-                    
-                    <!-- Floating Data Pills -->
-                    <div class="absolute -right-4 top-1/4 bg-deep-navy/80 border border-primary-gold/30 px-6 py-3 rounded-full backdrop-blur-md shadow-xl float-animation" style="animation-delay: -1s;">
-                        <span class="text-primary-gold font-bold text-sm">99.8% Sync Accuracy</span>
-                    </div>
-                    <div class="absolute -left-12 bottom-1/4 bg-deep-navy/80 border border-primary-gold/30 px-6 py-3 rounded-full backdrop-blur-md shadow-xl float-animation" style="animation-delay: -3s;">
-                        <span class="text-primary-gold font-bold text-sm">Real-time Inventory</span>
-                    </div>
-                </div>
+    <!-- Running Line (Marquee Ribbon) -->
+    <div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
+        <div class="flex marquee-animation marquee-slow whitespace-nowrap">
+            <!-- Main Content -->
+            <div
+                class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+                <span>ERP</span> <span class="opacity-40">·</span>
+                <span>ODOO</span> <span class="opacity-40">·</span>
+                <span>ZOHO</span> <span class="opacity-40">·</span>
+                <span>POS RETAIL</span> <span class="opacity-40">·</span>
+                <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+                <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+                <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+                <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+                <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+                <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+                <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+            </div>
+            <!-- Repeat for seamless loop -->
+            <div
+                class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+                <span>ERP</span> <span class="opacity-40">·</span>
+                <span>ODOO</span> <span class="opacity-40">·</span>
+                <span>ZOHO</span> <span class="opacity-40">·</span>
+                <span>POS RETAIL</span> <span class="opacity-40">·</span>
+                <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+                <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+                <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+                <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+                <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+                <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+                <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Page Intro Section -->
-<section class="bg-off-white py-24 md:py-32 relative">
-    <div class="container mx-auto px-6 max-w-5xl">
-        <div class="grid md:grid-cols-1 gap-12 text-center mb-16" data-aos="fade-up">
-            <span class="font-headline font-bold text-primary-gold text-xs tracking-[0.3em] uppercase mb-4 block">The Scaling Crisis</span>
-            <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[56px] leading-tight">
-                Your spreadsheets <br/> <span class="italic text-primary-gold">were never meant for this.</span>
-            </h2>
-        </div>
-        <div class="space-y-8 text-[18px] md:text-[20px] text-dark-teal/80 leading-relaxed font-light" data-aos="fade-up" data-aos-delay="100">
-            <p>
-                You open your second store and the spreadsheet breaks. By the fifth location, you're managing five versions of the same data — and none of them agree. A purchase order gets logged in one place, a return lands somewhere else, and by Thursday's team call you're reconciling numbers nobody fully trusts.
-            </p>
-            <p>
-                This isn't a people problem. Your ops team is working hard. The problem is that the tools they're using were designed for one location, not five. Manual end-of-day reconciliation, static inventory snapshots, loyalty that resets at the door — these are symptoms of a backend that hasn't grown with the business.
-            </p>
-            <p>
-                Vizion Tools deploys Odoo's retail suite with configuration built around multi-outlet operations: real-time inventory sync, unified loyalty, and dashboards that show you exactly what's happening across every store before 9 AM. As a certified Odoo partner, we don't hand you a license and disappear — we build the system around how you actually operate.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Features Sections -->
-<section class="bg-deep-navy py-24 md:py-32 relative overflow-hidden">
-    <div class="absolute inset-0 grid-overlay opacity-5"></div>
-    <div class="container mx-auto px-6">
-        
-        <!-- Feature 1: Inventory -->
-        <div class="flex flex-col lg:flex-row items-center gap-16 mb-32 lg:mb-48" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <div class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
-                    <span class="material-symbols-outlined text-primary-gold text-3xl">warehouse</span>
-                </div>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    The Inventory Problem Doesn't Start at the Register. <br/> <span class="text-primary-gold italic">It Starts With No Single Source of Truth.</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    When stock levels live in different systems — or worse, different tabs — discrepancies compound faster than anyone catches them. Odoo's multi-warehouse inventory ties every location to one backend: stock transfers, reorder points, and cycle counts all run from the same database. What one store receives, every manager can see.
-                </p>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Real-time stock sync across all locations the moment a sale, return, or transfer posts</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Automated reorder triggers set per SKU per location — no more "we ran out" discoveries</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Variance reporting that flags discrepancies per outlet, per week</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
-                <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors"></div>
-                <div class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -right-5">01</div>
-                <div class="relative z-20 aspect-video rounded-2xl bg-deep-navy/50 p-6 flex flex-col justify-center gap-6 border border-white/5">
-                    <div class="h-2 bg-white/20 rounded-full w-3/4"></div>
-                    <div class="h-2 bg-white/20 rounded-full w-1/2"></div>
-                    <div class="h-2 bg-primary-gold rounded-full w-full"></div>
-                    <div class="flex justify-between mt-4">
-                        <div class="w-12 h-12 bg-white/10 rounded-lg"></div>
-                        <div class="w-12 h-12 bg-white/10 rounded-lg"></div>
-                        <div class="w-12 h-12 bg-white/10 rounded-lg"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature 2: Dashboard -->
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-16 mb-32 lg:mb-48" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <div class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
-                    <span class="material-symbols-outlined text-primary-gold text-3xl">query_stats</span>
-                </div>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    Your Managers Are Making Decisions on Yesterday's Data. <br/> <span class="text-primary-gold italic">That's the Actual Problem.</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    Live sell-through rates don't exist on a spreadsheet updated at close of day. Vizion Tools configures Odoo's live dashboard suite specifically for retail operations — by location, by category, by staff performance. Catch shrinkage trends before they become a write-off.
-                </p>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Per-store, per-hour sales dashboards accessible on any device</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Category-level sell-through rates to identify dead stock</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Shrinkage detection alerts triggered by POS-inventory variance</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
-                <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors"></div>
-                <div class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -left-5">02</div>
-                <div class="relative z-20 aspect-video rounded-2xl bg-deep-navy/50 p-6 flex flex-col justify-center gap-6 border border-white/5">
-                    <div class="flex items-end gap-2 h-32">
-                        <div class="bg-primary-gold/40 w-full h-[30%]"></div>
-                        <div class="bg-primary-gold/60 w-full h-[60%]"></div>
-                        <div class="bg-primary-gold w-full h-[90%]"></div>
-                        <div class="bg-primary-gold/40 w-full h-[40%]"></div>
-                    </div>
-                    <div class="mt-4 flex justify-between">
-                        <div class="w-16 h-2 bg-white/20 rounded"></div>
-                        <div class="w-16 h-2 bg-white/20 rounded"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature 3: Loyalty -->
-        <div class="flex flex-col lg:flex-row items-center gap-16 mb-32 lg:mb-48" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <div class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
-                    <span class="material-symbols-outlined text-primary-gold text-3xl">card_membership</span>
-                </div>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    Loyalty That Stops at the Door Isn't Loyalty. <br/> <span class="text-primary-gold italic">It's a Gift Card With Extra Steps.</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    A customer who shops your Connaught Place store and visits your Lajpat Nagar outlet expects to use their points. Odoo's unified loyalty module ties customer accounts to the chain, not the branch. Points follow the customer across every physical and digital storefront.
-                </p>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Loyalty accounts linked to customer identity, not store location</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Automated tier calculations based on total chain spend</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Consolidated purchase history available at checkout for any staff member</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
-                <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors"></div>
-                <div class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -right-5">03</div>
-                <div class="relative z-20 aspect-video flex items-center justify-center overflow-hidden">
-                    <div class="w-48 h-48 bg-primary-gold rounded-full flex items-center justify-center p-8 glow-pulse">
-                        <span class="material-symbols-outlined text-deep-navy text-[80px]">star</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Feature 4: Strategy -->
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-16" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <div class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-primary-gold/20">
-                    <span class="material-symbols-outlined text-primary-gold text-3xl">strategy</span>
-                </div>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    From Daily Firefighting to Weekly Strategy — <br/> <span class="text-primary-gold italic">What Changes When the System Works.</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    The average multi-store retail manager spends hours each week reconciling data. That time doesn't disappear when you deploy an ERP. It gets reallocated. Owners who were pulling reports are now reading them. The business doesn't run faster — it runs on better information.
-                </p>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Automated end-of-day reconciliation across POS, inventory, and finance</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Weekly performance reviews replace daily data-fixing sessions</p>
-                    </li>
-                    <li class="flex items-start gap-4 text-white/90">
-                        <span class="material-symbols-outlined text-primary-gold text-xl">check_circle</span>
-                        <p class="font-bold">Finance closes monthly books in days, not weeks</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="lg:w-1/2 bg-white/5 rounded-[40px] p-8 border border-white/10 backdrop-blur-sm relative group overflow-hidden">
-                <div class="absolute inset-0 bg-primary-gold/5 group-hover:bg-primary-gold/10 transition-colors"></div>
-                <div class="relative z-10 text-primary-gold font-headline font-bold text-[120px] opacity-10 absolute -bottom-10 -left-5">04</div>
-                <div class="relative z-20 aspect-video flex flex-col justify-center gap-4 border border-white/5 p-8 rounded-2xl">
-                    <div class="flex gap-4">
-                         <div class="w-12 h-12 bg-primary-gold rounded"></div>
-                         <div class="flex-1 space-y-2">
-                             <div class="h-4 bg-white/20 rounded w-full"></div>
-                             <div class="h-4 bg-white/10 rounded w-2/3"></div>
-                         </div>
-                    </div>
-                    <div class="flex gap-4">
-                         <div class="w-12 h-12 bg-white/10 rounded"></div>
-                         <div class="flex-1 space-y-2">
-                             <div class="h-4 bg-white/20 rounded w-full"></div>
-                             <div class="h-4 bg-white/10 rounded w-1/3"></div>
-                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Stat Callout -->
-<section class="bg-primary-gold py-20 relative overflow-hidden">
-    <!-- Abstract Design Elements -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rotate-45 translate-x-1/2 -translate-y-1/2"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-deep-navy/10 -rotate-12 -translate-x-1/4 translate-y-1/4"></div>
-    
-    <div class="container mx-auto px-6 text-center relative z-10">
-        <div class="max-w-4xl mx-auto" data-aos="zoom-in">
-            <h2 class="font-headline font-black text-deep-navy text-[56px] md:text-[88px] mb-4 leading-none">40% REDUCTION</h2>
-            <p class="font-headline font-bold text-deep-navy text-[24px] md:text-[32px] mb-8">In inventory discrepancies within 90 days.</p>
-            <div class="w-24 h-2 bg-deep-navy mx-auto mb-10"></div>
-            <p class="text-deep-navy/80 text-lg md:text-xl font-medium max-w-3xl mx-auto">
-                A 12-outlet retail chain in Jaipur after switching from manual tracking to Odoo multi-warehouse inventory management. No new staff. Same product lines.
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Who This Is For -->
-<section class="bg-off-white py-24 md:py-32">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-20" data-aos="fade-up">
-            <span class="font-headline font-bold text-primary-gold text-xs tracking-[0.3em] uppercase mb-4 block">Candidate Profiles</span>
-            <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl lg:text-6xl">Who This Is For</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Profile 1 -->
-            <div class="p-10 bg-white border border-dark-teal/5 rounded-3xl shadow-[0_20px_50px_rgba(8,65,92,0.05)] hover:shadow-[0_40px_80px_rgba(8,65,92,0.1)] transition-all duration-500 group" data-aos="fade-up" data-aos-delay="0">
-                <div class="w-14 h-14 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-gold transition-colors">
-                    <span class="material-symbols-outlined text-primary-gold group-hover:text-white text-3xl transition-colors">storefront</span>
-                </div>
-                <h3 class="font-headline font-bold text-2xl mb-6">Multi-outlet chains (3–20 locations)</h3>
-                <p class="text-dark-teal/70 leading-relaxed text-lg">You're past the stage where a single POS handles everything, but not yet large enough for a custom enterprise build. Odoo scales to exactly where you are.</p>
-            </div>
-            <!-- Profile 2 -->
-            <div class="p-10 bg-white border border-dark-teal/5 rounded-3xl shadow-[0_20px_50px_rgba(8,65,92,0.05)] hover:shadow-[0_40px_80px_rgba(8,65,92,0.1)] transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-14 h-14 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-gold transition-colors">
-                    <span class="material-symbols-outlined text-primary-gold group-hover:text-white text-3xl transition-colors">shopping_cart_checkout</span>
-                </div>
-                <h3 class="font-headline font-bold text-2xl mb-6">E-commerce retailers with physical stores</h3>
-                <p class="text-dark-teal/70 leading-relaxed text-lg">Your online and offline inventory need to talk. Overselling online because a store sale didn't sync is a customer service crisis waiting to happen.</p>
-            </div>
-            <!-- Profile 3 -->
-            <div class="p-10 bg-white border border-dark-teal/5 rounded-3xl shadow-[0_20px_50px_rgba(8,65,92,0.05)] hover:shadow-[0_40px_80px_rgba(8,65,92,0.1)] transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-14 h-14 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-gold transition-colors">
-                    <span class="material-symbols-outlined text-primary-gold group-hover:text-white text-3xl transition-colors">trending_up</span>
-                </div>
-                <h3 class="font-headline font-bold text-2xl mb-6">Retail owners preparing to expand</h3>
-                <p class="text-dark-teal/70 leading-relaxed text-lg">Opening a third or fifth location on a broken backend makes every subsequent location harder. Build the infrastructure now and the sixth store is just configuration.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="bg-white py-24 md:py-32">
-    <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos="fade-up">Frequently Asked Questions</h2>
-        
-        <div class="space-y-4">
-            <!-- FAQ 1 -->
-            <div class="faq-item" data-aos="fade-up">
-                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What's the difference between a regular POS and a retail ERP?</span>
-                    <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
-                </button>
-                <div class="faq-content">
-                    <p class="text-dark-teal/70 text-lg leading-relaxed">A POS records transactions. A retail ERP connects those transactions to inventory, finance, loyalty, purchasing, and reporting in real time. When a sale posts, stock adjusts, revenue books, and reorder logic fires — automatically.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 2 -->
-            <div class="faq-item" data-aos="fade-up">
-                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can Odoo POS integrate with our existing hardware?</span>
-                    <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
-                </button>
-                <div class="faq-content">
-                    <p class="text-dark-teal/70 text-lg leading-relaxed">In most cases, yes. Odoo supports standard receipt printers, barcode scanners, and cash drawers. Vizion's implementation team assesses compatibility during the discovery phase before any purchase is made.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 3 -->
-            <div class="faq-item" data-aos="fade-up">
-                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How long does it take to go live on Odoo retail?</span>
-                    <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
-                </button>
-                <div class="faq-content">
-                    <p class="text-dark-teal/70 text-lg leading-relaxed">For a 3–5 store chain with clean product data, a typical deployment runs 6–10 weeks. Larger chains or complex inventory structures take longer. We provide a detailed project timeline before engagement starts.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 4 -->
-            <div class="faq-item" data-aos="fade-up">
-                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What happens to our current POS data when we migrate?</span>
-                    <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
-                </button>
-                <div class="faq-content">
-                    <p class="text-dark-teal/70 text-lg leading-relaxed">Vizion migrates transaction history, customer records, and loyalty balances as part of standard implementation. Data migration scope is confirmed during the initial discovery sessions.</p>
-                </div>
-            </div>
-
-            <!-- FAQ 5 -->
-            <div class="faq-item" data-aos="fade-up">
-                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Is Odoo right for luxury retail or fashion specifically?</span>
-                    <span class="material-symbols-outlined faq-icon transition-transform duration-300">expand_more</span>
-                </button>
-                <div class="faq-content">
-                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. Odoo handles variant management (size, color, material), seasonal collections, consignment, and inter-store transfers — all common to fashion and specialty retail. Configuration is what makes it work for your category.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Final CTA Section -->
-<section class="bg-off-white py-24 md:py-32 relative overflow-hidden">
-    <div class="container mx-auto px-6">
-        <div class="bg-deep-navy rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden border border-primary-gold/10 shadow-2xl" data-aos="zoom-in">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary-gold/10 opacity-50 relative pointer-events-none"></div>
-            <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[64px] leading-tight mb-8">
-                    Your Stores Shouldn't Run <br class="hidden md:block"/> Harder Than <span class="text-primary-gold italic">Your System Does.</span>
-                </h2>
-                <p class="text-muted-silver text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light">
-                    Tell us how you're currently managing inventory across locations. In 30 minutes, we'll show you exactly where the breakdowns are and what a fix looks like.
-                </p>
-                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:brightness-110 shadow-lg inline-block transition-all">
-                    Book a Free Consultation
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Running Line (Marquee Ribbon) -->
-<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
-    <div class="flex marquee-animation marquee-slow whitespace-nowrap">
-        <!-- Main Content -->
-        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
-            <span>ERP</span> <span class="opacity-40">·</span>
-            <span>ODOO</span> <span class="opacity-40">·</span>
-            <span>ZOHO</span> <span class="opacity-40">·</span>
-            <span>POS RETAIL</span> <span class="opacity-40">·</span>
-            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
-            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
-            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
-            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
-            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
-            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
-            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
-        </div>
-        <!-- Repeat for seamless loop -->
-        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
-            <span>ERP</span> <span class="opacity-40">·</span>
-            <span>ODOO</span> <span class="opacity-40">·</span>
-            <span>ZOHO</span> <span class="opacity-40">·</span>
-            <span>POS RETAIL</span> <span class="opacity-40">·</span>
-            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
-            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
-            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
-            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
-            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
-            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
-            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
-        </div>
-    </div>
-</div>
 
     <footer class="bg-[#08415C] pt-24 pb-12 relative overflow-hidden">
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
-            
-            <!-- Col 1: Brand -->
-            <div class="space-y-8">
-                <a href="index.html" class="block group -ml-2">
-                    <img src="Transparent Logo (1).png" alt="Vizion Tools" class="h-24 w-auto object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
-                </a>
-                <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[320px]">
-                    "Transforming businesses through custom software, AI automation, and digital solutions, built to deliver real results and long-term growth."
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
+
+                <!-- Col 1: Brand -->
+                <div class="space-y-8">
+                    <a href="index.html" class="block group -ml-2">
+                        <img src="Transparent Logo (1).png" alt="Vizion Tools"
+                            class="h-24 w-auto object-contain transition-all group-hover:scale-105 duration-500"
+                            style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
+                    </a>
+                    <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[320px]">
+                        "Transforming businesses through custom software, AI automation, and digital solutions, built to
+                        deliver real results and long-term growth."
+                    </p>
+                    <!-- Social Icons -->
+                    <div class="flex items-center gap-4">
+                        <a href="https://www.facebook.com/viziontools" target="_blank" rel="noopener noreferrer"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z" />
+                            </svg>
+                        </a>
+                        <a href="https://x.com/viziontools" target="_blank" rel="noopener noreferrer"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/viziontools/" target="_blank" rel="noopener noreferrer"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848s.012-3.584.07-4.849c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441c.795 0 1.439-.645 1.439-1.441s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/viziontools/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                        <a href="https://uk.pinterest.com/viziontools/" target="_blank" rel="noopener noreferrer"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.966 7.398 6.931 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C24.02 5.367 18.637 0 12.017 0z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/@viziontools" target="_blank" rel="noopener noreferrer"
+                            class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Services
+                    </h4>
+                    <ul class="space-y-4">
+                        <li><a href="https://odoovizion.com/"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Odoo
+                                ERP</a></li>
+                        <li><a href="#"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Zoho
+                                ERP</a></li>
+                        <li><a href="industries/retail.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS
+                                — Retail</a></li>
+                        <li><a href="industries/restaurants.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS
+                                — Restaurant</a></li>
+                        <li><a href="web-design-development.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Web
+                                Design & Development</a></li>
+                        <li><a href="graphic-design.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Graphic
+                                Design</a></li>
+                        <li><a href="social-media-development.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Social
+                                Media Management</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Company -->
+                <div class="space-y-6">
+                    <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about-us.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">About
+                                Us</a></li>
+                        <li><a href="contact.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Contact
+                                Us</a></li>
+                        <li><a href="portfolio.html"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Portfolio</a>
+                        </li>
+                        <li><a href="#"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Case
+                                Studies</a></li>
+                        <li><a href="https://viziontools.com/blog/"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Blog</a>
+                        </li>
+                        <li><a href="#"
+                                class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Careers</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact -->
+                <div class="space-y-6">
+                    <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Contact</h4>
+                    <div class="space-y-4 text-[#8A9AAD] text-[14px]">
+                        <p class="font-body font-normal flex items-center gap-3">
+                            <span class="material-symbols-outlined text-[18px]">mail</span>
+                            support@viziontools.com
+                        </p>
+                        <p class="font-body font-normal flex items-center gap-3">
+                            <span class="material-symbols-outlined text-[18px]">location_on</span>
+                            New Britain, United States
+                        </p>
+                    </div>
+                    <div class="pt-4">
+                        <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}'
+                            class="cursor-pointer bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
+                            Book a Demo
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Global Presence Section (New UI Format) -->
+            <div class="mb-24 mt-8">
+                <div class="text-center mb-16">
+                    <span
+                        class="font-body font-medium text-[11px] text-[#CA9703] uppercase tracking-[0.2em] mb-4 block">GLOBAL
+                        PRESENCE</span>
+                    <h2 class="font-headline font-bold text-white text-[32px] md:text-[42px] leading-tight mb-4">Serving
+                        clients worldwide.</h2>
+                    <p class="font-body font-light text-[#8A9AAD] text-[16px] max-w-2xl mx-auto">Our offices across four
+                        continents ensure seamless localized support and enterprise execution.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Location: US -->
+                    <div class="location-card p-8 group">
+                        <div class="iso-watermark">US</div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
+                                    <span class="material-symbols-outlined text-[18px]">location_on</span>
+                                </span>
+                                <h4 class="font-headline font-bold text-white text-[18px]">United States</h4>
+                            </div>
+                            <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">600 East St Suite 103,
+                                New Britain, CT 06051, United States</p>
+                            <a href="tel:+19292044923"
+                                class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
+                                <span class="material-symbols-outlined text-[16px]">phone</span>
+                                +1 (929) 204-4923
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Location: Egypt -->
+                    <div class="location-card p-8 group">
+                        <div class="iso-watermark">EG</div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
+                                    <span class="material-symbols-outlined text-[18px]">location_on</span>
+                                </span>
+                                <h4 class="font-headline font-bold text-white text-[18px]">Egypt</h4>
+                            </div>
+                            <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">1-109 King Faisal St,
+                                Abu Qatadah, Boulaq Al Dakrour, Giza</p>
+                            <a href="tel:+201026739595"
+                                class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
+                                <span class="material-symbols-outlined text-[16px]">phone</span>
+                                +20-102-673-9595
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Location: India -->
+                    <div class="location-card p-8 group">
+                        <div class="iso-watermark">IN</div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span
+                                    class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
+                                    <span class="material-symbols-outlined text-[18px]">location_on</span>
+                                </span>
+                                <h4 class="font-headline font-bold text-white text-[18px]">India</h4>
+                            </div>
+                            <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">7th floor, Trend
+                                workspace, Dickenson Rd, Bengaluru, KA 560042</p>
+                            <a href="tel:+918861118415"
+                                class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
+                                <span class="material-symbols-outlined text-[16px]">phone</span>
+                                +91 88611 18415
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <p class="font-body font-light text-[13px] text-white/30">
+                    &copy; 2026 Vizion Tools. All rights reserved.
                 </p>
-                <!-- Social Icons -->
-                <div class="flex items-center gap-4">
-                    <a href="https://www.facebook.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z"/></svg>
-                    </a>
-                    <a href="https://x.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848s.012-3.584.07-4.849c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441c.795 0 1.439-.645 1.439-1.441s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="https://uk.pinterest.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.966 7.398 6.931 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C24.02 5.367 18.637 0 12.017 0z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/@viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Services</h4>
-                <ul class="space-y-4">
-                    <li><a href="https://odoovizion.com/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Odoo ERP</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Zoho ERP</a></li>
-                    <li><a href="industries/retail.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS — Retail</a></li>
-                    <li><a href="industries/restaurants.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS — Restaurant</a></li>
-                    <li><a href="web-design-development.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Web Design & Development</a></li>
-                    <li><a href="graphic-design.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Graphic Design</a></li>
-                    <li><a href="social-media-development.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Social Media Management</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 3: Company -->
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Company</h4>
-                <ul class="space-y-4">
-                    <li><a href="about-us.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="contact.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Contact Us</a></li>
-                    <li><a href="portfolio.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Portfolio</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Case Studies</a></li>
-                    <li><a href="https://viziontools.com/blog/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Blog</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Careers</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Contact -->
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Contact</h4>
-                <div class="space-y-4 text-[#8A9AAD] text-[14px]">
-                    <p class="font-body font-normal flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[18px]">mail</span>
-                        support@viziontools.com
-                    </p>
-                    <p class="font-body font-normal flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[18px]">location_on</span>
-                        New Britain, United States
-                    </p>
-                </div>
-                <div class="pt-4">
-                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
-                        Book a Demo
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        
-        <!-- Global Presence Section (New UI Format) -->
-        <div class="mb-24 mt-8">
-            <div class="text-center mb-16">
-                <span class="font-body font-medium text-[11px] text-[#CA9703] uppercase tracking-[0.2em] mb-4 block">GLOBAL PRESENCE</span>
-                <h2 class="font-headline font-bold text-white text-[32px] md:text-[42px] leading-tight mb-4">Serving clients worldwide.</h2>
-                <p class="font-body font-light text-[#8A9AAD] text-[16px] max-w-2xl mx-auto">Our offices across four continents ensure seamless localized support and enterprise execution.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Location: US -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">US</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">United States</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">600 East St Suite 103, New Britain, CT 06051, United States</p>
-                        <a href="tel:+19292044923" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +1 (929) 204-4923
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Location: Egypt -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">EG</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">Egypt</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">1-109 King Faisal St, Abu Qatadah, Boulaq Al Dakrour, Giza</p>
-                        <a href="tel:+201026739595" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +20-102-673-9595
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Location: India -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">IN</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">India</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">7th floor, Trend workspace, Dickenson Rd, Bengaluru, KA 560042</p>
-                        <a href="tel:+918861118415" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +91 88611 18415
-                        </a>
-                    </div>
+                <div class="flex items-center gap-6">
+                    <a href="https://viziontools.com/privacy-policy/"
+                        class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Privacy
+                        Policy</a>
+                    <span class="w-1 h-1 rounded-full bg-white/10"></span>
+                    <a href="https://viziontools.com/term-of-service/"
+                        class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Terms
+                        of Service</a>
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Bar -->
-        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p class="font-body font-light text-[13px] text-white/30">
-                &copy; 2026 Vizion Tools. All rights reserved.
-            </p>
-            <div class="flex items-center gap-6">
-                <a href="https://viziontools.com/privacy-policy/" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Privacy Policy</a>
-                <span class="w-1 h-1 rounded-full bg-white/10"></span>
-                <a href="https://viziontools.com/term-of-service/" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 1000,
-        once: true,
-        easing: 'ease-out-cubic'
-    });
-
-    // FAQ Accordion
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const trigger = item.querySelector('.faq-trigger');
-        trigger.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(i => i.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
+    </footer>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
         });
-    });
-</script>
 
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const trigger = item.querySelector('.faq-trigger');
+            trigger.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+
+    <!-- Cal.com Global Initialization -->
+    <script>
+        (function (C, A, L) {
+            let p = function (a, ar) { a.q.push(ar); };
+            let d = C.document;
+            C.Cal = C.Cal || function () {
+                let cal = C.Cal;
+                let ar = arguments;
+                if (!cal.loaded) {
+                    cal.ns = {};
+                    cal.q = cal.q || [];
+                    d.head.appendChild(d.createElement("script")).src = A;
+                    cal.loaded = true;
+                }
+                if (ar[0] === L) {
+                    const sn = ar[1];
+                    const obj = [sn, { q: [] }];
+                    cal.q.push(obj);
+                    return;
+                }
+                p(cal, ar);
+            };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", { origin: "https://cal.com" });
+        Cal("ui", { 
+            "theme": "dark", 
+            "styles": { "branding": { "brandColor": "#CA9703" } }, 
+            "hideEventTypeDetails": true, 
+            "layout": "month_view" 
+        });
+    </script>
     <script src="../js/components.js"></script>
 
 </body>
+
 </html>

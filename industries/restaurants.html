@@ -15,6 +15,10 @@
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- GSAP for Parallax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -115,6 +119,200 @@
             border-color: rgba(202, 151, 3, 0.3);
             transform: translateY(-5px);
         }
+
+        /* Glassmorphism Locations Card */
+        .location-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(202, 151, 3, 0.4);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        .iso-watermark {
+            position: absolute;
+            bottom: -20px;
+            right: -10px;
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            user-select: none;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        .location-card:hover .iso-watermark {
+            color: rgba(202, 151, 3, 0.1);
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        .reveal-parallax {
+            will-change: transform;
+        }
+
+        /* Sticky Overlap Layout */
+        .sticky-feature-row {
+            position: relative;
+            height: 160vh; /* Extra scroll space */
+            margin-bottom: 2rem;
+        }
+
+        .sticky-visual-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Image on right by default */
+            padding-right: 5%;
+            z-index: 1;
+        }
+
+        .sticky-visual-container.reverse {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 5%;
+        }
+
+        .text-overlay-container {
+            position: relative;
+            z-index: 10;
+            margin-top: -50vh; /* Start lower and scroll up */
+            padding-bottom: 20vh;
+        }
+
+        .text-overlay-card {
+            max-width: 600px;
+            background: rgba(8, 65, 92, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(202, 151, 3, 0.2);
+            padding: 4rem;
+            border-radius: 40px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.6);
+            margin-left: 5%;
+        }
+
+        .sticky-feature-row.reverse .text-overlay-card {
+            margin-left: auto;
+            margin-right: 5%;
+        }
+
+        @media (max-width: 1024px) {
+            .sticky-feature-row { height: auto; margin-bottom: 4rem; }
+            .sticky-visual-container { position: relative; height: auto; padding: 2rem; }
+            .text-overlay-container { margin-top: 0; padding: 0 1.5rem; }
+            .text-overlay-card { max-width: 100%; padding: 2.5rem; }
+        }
+
+        /* Sticky Reveal Card Stack Section */
+        .sticky-reveal-section {
+            position: relative;
+            background: #ffffff;
+            height: 350vh; /* Scroll length */
+            overflow: visible;
+        }
+
+        .sticky-pin-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #f7f4ef;
+        }
+
+        .split-layout {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            padding: 0 8% 0 10%;
+            gap: 10%;
+        }
+
+        .left-content {
+            flex: 0 0 35%;
+            text-align: left;
+            z-index: 20;
+        }
+
+        .right-content {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .reveal-card-stack {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            perspective: 2000px;
+        }
+
+        .reveal-card {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(100px) scale(0.8) rotateX(15deg) rotateY(-5deg);
+            opacity: 0;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(8, 65, 92, 0.1);
+            border-radius: 48px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.1);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-card.active {
+            transform: translateY(0) scale(1) rotateX(0) rotateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .reveal-card-bg-icon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 200px;
+            opacity: 0.03;
+            color: #CA9703;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        @media (max-width: 1024px) {
+            .sticky-reveal-section { height: auto !important; }
+            .sticky-pin-container { height: auto !important; position: relative !important; padding: 4rem 1.5rem !important; }
+            .split-layout { flex-direction: column; padding: 0; gap: 4rem; }
+            .left-content { flex: none; width: 100%; text-align: center; }
+            .right-content { height: auto !important; width: 100%; }
+            .reveal-card-stack { height: auto !important; display: flex; flex-direction: column; gap: 2rem; perspective: none; }
+            .reveal-card { position: relative !important; width: 100% !important; transform: none !important; opacity: 1 !important; padding: 2rem !important; margin-bottom: 2rem; }
+            .reveal-card-bg-icon { font-size: 80px; }
+        }
     </style>
     
     <!-- JSON-LD Schema -->
@@ -186,166 +384,222 @@
     </div>
 </section>
 
-<!-- Page Intro -->
-<section class="bg-off-white py-24 md:py-32 border-b border-dark-teal/5">
-    <div class="container mx-auto px-6 max-w-5xl">
-        <div class="grid md:grid-cols-12 gap-12" data-aos="fade-up">
-            <div class="md:col-span-5">
-                <h2 class="font-headline font-bold text-dark-teal text-[32px] md:text-[44px] leading-tight">
-                    The predictable result of running on <span class="text-primary-gold italic">single-register tools.</span>
-                </h2>
-            </div>
-            <div class="md:col-span-7 space-y-6 text-lg text-dark-teal/80 leading-relaxed font-light">
-                <p>
-                    A 38% food cost doesn't show up in one bad week. It accumulates — through portion inconsistency, untracked waste, recipe drift across locations, and purchasing that happens on instinct rather than data. By the time the number is visible on a P&L, the margin is already gone.
-                </p>
-                <p>
-                    Tickets coming in from three channels — dine-in, takeaway, delivery — landing in no particular order, with no priority logic. Service breaks. Tables turn slowly. And the customer writes a review.
-                </p>
-                <p class="font-medium text-dark-teal">
-                    Vizion Tools deploys Odoo's complete restaurant suite — POS, KDS, table management, and recipe cost control — configured for how F&B groups actually run.
-                </p>
+<!-- Sticky Reveal Intro Section -->
+<section class="sticky-reveal-section">
+    <div class="sticky-pin-container">
+            <div class="split-layout">
+                <!-- Left: Narrative -->
+                <div class="left-content">
+                    <div class="mb-8 inline-block" data-aos="fade-right">
+                        <span class="text-primary-gold font-bold text-xs tracking-widest uppercase px-5 py-2 border border-primary-gold/20 rounded-full bg-primary-gold/5">
+                            The Infrastructure Gap
+                        </span>
+                    </div>
+                <h2 class="font-headline font-bold text-dark-teal text-[38px] md:text-[54px] leading-tight mb-8" data-aos="fade-right">
+                        The predictable result of running on <span class="text-primary-gold italic">single-register tools.</span>
+                    </h2>
+                <div class="space-y-6 text-lg text-dark-teal/70 leading-relaxed font-light pr-12" data-aos="fade-right" data-aos-delay="100">
+                        <p>
+                            A 38% food cost doesn't show up in one bad week. It accumulates — through portion inconsistency, untracked waste, and recipe drift across locations.
+                        </p>
+                    <p class="font-medium text-dark-teal">
+                            Vizion Tools deploys Odoo's complete restaurant suite configured for how F&B groups actually run.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: 3 Key Points (Reveal Cards) -->
+                <div class="right-content">
+                    <div class="reveal-card-stack">
+                        <!-- Point 1 -->
+                    <div class="reveal-card">
+                            <span class="material-symbols-outlined reveal-card-bg-icon">group_work</span>
+                            <div class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8">
+                                <span class="material-symbols-outlined text-primary-gold text-4xl">group_work</span>
+                            </div>
+                        <h3 class="font-headline font-bold text-dark-teal text-3xl mb-6">Multi-location groups</h3>
+                        <p class="text-dark-teal/60 text-lg leading-relaxed">
+                                (3–15 outlets). Complexity grows exponentially at scale. One database changes the economics of management.
+                            </p>
+                        </div>
+
+                        <!-- Point 2 -->
+                    <div class="reveal-card">
+                            <span class="material-symbols-outlined reveal-card-bg-icon">cloud_done</span>
+                            <div class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8">
+                                <span class="material-symbols-outlined text-primary-gold text-4xl">cloud_done</span>
+                            </div>
+                        <h3 class="font-headline font-bold text-dark-teal text-3xl mb-6">Cloud kitchens</h3>
+                        <p class="text-dark-teal/60 text-lg leading-relaxed">
+                                & Delivery-first. When margin is everything, recipe costing and channel reconciliation are the business model.
+                            </p>
+                        </div>
+
+                        <!-- Point 3 -->
+                    <div class="reveal-card">
+                            <span class="material-symbols-outlined reveal-card-bg-icon">rocket_launch</span>
+                            <div class="w-16 h-16 bg-primary-gold/10 rounded-2xl flex items-center justify-center mb-8">
+                                <span class="material-symbols-outlined text-primary-gold text-4xl">rocket_launch</span>
+                            </div>
+                        <h3 class="font-headline font-bold text-3xl text-dark-teal mb-6">Expansion-ready</h3>
+                        <p class="text-dark-teal/60 text-lg leading-relaxed">
+                                Build the right backend before the chaos, not during it. Faster implementation before you scale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </section>
 
 <!-- Features Deep Dive -->
-<section class="bg-deep-navy py-24 md:py-32 relative">
+<section class="bg-[#052d40] relative overflow-hidden">
     <div class="absolute inset-0 grid-overlay opacity-5"></div>
     <div class="container mx-auto px-6">
         
-        <!-- Feature 1 -->
-        <div class="flex flex-col lg:flex-row items-center gap-20 mb-32 lg:mb-48" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Kitchen Display Systems</span>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    What Happens When the Kitchen <span class="text-primary-gold italic">Can't See the Floor?</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    The expediter guesses. The wrong item goes to table 7. Odoo's KDS solves this at the architecture level — giving the kitchen the right information at the right time. Every order flows to the correct station, with visual timers and priority firing sequences.
-                </p>
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div class="feature-card p-6 rounded-2xl">
-                        <span class="material-symbols-outlined text-primary-gold mb-4">move_to_inbox</span>
-                        <p class="text-white font-bold text-sm">Channel Routing</p>
-                        <p class="text-muted-silver text-xs mt-2">Dine-in, takeaway, and delivery direct to station.</p>
-                    </div>
-                    <div class="feature-card p-6 rounded-2xl">
-                        <span class="material-symbols-outlined text-primary-gold mb-4">timer</span>
-                        <p class="text-white font-bold text-sm">Visual Timers</p>
-                        <p class="text-muted-silver text-xs mt-2">Ticket countdowns so expediting is data-led.</p>
-                    </div>
+        <!-- Feature 1: Kitchen -->
+        <div class="sticky-feature-row">
+            <!-- Sticky Visual -->
+            <div class="sticky-visual-container">
+                <div class="image-container w-full lg:w-[45vw] p-4">
+                    <img src="../kitchen_display_system_kds.png" alt="Kitchen Display System" class="w-full rounded-2xl shadow-2xl reveal-parallax">
                 </div>
             </div>
-            <div class="lg:w-1/2">
-                <div class="image-container p-4">
-                    <img src="../kitchen_display_system_kds.png" alt="Kitchen Display System" class="w-full rounded-2xl shadow-2xl">
+            <!-- Scrolling Text -->
+            <div class="text-overlay-container">
+                <div class="text-overlay-card" data-aos="fade-up">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Kitchen Display Systems</span>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        What Happens When the Kitchen <span class="text-primary-gold italic">Can't See the Floor?</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        The expediter guesses. The wrong item goes to table 7. Odoo's KDS solves this at the architecture level — giving the kitchen the right information at the right time.
+                    </p>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="feature-card p-6 rounded-2xl">
+                            <span class="material-symbols-outlined text-primary-gold mb-2">move_to_inbox</span>
+                            <p class="text-white font-bold text-sm">Channel Routing</p>
+                        </div>
+                        <div class="feature-card p-6 rounded-2xl">
+                            <span class="material-symbols-outlined text-primary-gold mb-2">timer</span>
+                            <p class="text-white font-bold text-sm">Visual Timers</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Feature 2 -->
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-20 mb-32 lg:mb-48" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Recipe & Cost Control</span>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    Food Cost Variance Is a System Problem. <span class="text-primary-gold italic">Blaming the Chef Doesn't Fix It.</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    Portion drift and substitutions become visible in real time — before they become write-offs. When ingredient prices change, costs update automatically. It turns food cost from a lagging number into a live signal.
-                </p>
-                <ul class="space-y-6">
-                    <li class="flex items-start gap-4">
-                        <div class="w-6 h-6 rounded-full bg-primary-gold/20 flex items-center justify-center shrink-0 mt-1">
+        <!-- Feature 2: Cost Control -->
+        <div class="sticky-feature-row reverse">
+            <!-- Sticky Visual (Left side) -->
+            <div class="sticky-visual-container reverse">
+                <div class="image-container w-full lg:w-[45vw] p-4">
+                    <img src="../restaurant_food_cost_dashboard.png" alt="Food Cost Dashboard" class="w-full rounded-2xl shadow-2xl reveal-parallax">
+                </div>
+            </div>
+            <!-- Scrolling Text (Right overlay) -->
+            <div class="text-overlay-container">
+                <div class="text-overlay-card" data-aos="fade-up">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Recipe & Cost Control</span>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        Food Cost Variance Is a <span class="text-primary-gold italic">System Problem.</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        Portion drift and substitutions become visible in real time — before they become write-offs. When ingredient prices change, costs update automatically.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4">
                             <span class="material-symbols-outlined text-primary-gold text-sm">done</span>
-                        </div>
-                        <p class="text-white/90 font-medium">Auto-calculating recipe costs synced to supplier price changes.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="w-6 h-6 rounded-full bg-primary-gold/20 flex items-center justify-center shrink-0 mt-1">
+                            <p class="text-white/90 text-sm">Auto-calculating recipe costs</p>
+                        </li>
+                        <li class="flex items-center gap-4">
                             <span class="material-symbols-outlined text-primary-gold text-sm">done</span>
-                        </div>
-                        <p class="text-white/90 font-medium">Theoretical vs. Actual usage reports per item and location.</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="lg:w-1/2">
-                <div class="image-container p-4">
-                    <img src="../restaurant_food_cost_dashboard.png" alt="Food Cost Dashboard" class="w-full rounded-2xl shadow-2xl">
+                            <p class="text-white/90 text-sm">Theoretical vs. Actual usage</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Feature 3 -->
-        <div class="flex flex-col lg:flex-row items-center gap-20 mb-32 lg:mb-48" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Unified Integration</span>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    One Platform for Dine-In, Takeaway, and Delivery. <span class="text-primary-gold italic">No Siloes.</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    Running Zomato on a separate tablet doesn't scale. Odoo unifies all order types — delivery integrations included — so kitchen tickets queue correctly regardless of source and inventory adjusts in real time.
-                </p>
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
-                    <div class="flex items-center gap-6 mb-8 p-4 bg-white/5 rounded-xl">
-                        <div class="flex -space-x-3">
-                            <div class="w-12 h-12 rounded-full bg-primary-gold/20 border-2 border-deep-navy flex items-center justify-center text-primary-gold font-bold text-xs">POS</div>
-                            <div class="w-12 h-12 rounded-full bg-warm-amber/20 border-2 border-deep-navy flex items-center justify-center text-warm-amber font-bold text-xs">DEL</div>
-                            <div class="w-12 h-12 rounded-full bg-off-white/20 border-2 border-deep-navy flex items-center justify-center text-white font-bold text-xs">APP</div>
+        <!-- Feature 3: Integration -->
+        <div class="sticky-feature-row">
+            <!-- Sticky Visual -->
+            <div class="sticky-visual-container">
+                <div class="image-container w-full lg:w-[45vw] p-4">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="aspect-square bg-white/5 rounded-3xl p-8 flex flex-col justify-between border border-white/10">
+                            <span class="material-symbols-outlined text-primary-gold text-4xl leading-none">tablet_mac</span>
+                            <h4 class="text-white font-bold text-xl">Dine-In <br/> POS</h4>
                         </div>
-                        <span class="material-symbols-outlined text-white/20">arrow_forward</span>
-                        <div class="flex-1 h-3 bg-primary-gold/30 rounded-full relative overflow-hidden">
-                            <div class="absolute inset-0 bg-primary-gold w-3/4 shadow-[0_0_15px_#CA9703]"></div>
+                        <div class="aspect-square bg-white/5 rounded-3xl p-8 flex flex-col justify-between border border-white/10 mt-12">
+                            <span class="material-symbols-outlined text-primary-gold text-4xl leading-none">delivery_dining</span>
+                            <h4 class="text-white font-bold text-xl">Delivery <br/> Connect</h4>
                         </div>
-                        <span class="text-primary-gold font-bold text-sm tracking-tight">UNIFIED</span>
                     </div>
-                    <p class="text-sm text-white/70 italic">"Kitchen tickets queue correctly Regardless of source"</p>
                 </div>
             </div>
-            <div class="lg:w-1/2">
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="aspect-square bg-white/5 rounded-3xl p-8 flex flex-col justify-between border border-white/10">
-                        <span class="material-symbols-outlined text-primary-gold text-4xl leading-none">tablet_mac</span>
-                        <h4 class="text-white font-bold text-xl">Dine-In <br/> POS</h4>
-                    </div>
-                    <div class="aspect-square bg-white/5 rounded-3xl p-8 flex flex-col justify-between border border-white/10 mt-12">
-                        <span class="material-symbols-outlined text-primary-gold text-4xl leading-none">delivery_dining</span>
-                        <h4 class="text-white font-bold text-xl">Delivery <br/> Connect</h4>
+            <!-- Scrolling Text -->
+            <div class="text-overlay-container">
+                <div class="text-overlay-card" data-aos="fade-up">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Unified Integration</span>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        One Platform. <br/><span class="text-primary-gold italic">No Siloes.</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        Running Zomato on a separate tablet doesn't scale. Odoo unifies all order types so kitchen tickets queue correctly regardless of source.
+                    </p>
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+                        <div class="flex items-center gap-4 mb-2">
+                             <div class="flex -space-x-2">
+                                <div class="w-8 h-8 rounded-full bg-primary-gold/20 border border-deep-navy flex items-center justify-center text-primary-gold text-[10px]">POS</div>
+                                <div class="w-8 h-8 rounded-full bg-warm-amber/20 border border-deep-navy flex items-center justify-center text-warm-amber text-[10px]">DEL</div>
+                            </div>
+                            <div class="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                <div class="bg-primary-gold h-full w-3/4"></div>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-white/50 italic text-center">Unified Ticket Stream</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Feature 4 -->
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-20" data-aos="fade-up">
-            <div class="lg:w-1/2">
-                <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Multi-Location Analytics</span>
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
-                    Run on One Database Instead of <span class="text-primary-gold italic">Eight Separate Problems.</span>
-                </h2>
-                <p class="text-muted-silver text-lg leading-relaxed mb-10">
-                    Operating multiple locations shouldn't mean multiple logins. Centralize menu management, recipe databases, and staff payroll. Variance between locations becomes visible precisely because the data is unified.
-                </p>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
-                        <span class="material-symbols-outlined text-primary-gold">hub</span>
-                        <span class="text-white text-sm font-medium">Centralized Menu Libraries</span>
-                    </div>
-                    <div class="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
-                        <span class="material-symbols-outlined text-primary-gold">monitoring</span>
-                        <span class="text-white text-sm font-medium">Cross-location Dashboard Comparison</span>
-                    </div>
+           <!-- Feature 4: Analytics -->
+        <div class="sticky-feature-row reverse">
+            <!-- Sticky Visual (Left side) -->
+            <div class="sticky-visual-container reverse">
+                <div class="image-container w-full lg:w-[45vw] p-4">
+                    <img src="../restaurant_multi_location_dashboard.png" alt="Multi Location Analytics" class="w-full rounded-2xl shadow-2xl reveal-parallax">
                 </div>
             </div>
-            <div class="lg:w-1/2">
-                <div class="image-container p-4">
-                    <img src="../restaurant_multi_location_dashboard.png" alt="Multi Location Analytics" class="w-full rounded-2xl shadow-2xl">
+            <!-- Scrolling Text (Right overlay) -->
+            <div class="text-overlay-container">
+                <div class="text-overlay-card" data-aos="fade-up">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Multi-Location Analytics</span>
+                    <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[48px] leading-tight mb-8">
+                        Run on One Database Instead of <span class="text-primary-gold italic">Eight Separate Problems.</span>
+                    </h2>
+                    <p class="text-muted-silver text-lg leading-relaxed mb-10">
+                        Operating multiple locations shouldn't mean multiple logins. Centralize menu management, recipe databases, and staff payroll. Variance between locations becomes visible precisely because the data is unified.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
+                            <span class="material-symbols-outlined text-primary-gold">hub</span>
+                            <span class="text-white text-sm font-medium">Centralized Menu Libraries</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
+                            <span class="material-symbols-outlined text-primary-gold">monitoring</span>
+                            <span class="text-white text-sm font-medium">Cross-location Dashboard Comparison</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+        </div>
 </section>
+
 
 <!-- Stat Section -->
 <section class="bg-primary-gold py-24 relative overflow-hidden">
@@ -361,31 +615,9 @@
     </div>
 </section>
 
-<!-- Who This Is For -->
-<section class="bg-white py-24 md:py-32">
-    <div class="container mx-auto px-6">
-        <div class="text-center mb-20" data-aos="fade-up">
-            <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl lg:text-6xl">Who This Is For</h2>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-10 bg-off-white/50 border border-dark-teal/5 rounded-3xl hover:bg-white hover:shadow-2xl transition-all duration-500 group" data-aos="fade-up">
-                <span class="material-symbols-outlined text-primary-gold text-4xl mb-6">group_work</span>
-                <h3 class="font-headline font-bold text-2xl mb-6">Multi-location groups (3–15 outlets)</h3>
-                <p class="text-dark-teal/70 leading-relaxed">Complexity grows exponentially at scale. One database changes the economics of management.</p>
-            </div>
-            <div class="p-10 bg-off-white/50 border border-dark-teal/5 rounded-3xl hover:bg-white hover:shadow-2xl transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
-                <span class="material-symbols-outlined text-primary-gold text-4xl mb-6">cloud_done</span>
-                <h3 class="font-headline font-bold text-2xl mb-6">Cloud kitchens & Delivery-first</h3>
-                <p class="text-dark-teal/70 leading-relaxed">When margin is everything, recipe costing and channel reconciliation aren't optional. They are the business model.</p>
-            </div>
-            <div class="p-10 bg-off-white/50 border border-dark-teal/5 rounded-3xl hover:bg-white hover:shadow-2xl transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
-                <span class="material-symbols-outlined text-primary-gold text-4xl mb-6">rocket_launch</span>
-                <h3 class="font-headline font-bold text-2xl mb-6">Expansion-ready owners</h3>
-                <p class="text-dark-teal/70 leading-relaxed">Build the right backend before the chaos, not during it. Faster implementation before you scale.</p>
-            </div>
-        </div>
-    </div>
-</section>
+<div class="hidden">
+    <!-- Old Who This Is For moved to sticky reveal above -->
+</div>
 
 <!-- FAQ Section -->
 <section class="bg-off-white py-24 md:py-32">
@@ -446,15 +678,31 @@
     <div class="absolute inset-0 bg-primary-gold/5 opacity-50 relative pointer-events-none"></div>
     <div class="container mx-auto px-6 text-center">
         <div class="max-w-4xl mx-auto" data-aos="zoom-in">
-            <h2 class="font-headline font-bold text-pure-white text-[36px] md:text-[64px] leading-tight mb-8">
+            <h2 class="font-headline font-extrabold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8">
                 Tell Us What Your Food Cost <br/> Looked Like <span class="text-primary-gold italic">Last Month.</span>
             </h2>
-            <p class="text-muted-silver text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light">
+            <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
                 In 30 minutes, we can show you where the variance is coming from and what a configured Odoo setup would do to it.
             </p>
-            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:brightness-110 shadow-lg inline-block transition-all">
+            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block transition-all">
                 Book a Free Consultation
             </a>
+
+            <!-- Trust Line -->
+            <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                    <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                    No commitment required
+                </div>
+                <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                    <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                    Setup walkthrough included
+                </div>
+                <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                    <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                    Dedicated implementation support
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -670,9 +918,75 @@
             if (!isActive) item.classList.add('active');
         });
     });
+
+    // GSAP ScrollTrigger for Parallax
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Feature Overlay Animation
+    gsap.utils.toArray('.sticky-feature-row').forEach(row => {
+        const textCard = row.querySelector('.text-overlay-card');
+        const img = row.querySelector('.image-container img');
+
+        gsap.to(textCard, {
+            y: "-120vh", // Scroll text up across the pinned image
+            ease: "none",
+            scrollTrigger: {
+                trigger: row,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Subtly scale the pinned image as text passes
+        gsap.to(img, {
+            scale: 1.15,
+            opacity: 0.15, // Fade image more as text overlaps
+            scrollTrigger: {
+                trigger: row,
+                start: "top center",
+                end: "bottom center",
+                scrub: true
+            }
+        });
+    });
+
+    // Sticky Reveal Card Stack Logic
+    const revealCards = document.querySelectorAll('.reveal-card');
+    if (revealCards.length > 0) {
+        ScrollTrigger.create({
+            trigger: ".sticky-reveal-section",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const totalCards = revealCards.length;
+                const activeIndex = Math.min(
+                    Math.floor(progress * totalCards),
+                    totalCards - 1
+                );
+
+                revealCards.forEach((card, idx) => {
+                    if (idx === activeIndex) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }
 </script>
 
     <script src="../js/components.js"></script>
+
+    <!-- Cal.com Universal Embed Initialization -->
+    <script>
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const sn = ar[1]; const obj = [sn, { q: [] }]; cal.q.push(obj); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", { origin: "https://cal.com" });
+    Cal("ui", { "theme": "dark", "styles": { "branding": { "brandColor": "#CA9703" } }, "hideEventTypeDetails": true, "layout": "month_view" });
+    </script>
 
 </body>
 </html>

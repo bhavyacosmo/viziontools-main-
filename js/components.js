@@ -70,17 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function initMobileMenu() {
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
         const mobileNavigation = document.getElementById('mobile-navigation');
 
-        if (mobileMenuToggle && mobileNavigation) {
-            const menuIcon = mobileMenuToggle.querySelector('.menu-icon');
-            const closeIcon = mobileMenuToggle.querySelector('.close-icon');
+        if (mobileNavigation) {
+            const menuIcon = mobileMenuToggle?.querySelector('.menu-icon');
+            const closeIcon = mobileMenuToggle?.querySelector('.close-icon');
 
-            mobileMenuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
+            const toggleMenu = (forceClose = false) => {
                 const isOpen = mobileNavigation.classList.contains('translate-x-0');
                 
-                if (isOpen) {
+                if (isOpen || forceClose) {
                     mobileNavigation.classList.remove('translate-x-0');
                     mobileNavigation.classList.add('translate-x-full');
                     if (menuIcon) menuIcon.classList.remove('hidden');
@@ -93,7 +93,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (closeIcon) closeIcon.classList.remove('hidden');
                     document.body.style.overflow = 'hidden';
                 }
-            });
+            };
+
+            if (mobileMenuToggle) {
+                mobileMenuToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleMenu();
+                });
+            }
+
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleMenu(true);
+                });
+            }
 
             // Mobile Dropdown Accordion Logic
             const dropdownTriggers = mobileNavigation.querySelectorAll('.mobile-dropdown-trigger');
