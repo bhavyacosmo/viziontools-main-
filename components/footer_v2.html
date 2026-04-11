@@ -1,0 +1,256 @@
+<!-- Footer Design Tokens (Centralized) -->
+<style>
+    :root {
+        --footer-bg: #08415C;
+        --footer-brand-gold: #CA9703;
+        --footer-text-muted: #8A9AAD;
+        --footer-border: rgba(202, 151, 3, 0.2);
+    }
+
+    /* â”€â”€ Location Cards â”€â”€ */
+    .vt-loc-card {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        padding: 40px 36px;
+        box-sizing: border-box;
+    }
+
+    .vt-loc-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(202, 151, 3, 0.4);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Large country code watermark behind each card */
+    .vt-watermark {
+        position: absolute;
+        bottom: -25px;
+        right: -5px;
+        font-size: 160px;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.03);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        z-index: 0;
+        letter-spacing: -0.04em;
+        transition: color 0.5s ease;
+    }
+
+    .vt-loc-card:hover .vt-watermark {
+        color: rgba(202, 151, 3, 0.06);
+    }
+
+    /* Cards grid - pure CSS, no Tailwind needed */
+    .vt-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        text-align: left;
+    }
+
+    @media (max-width: 768px) {
+        .vt-cards-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* â”€â”€ Footer link hover â”€â”€ */
+    .footer-link {
+        transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: #FFFFFF !important;
+        padding-left: 2px;
+    }
+
+    /* â”€â”€ Social icons â”€â”€ */
+    .social-icon {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--footer-text-muted);
+        transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+        background: var(--footer-brand-gold);
+        color: #052D40;
+        transform: translateY(-2px);
+    }
+</style>
+
+<!-- Load Material Symbols if missing -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+<footer style="background-color:#08415C; padding-top:96px; padding-bottom:48px; position:relative; overflow:hidden; color:white; font-family:'DM Sans','Manrope',sans-serif;">
+    <div style="max-width:1280px; margin:0 auto; padding:0 24px; position:relative; z-index:10;">
+        
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• Top: Links Grid â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
+            
+            <!-- Column 1: Brand Identity -->
+            <div class="space-y-8">
+                <a href="index.html" class="inline-block group border-none outline-none">
+                    <img src="Transparent Logo (1).png" alt="Vizion Tools" class="h-10 md:h-12 w-auto object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
+                </a>
+                <div style="color:#8A9AAD; font-size:14px; line-height:1.7; max-width:300px; font-weight:300;">
+                    "Transforming businesses through custom software, AI automation, and digital solutions, built to deliver real results and long-term growth."
+                </div>
+                <!-- Social Channels -->
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <a href="https://www.facebook.com/viziontools" target="_blank" class="social-icon">
+                        <svg style="width:16px; height:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/viziontools" target="_blank" class="social-icon">
+                        <svg style="width:16px; height:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/viziontools/" target="_blank" class="social-icon">
+                        <svg style="width:16px; height:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848s.012-3.584.07-4.849c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441c.795 0 1.439-.645 1.439-1.441s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/viziontools/" target="_blank" class="social-icon">
+                        <svg style="width:16px; height:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Column 2: Services -->
+            <div class="space-y-7">
+                <h4 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; color:#CA9703; font-size:11px; text-transform:uppercase; letter-spacing:0.3em;">Services</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:16px;">
+                    <li><a href="https://odoovizion.com/" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Odoo ERP</a></li>
+                    <li><a href="#" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Zoho ERP</a></li>
+                    <li><a href="industries/retail.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">POS â€” Retail</a></li>
+                    <li><a href="industries/restaurants.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">POS â€” Restaurant</a></li>
+                    <li><a href="web-design-development.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Web Design &amp; Development</a></li>
+                    <li><a href="graphic-design.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Graphic Design</a></li>
+                    <li><a href="social-media-development.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Social Media Management</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Company -->
+            <div class="space-y-7">
+                <h4 style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; color:#CA9703; font-size:11px; text-transform:uppercase; letter-spacing:0.3em;">Company</h4>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:16px;">
+                    <li><a href="about-us.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">About Us</a></li>
+                    <li><a href="contact.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Contact Us</a></li>
+                    <li><a href="portfolio.html" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Portfolio</a></li>
+                    <li><a href="#" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Case Studies</a></li>
+                    <li><a href="https://viziontools.com/blog/" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Blog</a></li>
+                    <li><a href="#" class="footer-link" style="color:rgba(255,255,255,0.7); font-size:14px; font-weight:300; text-decoration:none;">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact & CTA -->
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:32px;">
+                <div style="display:flex; flex-direction:column; gap:20px; width:100%;">
+                    <div style="display:flex; align-items:center; gap:16px; justify-content:flex-end; cursor:pointer;">
+                        <span style="color:rgba(255,255,255,0.8); font-size:14px; font-weight:300;">support@viziontools.com</span>
+                        <div style="width:32px; height:32px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center;">
+                            <span class="material-symbols-outlined" style="color:#CA9703; font-size:18px;">mail</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center; gap:16px; justify-content:flex-end; cursor:pointer;">
+                        <span style="color:rgba(255,255,255,0.8); font-size:14px; font-weight:300;">New Britain, United States</span>
+                        <div style="width:32px; height:32px; border-radius:8px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center;">
+                            <span class="material-symbols-outlined" style="color:#CA9703; font-size:18px;">location_on</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a data-cal-link="piyushchandak/30min" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="cursor:pointer; background-color:#CA9703; color:#052D40; padding:12px 40px; font-weight:700; font-size:14px; text-align:center; text-decoration:none; display:inline-block; transition:all 0.3s ease;">
+                    Book a Demo
+                </a>
+            </div>
+        </div>
+
+        <!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• Global Presence Section â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+        <div style="margin-bottom:96px; padding-top:96px; border-top:1px solid rgba(255,255,255,0.1); text-align:center;">
+            <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; color:#CA9703; font-size:12px; text-transform:uppercase; letter-spacing:0.5em; margin-bottom:20px; display:block;">GLOBAL PRESENCE</span>
+            <h2 style="color:#FFFFFF; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:52px; line-height:1.1; margin-bottom:24px;">Serving clients worldwide.</h2>
+            <div style="color:#8A9AAD; font-size:16px; max-width:640px; margin:0 auto 64px auto; font-weight:300; line-height:1.7;">
+                Our offices across four continents ensure seamless localized support and enterprise execution.
+            </div>
+
+            <!-- 3-Column Cards Grid -->
+            <div id="vt-global-cards" class="vt-cards-grid">
+
+                <!-- â”€â”€ Card 1 Â· United States â”€â”€ -->
+                <div class="vt-loc-card">
+                    <div class="vt-watermark">US</div>
+                    <div style="position:relative; z-index:2;">
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                            <span style="width:40px; height:40px; border-radius:50%; background:rgba(202,151,3,0.12); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="color:#CA9703; font-size:20px;">location_on</span>
+                            </span>
+                            <h3 style="color:#FFFFFF; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; margin:0;">United States</h3>
+                        </div>
+                        <div style="color:#8A9AAD; font-size:14px; line-height:1.7; margin-bottom:32px; font-weight:300;">
+                            600 East St Suite 103, New Britain, CT 06051, United States
+                        </div>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <span class="material-symbols-outlined" style="color:#CA9703; font-size:18px;">call</span>
+                            <a href="tel:+19292044923" style="color:#CA9703; font-weight:700; font-size:15px; text-decoration:none;">+1 (929) 204-4923</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- â”€â”€ Card 2 Â· Egypt â”€â”€ -->
+                <div class="vt-loc-card">
+                    <div class="vt-watermark">EG</div>
+                    <div style="position:relative; z-index:2;">
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                            <span style="width:40px; height:40px; border-radius:50%; background:rgba(202,151,3,0.12); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="color:#CA9703; font-size:20px;">location_on</span>
+                            </span>
+                            <h3 style="color:#FFFFFF; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; margin:0;">Egypt</h3>
+                        </div>
+                        <div style="color:#8A9AAD; font-size:14px; line-height:1.7; margin-bottom:32px; font-weight:300;">
+                            1-109 King Faisal St, Abu Qatadah, Boulaq Al Dakrour, Giza
+                        </div>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <span class="material-symbols-outlined" style="color:#CA9703; font-size:18px;">call</span>
+                            <a href="tel:+201026739595" style="color:#CA9703; font-weight:700; font-size:15px; text-decoration:none;">+20-102-673-9595</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- â”€â”€ Card 3 Â· India â”€â”€ -->
+                <div class="vt-loc-card">
+                    <div class="vt-watermark">IN</div>
+                    <div style="position:relative; z-index:2;">
+                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
+                            <span style="width:40px; height:40px; border-radius:50%; background:rgba(202,151,3,0.12); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0;">
+                                <span class="material-symbols-outlined" style="color:#CA9703; font-size:20px;">location_on</span>
+                            </span>
+                            <h3 style="color:#FFFFFF; font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:20px; margin:0;">India</h3>
+                        </div>
+                        <div style="color:#8A9AAD; font-size:14px; line-height:1.7; margin-bottom:32px; font-weight:300;">
+                            7th floor, Trend workspace, Dickenson Rd, Bengaluru, KA 560042
+                        </div>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <span class="material-symbols-outlined" style="color:#CA9703; font-size:18px;">call</span>
+                            <a href="tel:+918861118415" style="color:#CA9703; font-weight:700; font-size:15px; text-decoration:none;">+91 88611 18415</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</footer>
+

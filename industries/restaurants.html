@@ -120,40 +120,6 @@
             transform: translateY(-5px);
         }
 
-        /* Glassmorphism Locations Card */
-        .location-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border-radius: 24px;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .location-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(202, 151, 3, 0.4);
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
-
-        .iso-watermark {
-            position: absolute;
-            bottom: -20px;
-            right: -10px;
-            font-size: 120px;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.03);
-            user-select: none;
-            pointer-events: none;
-            transition: all 0.5s ease;
-            font-family: 'Bricolage Grotesque', sans-serif;
-        }
-
-        .location-card:hover .iso-watermark {
-            color: rgba(202, 151, 3, 0.1);
-            transform: scale(1.1) rotate(-5deg);
         }
 
         .reveal-parallax {
@@ -708,169 +674,12 @@
 </section>
 
 <!-- Running Line (Marquee Ribbon) -->
-<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
-    <div class="flex marquee-animation marquee-slow whitespace-nowrap">
-        <!-- Main Content -->
-        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
-            <span>ERP</span> <span class="opacity-40">·</span>
-            <span>ODOO</span> <span class="opacity-40">·</span>
-            <span>ZOHO</span> <span class="opacity-40">·</span>
-            <span>POS RETAIL</span> <span class="opacity-40">·</span>
-            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
-            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
-            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
-            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
-            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
-            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
-            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
-        </div>
-        <!-- Repeat for seamless loop -->
-        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
-            <span>ERP</span> <span class="opacity-40">·</span>
-            <span>ODOO</span> <span class="opacity-40">·</span>
-            <span>ZOHO</span> <span class="opacity-40">·</span>
-            <span>POS RETAIL</span> <span class="opacity-40">·</span>
-            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
-            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
-            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
-            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
-            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
-            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
-            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
-        </div>
     </div>
 </div>
 
- <footer class="bg-[#08415C] pt-24 pb-12 relative overflow-hidden">
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
-            
-            <!-- Col 1: Brand -->
-            <div class="space-y-8">
-                <a href="index.html" class="block group -ml-2">
-                    <img src="Transparent Logo (1).png" alt="Vizion Tools" class="h-24 w-auto object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
-                </a>
-                <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[320px]">
-                    "Transforming businesses through custom software, AI automation, and digital solutions, built to deliver real results and long-term growth."
-                </p>
-                <!-- Social Icons -->
-                <div class="flex items-center gap-4">
-                    <a href="https://www.facebook.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z"/></svg>
-                    </a>
-                    <a href="https://x.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848s.012-3.584.07-4.849c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441c.795 0 1.439-.645 1.439-1.441s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="https://uk.pinterest.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.966 7.398 6.931 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C24.02 5.367 18.637 0 12.017 0z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/@viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                </div>
-            </div>
+<div id="footer-placeholder"></div>
 
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Services</h4>
-                <ul class="space-y-4">
-                    <li><a href="https://odoovizion.com/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Odoo ERP</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Zoho ERP</a></li>
-                    <li><a href="industries/retail.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS — Retail</a></li>
-                    <li><a href="industries/restaurants.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS — Restaurant</a></li>
-                    <li><a href="web-design-development.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Web Design & Development</a></li>
-                    <li><a href="graphic-design.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Graphic Design</a></li>
-                    <li><a href="social-media-development.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Social Media Management</a></li>
-                </ul>
-            </div>
 
-            <!-- Col 3: Company -->
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Company</h4>
-                <ul class="space-y-4">
-                    <li><a href="about-us.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="contact.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Contact Us</a></li>
-                    <li><a href="portfolio.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Portfolio</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Case Studies</a></li>
-                    <li><a href="https://viziontools.com/blog/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Blog</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Careers</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Contact -->
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Contact</h4>
-                <div class="space-y-4 text-[#8A9AAD] text-[14px]">
-                    <p class="font-body font-normal flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[18px]">mail</span>
-                        support@viziontools.com
-                    </p>
-                    <p class="font-body font-normal flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[18px]">location_on</span>
-                        New Britain, United States
-                    </p>
-                </div>
-                <div class="pt-4">
-                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
-                        Book a Demo
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        
-        <!-- Global Presence Section (New UI Format) -->
-        <div class="mb-24 mt-8">
-            <div class="text-center mb-16">
-                <span class="font-body font-medium text-[11px] text-[#CA9703] uppercase tracking-[0.2em] mb-4 block">GLOBAL PRESENCE</span>
-                <h2 class="font-headline font-bold text-white text-[32px] md:text-[42px] leading-tight mb-4">Serving clients worldwide.</h2>
-                <p class="font-body font-light text-[#8A9AAD] text-[16px] max-w-2xl mx-auto">Our offices across four continents ensure seamless localized support and enterprise execution.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Location: US -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">US</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">United States</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">600 East St Suite 103, New Britain, CT 06051, United States</p>
-                        <a href="tel:+19292044923" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +1 (929) 204-4923
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Location: Egypt -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">EG</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">Egypt</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">1-109 King Faisal St, Abu Qatadah, Boulaq Al Dakrour, Giza</p>
-                        <a href="tel:+201026739595" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +20-102-673-9595
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Location: India -->
-                <div class="location-card p-8 group">
                     <div class="iso-watermark">IN</div>
                     <div class="relative z-10">
                         <div class="flex items-center gap-3 mb-6">
@@ -886,22 +695,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Bottom Bar -->
-        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p class="font-body font-light text-[13px] text-white/30">
-                &copy; 2026 Vizion Tools. All rights reserved.
-            </p>
-            <div class="flex items-center gap-6">
-                <a href="https://viziontools.com/privacy-policy/" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Privacy Policy</a>
-                <span class="w-1 h-1 rounded-full bg-white/10"></span>
-                <a href="https://viziontools.com/term-of-service/" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-</footer>
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
@@ -981,12 +775,7 @@
 
     <script src="../js/components.js"></script>
 
-    <!-- Cal.com Universal Embed Initialization -->
-    <script>
-    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const sn = ar[1]; const obj = [sn, { q: [] }]; cal.q.push(obj); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", { origin: "https://cal.com" });
-    Cal("ui", { "theme": "dark", "styles": { "branding": { "brandColor": "#CA9703" } }, "hideEventTypeDetails": true, "layout": "month_view" });
-    </script>
+
 
 </body>
 </html>
