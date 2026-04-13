@@ -6,12 +6,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
     
-    // Improved Directory Depth Detection
-    // Logic: If we are in an industry page or subfolder, we need to go up one level to find 'components/'
-    const isSubdir = path.toLowerCase().indexOf('industries') !== -1 || 
-                    (path.split('/').filter(p => p).length >= 2 && !path.endsWith('index.html') && !path.endsWith('/'));
-    
-    const pathPrefix = isSubdir ? '../' : '';
+    // Dynamic Path Prefix Detection
+    // Finds the current depth by looking at the script's own relative path
+    const scripts = document.getElementsByTagName('script');
+    let pathPrefix = '';
+    for (let i = 0; i < scripts.length; i++) {
+        const src = scripts[i].getAttribute('src');
+        if (src && src.includes('js/components.js')) {
+            pathPrefix = src.replace('js/components.js', '');
+            break;
+        }
+    }
 
     /**
      * Helper to fix relative paths in injected content
