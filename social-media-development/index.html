@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Managed Social Media Marketing Services | VizionTools</title>
     <meta name="description" content="Managed social media growth for B2B and D2C brands — content creation, scheduling, analytics & paid strategy. Results you can measure. Get a free audit today.">
-    <link rel="icon" type="image/png" href="Favicon Transparent.ico">
+    <link rel="icon" type="image/png" href="../assets/Favicon Transparent.ico">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,12 +67,17 @@
         .growth-track {
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 20px;
             width: 2px;
             height: 100%;
             background: rgba(255, 255, 255, 0.05);
             z-index: 1;
+        }
+        @media (min-width: 768px) {
+            .growth-track {
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
         .growth-line-fill {
             position: absolute;
@@ -121,6 +126,7 @@
         .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding-bottom 0.3s ease; }
         .faq-item.active .faq-content { max-height: 500px; padding-bottom: 1.5rem; }
         .faq-item.active .faq-icon { transform: rotate(180deg); color: #CA9703; }
+
     </style>
 </head>
 <body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
@@ -128,9 +134,20 @@
     <div id="navbar-placeholder" class="shrink-0 z-50"></div>
 
 <!-- Social Storm Hero Section -->
-<section class="relative min-h-[90vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24 px-6">
-    <div class="absolute inset-0 grid-overlay opacity-10"></div>
-    <div class="absolute inset-0 noise-texture pointer-events-none"></div>
+<section class="relative min-h-[95vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24 px-6">
+    <!-- Background Image with Cinematic Overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="../assets/social_hero_bg.png" alt="" class="w-full h-full object-cover opacity-40">
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-navy via-transparent to-deep-navy"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-deep-navy via-transparent to-deep-navy"></div>
+    </div>
+    
+    <div class="absolute inset-0 grid-overlay opacity-10 z-1"></div>
+    <div class="absolute inset-0 noise-texture pointer-events-none z-1"></div>
+    
+    <!-- Ambient Glows -->
+    <div class="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-primary-gold/10 blur-[150px] rounded-full animate-pulse"></div>
+    <div class="absolute bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-warm-amber/10 blur-[120px] rounded-full animate-pulse" style="animation-delay: -2s;"></div>
     
     <!-- Social Storm Background Feed -->
     <div class="absolute inset-0 flex justify-center gap-12 opacity-10 pointer-events-none blur-sm">
@@ -218,12 +235,12 @@
         <div id="growth-fill" class="growth-line-fill"></div>
     </div>
     
-    <div class="container mx-auto px-6 relative z-10 space-y-64">
+    <div class="container mx-auto px-6 relative z-10 space-y-64 pl-12 md:pl-6">
         
         <!-- Feature 1: Strategy -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="space-y-8" data-aos="fade-right">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-8 pointer-events-none">01</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:-left-8 pointer-events-none">01</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Content Strategy Rooted in Real Interests</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">We define content pillars, posting frequency, and voice guidelines before a single post is written—so every piece of content serves a purpose.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">
@@ -236,30 +253,21 @@
                 </div>
             </div>
             <div class="hidden md:flex justify-end" data-aos="fade-left">
-                <div class="w-80 h-80 bg-dark-teal rounded-3xl p-8 flex flex-col justify-between border border-white/10 tilt-card">
-                    <div class="flex gap-2">
-                         <div class="w-8 h-8 rounded-full bg-primary-gold/20 flex items-center justify-center"><span class="material-symbols-outlined text-primary-gold text-sm">groups</span></div>
-                         <div class="w-8 h-8 rounded-full bg-white/5"></div>
-                         <div class="w-8 h-8 rounded-full bg-white/5"></div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="h-2 w-full bg-white/10 rounded-full"></div>
-                        <div class="h-2 w-3/4 bg-white/10 rounded-full"></div>
-                        <div class="h-4 w-full bg-primary-gold/30 rounded-md"></div>
-                    </div>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="../assets/social_f1.png" alt="Social Strategy" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
         </div>
 
         <!-- Feature 2: Content Creation -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="hidden md:flex justify-start order-2 md:order-1" data-aos="fade-right">
-                <div class="w-80 h-80 bg-warm-amber/10 rounded-full p-8 flex items-center justify-center border border-warm-amber/20 tilt-card">
-                    <span class="material-symbols-outlined text-warm-amber text-[80px] animate-pulse">movie_edit</span>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="../assets/social_f2.png" alt="Content Creation" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
             <div class="space-y-8 order-1 md:order-2" data-aos="fade-left">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -right-8 pointer-events-none">02</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:left-auto md:-right-8 pointer-events-none">02</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Original Content Creation That Stands Out</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">No stock photo dependencies. Original social content—graphics, short-form video scripts, reels concepts—designed for your specific voice.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">
@@ -274,9 +282,9 @@
         </div>
 
         <!-- Feature 3: Analytics -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="space-y-8" data-aos="fade-right">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-8 pointer-events-none">03</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:-left-8 pointer-events-none">03</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Analytics Reporting That Connects to Outcomes</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">Monthly vanity metrics are not useful. We report on CTR on linked content, engagement rates by type, and trackable conversion data.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">
@@ -289,26 +297,21 @@
                 </div>
             </div>
             <div class="hidden md:flex justify-end" data-aos="fade-left">
-                <div class="w-80 h-80 bg-deep-navy border border-primary-gold/30 rounded-3xl p-8 tilt-card overflow-hidden">
-                    <div class="flex items-end gap-2 h-full">
-                        <div class="flex-1 bg-white/5 h-[40%]"></div>
-                        <div class="flex-1 bg-white/5 h-[60%]"></div>
-                        <div class="flex-1 bg-primary-gold/40 h-[90%]"></div>
-                        <div class="flex-1 bg-white/5 h-[75%]"></div>
-                    </div>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="../assets/social_f3.png" alt="ROI Analytics" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
         </div>
 
         <!-- Feature 4: Paid Social -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="hidden md:flex justify-start order-2 md:order-1" data-aos="fade-right">
-                <div class="w-80 h-80 bg-primary-gold rounded-[48px] flex flex-col items-center justify-center tilt-card">
-                     <span class="material-symbols-outlined text-deep-navy text-[120px]">ads_click</span>
+                <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
+                    <img src="../assets/social_f4.png" alt="Paid Social" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
             <div class="space-y-8 order-1 md:order-2" data-aos="fade-left">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -right-8 pointer-events-none">04</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:left-auto md:-right-8 pointer-events-none">04</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Paid Campaigns That Remove Reach Limits</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">Paid amplification on Meta, LinkedIn, and TikTok using precision custom, lookalike, and intent-based targeting.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">
@@ -372,61 +375,61 @@
 <!-- FAQ Section (5 Questions) -->
 <section class="bg-off-white py-24 md:py-32">
     <div class="container mx-auto px-6 max-w-4xl">
-        <h2 class="font-headline font-bold text-dark-teal text-4xl mb-12 text-center" data-aos>Frequently Asked Questions</h2>
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>Frequently Asked Questions</h2>
         
         <div class="space-y-4">
             <!-- FAQ 1 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Which social platforms do you manage?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Which social platforms do you manage?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">LinkedIn, Instagram, Facebook, TikTok, X (Twitter), and Snapchat. We recommend platform prioritization based on your specific audience and business objectives.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">LinkedIn, Instagram, Facebook, TikTok, X (Twitter), and Snapchat. We recommend platform prioritization based on your specific audience and business objectives.</p>
                 </div>
             </div>
 
             <!-- FAQ 2 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you create the content or do we need to provide it?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you create the content or do we need to provide it?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">We create it. Original copywriting, graphic design, and video concept development are all included. We handle client approvals before anything goes live.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We create it. Original copywriting, graphic design, and video concept development are all included. We handle client approvals before anything goes live.</p>
                 </div>
             </div>
 
             <!-- FAQ 3 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">How do you measure success?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How do you measure success?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">We set KPIs at engagement start—follower growth, reach, CTR, or lead generation. Monthly reports track against these custom baselines.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We set KPIs at engagement start—follower growth, reach, CTR, or lead generation. Monthly reports track against these custom baselines.</p>
                 </div>
             </div>
 
             <!-- FAQ 4 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">Do you manage paid advertising as well as organic?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you manage paid advertising as well as organic?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Yes. Paid social management is available as an add-on or as part of a full managed service for maximum channel efficiency.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. Paid social management is available as an add-on or as part of a full managed service for maximum channel efficiency.</p>
                 </div>
             </div>
 
             <!-- FAQ 5 -->
             <div class="faq-item" data-aos>
-                <button class="faq-trigger w-full flex items-center justify-between py-6 text-left group">
-                    <span class="faq-title font-headline font-bold text-xl transition-colors">What's included in the onboarding process?</span>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What's included in the onboarding process?</span>
                     <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
                 </button>
                 <div class="faq-content">
-                    <p class="text-dark-teal/70 leading-relaxed">Brand audit, audience research, competitor analysis, pillar definition, and first-month content calendar. Publishing starts within 2 weeks of kick-off.</p>
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Brand audit, audience research, competitor analysis, pillar definition, and first-month content calendar. Publishing starts within 2 weeks of kick-off.</p>
                 </div>
             </div>
         </div>
@@ -439,15 +442,31 @@
         <div class="bg-deep-navy rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden group" data-aos>
             <div class="absolute inset-0 bg-primary-gold opacity-0 group-hover:opacity-5 transition-opacity duration-700"></div>
             <div class="relative z-10 max-w-4xl mx-auto">
-                <h2 class="font-headline font-bold text-pure-white text-[32px] md:text-[64px] leading-tight mb-8">
+                <h2 class="font-headline font-bold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
                     Social Media Should Generate <span class="text-primary-gold italic">Pipeline</span> — Not Just Impressions.
                 </h2>
-                <p class="text-muted-silver text-lg md:text-xl mb-12 max-w-2xl mx-auto">
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
                     If your social presence isn't converting attention into business outcomes, the strategy is missing. We'll audit your current channels for free.
                 </p>
-                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-sm font-black text-[18px] uppercase tracking-widest hover:scale-105 transition-all shadow-2xl inline-block">
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
                     Get a Free Social Media Audit
                 </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -487,167 +506,8 @@
     </div>
 </div>
 
-   <footer class="bg-[#08415C] pt-24 pb-12 relative overflow-hidden">
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-20">
-            
-            <!-- Col 1: Brand -->
-            <div class="space-y-8">
-                <a href="index.html" class="block group -ml-2">
-                    <img src="Transparent Logo (1).png" alt="Vizion Tools" class="h-24 w-auto object-contain transition-all group-hover:scale-105 duration-500" style="filter: invert(65%) sepia(91%) saturate(545%) hue-rotate(5deg) brightness(101%) contrast(96%); opacity: 0.95;">
-                </a>
-                <p class="font-body font-light text-[#8A9AAD] text-[14px] leading-relaxed max-w-[320px]">
-                    "Transforming businesses through custom software, AI automation, and digital solutions, built to deliver real results and long-term growth."
-                </p>
-                <!-- Social Icons -->
-                <div class="flex items-center gap-4">
-                    <a href="https://www.facebook.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V21.878C18.343 21.128 22 16.991 22 12z"/></svg>
-                    </a>
-                    <a href="https://x.com/viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    </a>
-                    <a href="https://www.instagram.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849s-.011 3.584-.069 4.849c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.849-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.848s.012-3.584.07-4.849c.149-3.225 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.058-1.281.072-1.689.072-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441c.795 0 1.439-.645 1.439-1.441s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/company/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                    <a href="https://uk.pinterest.com/viziontools/" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.965 1.406-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.261 7.929-7.261 4.162 0 7.398 2.966 7.398 6.931 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C24.02 5.367 18.637 0 12.017 0z"/></svg>
-                    </a>
-                    <a href="https://www.youtube.com/@viziontools" target="_blank" rel="noopener noreferrer" class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#8A9AAD] hover:bg-[#CA9703] hover:text-[#052D40] hover:border-[#CA9703] transition-all">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                </div>
-            </div>
+    <div id="footer-placeholder"></div>
 
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Services</h4>
-                <ul class="space-y-4">
-                    <li><a href="https://odoovizion.com/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Odoo ERP</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Zoho ERP</a></li>
-                    <li><a href="industries/retail.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS — Retail</a></li>
-                    <li><a href="industries/restaurants.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">POS — Restaurant</a></li>
-                    <li><a href="web-design-development.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Web Design & Development</a></li>
-                    <li><a href="graphic-design.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Graphic Design</a></li>
-                    <li><a href="social-media-development.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Social Media Management</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 3: Company -->
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Company</h4>
-                <ul class="space-y-4">
-                    <li><a href="about-us.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="contact.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Contact Us</a></li>
-                    <li><a href="portfolio.html" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Portfolio</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Case Studies</a></li>
-                    <li><a href="https://viziontools.com/blog/" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Blog</a></li>
-                    <li><a href="#" class="font-body font-normal text-[#8A9AAD] text-[14px] hover:text-white transition-colors">Careers</a></li>
-                </ul>
-            </div>
-
-            <!-- Col 4: Contact -->
-            <div class="space-y-6">
-                <h4 class="font-body font-medium text-[12px] text-[#CA9703] uppercase tracking-[0.2em]">Contact</h4>
-                <div class="space-y-4 text-[#8A9AAD] text-[14px]">
-                    <p class="font-body font-normal flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[18px]">mail</span>
-                        support@viziontools.com
-                    </p>
-                    <p class="font-body font-normal flex items-center gap-3">
-                        <span class="material-symbols-outlined text-[18px]">location_on</span>
-                        New Britain, United States
-                    </p>
-                </div>
-                <div class="pt-4">
-                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] px-8 py-3 rounded-[4px] font-body font-medium text-[15px] hover:brightness-110 active:scale-95 transition-all shadow-lg inline-block">
-                        Book a Demo
-                    </a>
-                </div>
-            </div>
-
-        </div>
-        
-        <!-- Global Presence Section (New UI Format) -->
-        <div class="mb-24 mt-8">
-            <div class="text-center mb-16">
-                <span class="font-body font-medium text-[11px] text-[#CA9703] uppercase tracking-[0.2em] mb-4 block">GLOBAL PRESENCE</span>
-                <h2 class="font-headline font-bold text-white text-[32px] md:text-[42px] leading-tight mb-4">Serving clients worldwide.</h2>
-                <p class="font-body font-light text-[#8A9AAD] text-[16px] max-w-2xl mx-auto">Our offices across four continents ensure seamless localized support and enterprise execution.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Location: US -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">US</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">United States</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">600 East St Suite 103, New Britain, CT 06051, United States</p>
-                        <a href="tel:+19292044923" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +1 (929) 204-4923
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Location: Egypt -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">EG</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">Egypt</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">1-109 King Faisal St, Abu Qatadah, Boulaq Al Dakrour, Giza</p>
-                        <a href="tel:+201026739595" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +20-102-673-9595
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Location: India -->
-                <div class="location-card p-8 group">
-                    <div class="iso-watermark">IN</div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-3 mb-6">
-                            <span class="w-8 h-8 rounded-lg bg-[#CA9703]/10 flex items-center justify-center text-[#CA9703] group-hover:bg-[#CA9703] group-hover:text-[#052D40] transition-all">
-                                <span class="material-symbols-outlined text-[18px]">location_on</span>
-                            </span>
-                            <h4 class="font-headline font-bold text-white text-[18px]">India</h4>
-                        </div>
-                        <p class="text-[#8A9AAD] text-[13px] leading-relaxed mb-6 font-light">7th floor, Trend workspace, Dickenson Rd, Bengaluru, KA 560042</p>
-                        <a href="tel:+918861118415" class="flex items-center gap-2 text-[#CA9703] font-bold text-[13px] hover:gap-3 transition-all">
-                            <span class="material-symbols-outlined text-[16px]">phone</span>
-                            +91 88611 18415
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p class="font-body font-light text-[13px] text-white/30">
-                &copy; 2026 Vizion Tools. All rights reserved.
-            </p>
-            <div class="flex items-center gap-6">
-                <a href="https://viziontools.com/privacy-policy/" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Privacy Policy</a>
-                <span class="w-1 h-1 rounded-full bg-white/10"></span>
-                <a href="https://viziontools.com/term-of-service/" class="font-body font-light text-[13px] text-white/30 hover:text-[#CA9703] transition-colors">Terms of Service</a>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <script>
     // Navigation & Mobile Menu Logic
@@ -693,6 +553,7 @@
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
 </script>
 
-    <script src="js/components.js"></script>
+
+    <script src="../js/components.js"></script>
 </body>
 </html>

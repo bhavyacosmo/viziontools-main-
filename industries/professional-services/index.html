@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ERP for Professional Services Firms | Vizion Tools</title>
+    <meta name="description"
+        content="Billing on spreadsheets. Projects managed in email. Vizion Tools deploys Odoo and Zoho One for professional services firms — timesheets, project profitability, HR, CRM. Book a call.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-gold": "#CA9703",
+                        "dark-teal": "#08415C",
+                        "warm-amber": "#CD8E33",
+                        "deep-navy": "#052D40",
+                        "off-white": "#F7F4EF",
+                        "pure-white": "#FFFFFF",
+                        "muted-silver": "#8A9AAD"
+                    },
+                    fontFamily: {
+                        "headline": ["Bricolage Grotesque", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F7F4EF;
+            overflow-x: hidden;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .font-headline {
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+
+        /* Custom UI aesthetics */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gold-border-gradient {
+            border-image: linear-gradient(to bottom, #CA9703, transparent) 1;
+        }
+
+        /* Grid Overlay */
+        .grid-overlay {
+            background-size: 80px 80px;
+            background-image: linear-gradient(to right, rgba(8, 65, 92, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(8, 65, 92, 0.03) 1px, transparent 1px)
+        }
+
+        /* Marquee Animation */
+        .marquee-animation {
+            animation: marquee 35s linear infinite
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Mega menu sync */
+        .mega-menu-trigger:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            --tw-translate-y: 0px !important;
+        }
+
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            --tw-translate-y: 10px;
+            transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0));
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-item-hover:hover {
+            border-left: 2px solid #CA9703;
+            padding-left: 0.75rem;
+            background-color: rgba(202, 151, 3, 0.05);
+        }
+
+        .nav-item-hover {
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+
+        .mega-menu-trigger:hover .chevron-rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Horizontal Scroll specific */
+        .horizontal-container {
+            width: 300%;
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .horizontal-panel {
+            width: 100vw;
+            height: 100vh;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Character reveal */
+        .char-reveal {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #052D40;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CA9703;
+            border-radius: 10px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid rgba(8, 65, 92, 0.1);
+        }
+
+        .faq-trigger:hover .faq-title {
+            color: #CA9703;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 1000px;
+            padding-bottom: 2rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #CA9703;
+        }
+
+        .float-dashboard {
+            animation: float-dash 6s ease-in-out infinite;
+        }
+
+        @keyframes float-dash {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+
+<body class="selection:bg-primary-gold selection:text-deep-navy">
+
+    <div id="navbar-placeholder" class="shrink-0 z-50"></div>
+
+    <!-- Hero Section (Unique Overlapping Design) -->
+    <section class="relative min-h-screen w-full overflow-hidden flex items-center pt-20 bg-[#052D40]">
+        <div class="absolute inset-0 grid-overlay opacity-5 z-0"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-primary-gold/5 blur-[120px] rounded-full">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-[55%] relative" data-aos="fade-right">
+                <div class="mb-6 overflow-hidden">
+                    <span
+                        class="inline-block text-primary-gold font-bold text-[12px] tracking-[0.5em] uppercase px-6 py-2.5 border border-primary-gold/30 rounded-sm bg-primary-gold/5">
+                        Service Infrastructure 2.0
+                    </span>
+                </div>
+                <h1 class="font-headline font-extrabold text-white text-[48px] md:text-[84px] lg:text-[104px] leading-[0.95] tracking-tighter mb-10"
+                    id="hero-title">
+                    Billing on Spreadsheets. <br /> <span class="text-primary-gold italic">A Better Way.</span>
+                </h1>
+                <p
+                    class="text-muted-silver font-body font-light text-[20px] md:text-[28px] leading-snug max-w-2xl mb-12">
+                    Managing administrative debt isn't running a firm. Vizion Tools deploys Zoho One and Odoo to connect
+                    project financials, HR, and CRM into one operational backbone.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-8">
+                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}'
+                        class="cursor-pointer bg-primary-gold text-deep-navy px-12 py-6 rounded-full font-black text-[16px] uppercase tracking-widest hover:brightness-110 shadow-2xl transition-all duration-500">
+                        Fix My Infrastructure
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:w-[45%] relative mt-16 lg:mt-0" data-aos="zoom-in" data-aos-delay="300">
+                <div
+                    class="relative rounded-[40px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(8,65,92,0.3)] border-[8px] border-white">
+                    <img src="../../assets/prof_services_hero_overlay.png" alt="Agency Hero" class="w-full h-auto">
+                </div>
+                <!-- Floating Data Snippet -->
+                <div
+                    class="absolute -top-12 -right-6 md:-right-12 glass-card bg-white/90 p-8 rounded-3xl shadow-2xl border border-[#CA9703]/20 float-dashboard hidden md:block w-72">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-[10px] font-bold tracking-widest text-[#08415C] uppercase">Live Project
+                            Pulse</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="h-2 w-full bg-[#08415C]/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-primary-gold w-[73%]"></div>
+                        </div>
+                        <div class="flex justify-between text-[11px] font-bold uppercase text-[#8A9AAD]">
+                            <span>Budget Consumed</span>
+                            <span class="text-[#08415C]">73%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Intro (Asymmetrical Layout) -->
+    <section class="bg-[#052D40] py-32 md:py-48 relative overflow-hidden">
+        <div class="absolute inset-0 grid-overlay opacity-5 z-0"></div>
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16 md:gap-24">
+                <div class="lg:col-span-5" data-aos="fade-up">
+                    <h2 class="font-headline font-bold text-white text-[40px] md:text-[60px] leading-none mb-10">
+                        The work is <span class="text-primary-gold">invisible</span> until the invoice.
+                    </h2>
+                </div>
+                <div
+                    class="lg:col-span-7 space-y-10 text-[20px] md:text-[24px] text-white/70 font-light leading-relaxed">
+                    <p>
+                        A consulting firm or agency has a fundamental data problem: work starts, scope is agreed, but
+                        six weeks in, nobody knows whether the hours logged are within budget.
+                    </p>
+                    <p>
+                        Timesheets live in one place, billing in another, and the estimate is in an lost email. The
+                        invoice goes out, the client pushes back, and profitability becomes a guess.
+                    </p>
+                    <div class="p-8 border-l-4 border-primary-gold bg-white/5 rounded-r-3xl">
+                        <p class="text-white font-medium text-lg leading-snug">Vizion Tools deploys Odoo and Zoho One
+                            for firms tired of administrative friction consuming billable capacity.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section 1: Real-Time Profitability (Data Reveal) -->
+    <section class="bg-off-white py-24 md:py-48 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mb-24" data-aos="fade-right">
+                <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Financial
+                    Intelligence</span>
+                <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[64px] leading-tight">
+                    Knowing Project Profitability <br /> <span class="italic text-primary-gold">Before It's Over.</span>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-24 items-start">
+                <div class="space-y-12">
+                    <p class="text-[#8A9AAD] text-xl leading-relaxed">
+                        Real-time project profitability isn't a luxury for big firms. Every hour logged reduces the
+                        project budget in real time. Escalation happens before the scope creeps further. No month-end
+                        surprise.
+                    </p>
+                    <div class="grid gap-10">
+                        <div class="flex items-start gap-6 group" data-aos="fade-up">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center shrink-0 border border-dark-teal/5 transition-all group-hover:bg-primary-gold">
+                                <span
+                                    class="material-symbols-outlined text-dark-teal group-hover:text-white">monitoring</span>
+                            </div>
+                            <div>
+                                <h4 class="font-headline font-bold text-xl text-dark-teal mb-3 uppercase tracking-wide">
+                                    Live Budget Tracking</h4>
+                                <p class="text-dark-teal/70">Hours, expenses, and subcontractor costs post in real time
+                                    to the project ledger.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6 group" data-aos="fade-up" data-aos-delay="100">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-white shadow-xl flex items-center justify-center shrink-0 border border-dark-teal/5 transition-all group-hover:bg-primary-gold">
+                                <span
+                                    class="material-symbols-outlined text-dark-teal group-hover:text-white">notifications_active</span>
+                            </div>
+                            <div>
+                                <h4 class="font-headline font-bold text-xl text-dark-teal mb-3 uppercase tracking-wide">
+                                    Automated Overrun Alerts</h4>
+                                <p class="text-dark-teal/70">System warnings when a project crosses 50%, 75%, and 90%
+                                    budget thresholds.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative" data-aos="zoom-in">
+                    <div class="rounded-[40px] overflow-hidden shadow-3xl border-white border-[1px] relative">
+                        <img src="../../assets/prof_services_dashboard.png" alt="Profitability Dashboard" class="w-full">
+                        <div
+                            class="absolute bottom-10 left-10 right-10 p-8 glass-card bg-white/90 rounded-3xl backdrop-blur-3xl shadow-2xl border border-primary-gold/20">
+                            <p class="text-xs font-bold text-dark-teal uppercase tracking-widest mb-4">Utilization
+                                Metrics</p>
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[11px] font-bold text-dark-teal w-16">Billable</span>
+                                    <div class="h-2 flex-1 bg-dark-teal/5 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary-gold bar-width" style="width: 82%"></div>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-primary-gold">82%</span>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <span class="text-[11px] font-bold text-dark-teal w-16">Internal</span>
+                                    <div class="h-2 flex-1 bg-dark-teal/5 rounded-full overflow-hidden">
+                                        <div class="h-full bg-dark-teal bar-width" style="width: 18%"></div>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-dark-teal">18%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section 2: HR & Payroll (Unique Grid Reveal) -->
+    <section class="bg-dark-teal py-24 md:py-48 relative overflow-hidden">
+        <div class="absolute inset-0 grid-overlay opacity-5"></div>
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-20 items-center">
+                <div class="lg:col-span-6" data-aos="fade-right">
+                    <div class="rounded-[40px] overflow-hidden border border-white/10 shadow-3xl">
+                        <img src="../../assets/prof_services_hr.png" alt="HR/Payroll Sync" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-12">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase">Operational
+                        Automation</span>
+                    <h2 class="font-headline font-bold text-white text-[40px] md:text-[56px] leading-[1.1]">
+                        HR and Payroll That Doesn't Need a <span class="italic text-primary-gold">Manual Manager.</span>
+                    </h2>
+                    <p class="text-white/60 text-xl font-light">
+                        Odoo's HR connect staff records, appraisals, and leave requests into one secure system.
+                        Localization for US, UAE, and India is built-in.
+                    </p>
+                    <div class="grid gap-6">
+                        <div class="p-8 glass-card rounded-3xl" data-aos="fade-up">
+                            <h4 class="text-white font-bold text-lg mb-4 flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-gold">account_balance</span> India,
+                                UAE & US Localization
+                            </h4>
+                            <p class="text-white/50 text-sm">Tax rules, statutory deductions, and payslip formats
+                                configured for each jurisdiction without custom development.</p>
+                        </div>
+                        <div class="p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                            <h4 class="text-white font-bold text-lg mb-4 flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-gold">schedule</span> Auto-link
+                                Timesheets
+                            </h4>
+                            <p class="text-white/50 text-sm">Payroll runs from approved timesheets and absence records
+                                automatically. Manual reconciliation stops here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section 3: Sales-to-Delivery Heading -->
+    <section class="bg-off-white pt-24 md:pt-32">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl" data-aos="fade-right">
+                <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-4 block">Seamless
+                    Handoff</span>
+                <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[64px] leading-tight mb-8">
+                    Sales-to-Delivery Without the <br /> <span class="text-primary-gold italic">Handoff Gap.</span>
+                </h2>
+                <p class="text-dark-teal/70 text-xl font-light max-w-2xl">
+                    When CRM closes a deal and sends a "congratulations" email, and then the delivery team starts from
+                    zero — time gets spent on recreation rather than delivery. Vizion Tools shrinks that gap from days
+                    to minutes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL SCREEN HORIZONTAL SECTION -->
+    <section class="bg-deep-navy overflow-hidden" id="horizontal-section">
+        <div class="flex flex-col md:flex-row items-center md:h-screen" id="horizontal-container">
+            <!-- Slide 1: Sales Side -->
+            <div class="w-full md:w-screen flex items-center justify-center p-6 md:p-12 shrink-0 py-16 md:py-0">
+                <div
+                    class="bg-white rounded-[40px] p-8 md:p-16 w-full max-w-6xl shadow-2xl flex flex-col md:flex-row items-center gap-12 border border-white/10">
+                    <div class="md:w-1/2">
+                        <span class="text-primary-gold font-bold text-xs tracking-[0.3em] uppercase mb-6 block">Phase
+                            01</span>
+                        <h3
+                            class="font-headline font-black text-dark-teal text-3xl md:text-5xl mb-6 uppercase tracking-tighter">
+                            Contract Terms & Discovery</h3>
+                        <p class="text-dark-teal/60 text-lg md:text-xl leading-relaxed">
+                            Contract terms and billing milestones defined at the deal stage are inherited by the invoice
+                            schedule. The information the sales team captured becomes the foundation.
+                        </p>
+                        <div class="mt-8 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-primary-gold/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary-gold">assignment</span>
+                            </div>
+                            <span class="text-dark-teal font-bold uppercase text-[10px] tracking-widest">Pricing logic
+                                preserved</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="../../assets/prof_services_delivery.png" class="rounded-3xl shadow-2xl grayscale brightness-110"
+                            alt="Sales Context">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: The Transition (Hidden on Mobile) -->
+            <div class="hidden md:flex w-screen h-screen flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden shrink-0 py-20 md:py-0">
+                <div class="absolute inset-0 grid-overlay opacity-10"></div>
+                <div class="relative z-10 text-center">
+                    <div
+                        class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-primary-gold text-deep-navy mx-auto flex items-center justify-center mb-10 shadow-3xl animate-bounce">
+                        <span class="material-symbols-outlined text-3xl md:text-4xl">sync</span>
+                    </div>
+                    <h3
+                        class="font-headline font-black text-white text-4xl md:text-8xl mb-8 md:mb-6 uppercase tracking-[0.2em]">
+                        SYNCING...</h3>
+                    <p class="text-white/40 text-lg md:text-2xl font-light">Zero Recreation. 100% Alignment.</p>
+                </div>
+                <!-- Connection Lines -->
+                <div class="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary-gold to-transparent opacity-[0.1]"></div>
+            </div>
+
+            <!-- Slide 3: Project Delivery -->
+            <div class="w-full md:w-screen flex items-center justify-center p-6 md:p-12 shrink-0 py-16 md:py-0">
+                <div
+                    class="bg-white rounded-[40px] p-8 md:p-16 w-full max-w-6xl shadow-2xl flex flex-col md:flex-row items-center gap-12 border border-white/10">
+                    <div class="md:w-1/2">
+                        <span class="text-primary-gold font-bold text-xs tracking-[0.3em] uppercase mb-6 block">Phase
+                            02</span>
+                        <h3
+                            class="font-headline font-black text-dark-teal text-3xl md:text-5xl mb-6 uppercase tracking-tighter">
+                            Automatic Project Launch</h3>
+                        <p class="text-dark-teal/60 text-lg md:text-xl leading-relaxed">
+                            Project structure, budget, and resource allocation follow automatically. Client
+                            communication history from the CRM is accessible to the project team during delivery.
+                        </p>
+                        <div class="mt-8 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-primary-gold/10 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary-gold">rocket_launch</span>
+                            </div>
+                            <span class="text-dark-teal font-bold uppercase text-[10px] tracking-widest">Days shrank to
+                                minutes</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="../../assets/prof_services_dashboard.png" class="rounded-3xl shadow-2xl" alt="Project Live">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Post-Summary -->
+    <section class="bg-off-white py-16 md:py-24">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div class="p-8 glass-card bg-white rounded-3xl" data-aos="fade-up">
+                <p class="text-dark-teal font-bold text-xl mb-4">Discovery Phase Recovery</p>
+                <p class="text-dark-teal/70">In professional services, that unbillable discovery phase is a tax on every
+                    new client. We automate the handoff to recover billable capacity.</p>
+            </div>
+            <div class="p-8 glass-card bg-white rounded-3xl" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-dark-teal font-bold text-xl mb-4">Milestone Integrity</p>
+                <p class="text-dark-teal/70">Billing milestones defined at the deal stage are inherited by the invoice
+                    schedule automatically. No manual re-entry.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Callout (High Impact) -->
+    <section class="bg-primary-gold py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center">
+            <div data-aos="zoom-in">
+                <h2 class="font-headline font-black text-deep-navy text-[72px] md:text-[120px] leading-none mb-6"
+                    id="stat-count">0%</h2>
+                <p class="font-headline font-extrabold text-deep-navy text-2xl md:text-4xl max-w-4xl mx-auto mb-12">
+                    Reduction in invoice reconciliation time for a 45-consultant firm. Same data. Automatic invoices.
+                    Zero spreadsheets.
+                </p>
+                <div class="w-24 h-2 bg-deep-navy mx-auto mb-10"></div>
+                <p class="text-deep-navy/80 text-xl font-medium">The finance team recovered 12 hours per billing cycle.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO THIS IS FOR (UNIQUE CARD GRID) -->
+    <section class="bg-white py-32 md:py-48 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="mb-24" data-aos="fade-right">
+                <h2 class="font-headline font-bold text-dark-teal text-[44px] md:text-[72px] leading-tight">
+                    Designed for <br /> <span class="text-primary-gold italic">Specialized Practices.</span>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-0 border border-dark-teal/10 rounded-[60px] overflow-hidden">
+                <div class="p-16 border-r border-dark-teal/10 hover:bg-off-white transition-colors duration-500 group"
+                    data-aos="fade-up">
+                    <span
+                        class="material-symbols-outlined text-[#8A9AAD] text-5xl mb-12 group-hover:text-primary-gold transition-colors">hub</span>
+                    <h3 class="font-headline font-bold text-2xl mb-8">Consulting & Advisory Firms (10–100 staff)</h3>
+                    <p class="text-dark-teal/60 text-lg leading-relaxed">You have the clients and the capability. What's
+                        missing is an operational backbone that makes delivery visible, HR manageable, and billing
+                        automatic.</p>
+                </div>
+                <div class="p-16 border-r border-dark-teal/10 hover:bg-off-white transition-colors duration-500 group"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <span
+                        class="material-symbols-outlined text-[#8A9AAD] text-5xl mb-12 group-hover:text-primary-gold transition-colors">palette</span>
+                    <h3 class="font-headline font-bold text-2xl mb-8">Creative & Digital Agencies</h3>
+                    <p class="text-dark-teal/60 text-lg leading-relaxed">Project-based billing, contractor management,
+                        and the CRM-to-delivery disconnect are the same problems whether you're a law firm or a branding
+                        agency.</p>
+                </div>
+                <div class="p-16 hover:bg-off-white transition-colors duration-500 group" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <span
+                        class="material-symbols-outlined text-[#8A9AAD] text-5xl mb-12 group-hover:text-primary-gold transition-colors">gavel</span>
+                    <h3 class="font-headline font-bold text-2xl mb-8">Accounting, Legal, and HR Practices</h3>
+                    <p class="text-dark-teal/60 text-lg leading-relaxed">Compliance requirements, billable-hour
+                        tracking, and client data confidentiality all have specific configuration needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (FLAGSHIP ACCORDION) -->
+    <section class="bg-off-white py-24 md:py-48">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl">Practiced Answers.</h2>
+            </div>
+
+            <div class="space-y-6">
+                <!-- FAQ 1 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span
+                            class="faq-title font-headline font-bold text-xl md:text-2xl leading-tight transition-colors">What's
+                            the difference between Odoo and Zoho One for professional services?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-500 text-3xl">expand_more</span>
+                    </button>
+                    <div class="faq-content text-dark-teal/70 text-lg leading-relaxed pr-16 font-light">
+                        Both are strong options. Zoho One tends to suit firms that are CRM-led with lighter
+                        manufacturing or inventory needs. Odoo is the better choice when project financials, HR, and
+                        operations need deep integration. Vizion works with both and will recommend the right fit based
+                        on how your firm operates — not which license is more profitable to sell.
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span
+                            class="faq-title font-headline font-bold text-xl md:text-2xl leading-tight transition-colors">Our
+                            projects involve contractors and freelancers, not just full-time staff. Can the system
+                            handle that?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-500 text-3xl">expand_more</span>
+                    </button>
+                    <div class="faq-content text-dark-teal/70 text-lg leading-relaxed pr-16 font-light">
+                        Yes. Odoo handles contractor purchase orders, subcontracted work packages, and freelancer time
+                        tracking within the same project framework as salaried employees. Costs flow into project
+                        financials accordingly.
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span
+                            class="faq-title font-headline font-bold text-xl md:text-2xl leading-tight transition-colors">We
+                            invoice on milestones, not hourly. Does that work?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-500 text-3xl">expand_more</span>
+                    </button>
+                    <div class="faq-content text-dark-teal/70 text-lg leading-relaxed pr-16 font-light">
+                        Odoo's invoicing module supports milestone billing, retainer billing, time and materials, and
+                        fixed-fee contracts — often within the same client relationship. Billing rules are defined at
+                        the project level.
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span
+                            class="faq-title font-headline font-bold text-xl md:text-2xl leading-tight transition-colors">How
+                            does this integrate with our existing accounting software?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-500 text-3xl">expand_more</span>
+                    </button>
+                    <div class="faq-content text-dark-teal/70 text-lg leading-relaxed pr-16 font-light">
+                        Odoo includes a full accounting module. For firms wanting to retain their existing accounting
+                        tool, integration is possible with QuickBooks and Xero. Vizion will map both paths and their
+                        practical implications during the discovery session.
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span
+                            class="faq-title font-headline font-bold text-xl md:text-2xl leading-tight transition-colors">What
+                            does implementation look like for a 30-person firm?</span>
+                        <span
+                            class="material-symbols-outlined faq-icon transition-transform duration-500 text-3xl">expand_more</span>
+                    </button>
+                    <div class="faq-content text-dark-teal/70 text-lg leading-relaxed pr-16 font-light">
+                        Discovery, configuration, data migration, and user training for a 30-person professional
+                        services firm typically runs 6–10 weeks. Vizion includes 30 hours of free onboarding support for
+                        firms migrating from existing software platforms.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section (Agency Performance Style) -->
+    <section class="bg-deep-navy py-32 md:py-60 relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-20">
+            <div class="max-w-5xl mx-auto" data-aos="zoom-in">
+                <h2
+                    class="font-headline font-extrabold text-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
+                    Tell Us What You're Running on <span class="text-primary-gold">Right Now.</span>
+                </h2>
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12"
+                    data-aos="fade-up">
+                    Whether it's a combination of Excel, a standalone CRM, and a payroll tool that never quite talks to
+                    anything else — we've seen it. Bring the current setup to a 30-minute call and we'll show you what a
+                    connected operational backend looks like for a firm your size.
+                </p>
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}'
+                    class="cursor-pointer w-full sm:w-auto bg-[#CA9703] text-[#052D40] px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block transition-transform duration-300 hover:scale-105">
+                    Book a free consultation
+                </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Running Line (Marquee Ribbon) -->
+    <div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
+        <div class="flex marquee-animation marquee-slow whitespace-nowrap">
+            <!-- Main Content -->
+            <div
+                class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+                <span>ERP</span> <span class="opacity-40">·</span>
+                <span>ODOO</span> <span class="opacity-40">·</span>
+                <span>ZOHO</span> <span class="opacity-40">·</span>
+                <span>POS RETAIL</span> <span class="opacity-40">·</span>
+                <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+                <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+                <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+                <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+                <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+                <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+                <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+            </div>
+            <!-- Repeat for seamless loop -->
+            <div
+                class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+                <span>ERP</span> <span class="opacity-40">·</span>
+                <span>ODOO</span> <span class="opacity-40">·</span>
+                <span>ZOHO</span> <span class="opacity-40">·</span>
+                <span>POS RETAIL</span> <span class="opacity-40">·</span>
+                <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+                <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+                <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+                <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+                <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+                <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+                <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+            </div>
+        </div>
+    </div>
+    <div id="footer-placeholder"></div>
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "ERP for Professional Services Firms",
+  "provider": {
+    "@type": "Organization",
+    "name": "Vizion Tools",
+    "url": "https://viziontools.com"
+  },
+  "serviceType": "ERP Implementation for Professional Services",
+  "areaServed": ["US", "UAE", "Saudi Arabia", "India"],
+  "description": "Vizion Tools deploys Odoo and Zoho One for professional services firms — project profitability, timesheets, HR and payroll, CRM-to-delivery integration, and live reporting configured for how your practice actually works.",
+  "url": "https://viziontools.com/industries/professional-services"
+}
+</script>
+
+    <!-- GSAP & Layout Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1200, once: true, easing: 'ease-out-cubic' });
+
+
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const trigger = item.querySelector('.faq-trigger');
+            trigger.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+
+        // GSAP Engine
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Stat Count
+        gsap.to("#stat-count", {
+            innerText: 60,
+            duration: 3,
+            scrollTrigger: { trigger: "#stat-count", start: "top 85%" },
+            snap: { innerText: 1 },
+            onUpdate: function () {
+                this.targets()[0].innerHTML = Math.ceil(this.targets()[0].innerText) + "%";
+            }
+        });
+
+        // PROPER GSAP PINNING for Sales-to-Delivery
+        let mm = gsap.matchMedia();
+        const horizontalContainer = document.getElementById('horizontal-container');
+        const horizontalSection = document.getElementById('horizontal-section');
+
+        mm.add({
+            isDesktop: "(min-width: 768px)"
+        }, (context) => {
+            let { isDesktop } = context.conditions;
+
+            if (isDesktop) {
+                gsap.to(horizontalContainer, {
+                    x: () => -(horizontalContainer.scrollWidth - window.innerWidth),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: horizontalSection,
+                        start: "top top",
+                        end: () => "+=" + (horizontalContainer.scrollWidth),
+                        scrub: 1,
+                        pin: true,
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true
+                    }
+                });
+            }
+        });
+
+    </script>
+
+    <script src="../../js/components.js"></script>
+
+
+</body>
+
+</html>

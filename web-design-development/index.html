@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Custom Web Design & Development Services | VizionTools</title>
+    <meta name="description"
+        content="Custom business websites and full-stack web apps built on React, Next.js & Node.js. Conversion-optimized, not template-based. Get a free project scoping call.">
+    <link rel="icon" type="image/png" href="../assets/Favicon Transparent.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-gold": "#CA9703",
+                        "dark-teal": "#08415C",
+                        "warm-amber": "#CD8E33",
+                        "deep-navy": "#052D40",
+                        "off-white": "#F7F4EF",
+                        "pure-white": "#FFFFFF",
+                        "muted-silver": "#8A9AAD"
+                    },
+                    fontFamily: {
+                        "headline": ["Bricolage Grotesque", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+
+        .grid-overlay {
+            background-size: 60px 60px;
+            background-image: linear-gradient(to right, rgba(202, 151, 3, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.05) 1px, transparent 1px)
+        }
+
+        .noise-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBOMjkHA1Zur3sJoMBF0Jf1Iur_c-YVX56NrigEVmWWM9aBjdyODPVTcMW9AVTnBIyyboRBJQyX0sIjihkvuf_3EXRurAjr0QakaXPrvyiW2pdOhZTKEoVN9qXSPbTQ3aMEqfsvfKM9bnVkBq8y_Tj-v0cB41G9qv3i0eJD2PtEbDqyVCVE5353wax-fs8nD-KNpArA9CeR2ggLwBbPPKdjSe90h1msDG1xiUt99pYK7D1esh54GZhk6l11Z1kbRUnZlluxIWlcCKN6);
+            opacity: 0.03
+        }
+
+        .marquee-animation {
+            animation: marquee 40s linear infinite
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Mega Menu Specifics */
+        .mega-menu-trigger:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            --tw-translate-y: 0px !important;
+        }
+
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            --tw-translate-y: 10px;
+            transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-item-hover:hover {
+            border-left: 2px solid #CA9703;
+            padding-left: 0.75rem;
+            background-color: rgba(202, 151, 3, 0.05);
+        }
+
+        .nav-item-hover {
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+
+        .mega-menu-trigger:hover .chevron-rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(8, 65, 92, 0.1);
+        }
+
+        .faq-trigger:hover .faq-title {
+            color: #CA9703;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-bottom 0.3s ease;
+        }
+
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #CA9703;
+        }
+
+        /* Carousel Styles */
+        .carousel-viewport {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            will-change: transform;
+        }
+        .carousel-item {
+            flex: 0 0 100%;
+            width: 100%;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        @media (min-width: 768px) {
+            .carousel-item {
+                flex: 0 0 calc(50% - 1rem);
+            }
+        }
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(202, 151, 3, 0.1);
+            border: 1px solid rgba(202, 151, 3, 0.3);
+            color: #CA9703;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 20;
+        }
+        .nav-btn:hover {
+            background: #CA9703;
+            color: #052D40;
+            transform: scale(1.1);
+        }
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+        .location-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .location-card:hover {
+            border-color: #CA9703;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .iso-watermark {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 8rem;
+            font-weight: 900;
+            opacity: 0.03;
+            pointer-events: none;
+            color: white;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
+
+    <div id="navbar-placeholder" class="shrink-0 z-50"></div>
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24">
+        <div class="absolute inset-0 grid-overlay"></div>
+        <div class="absolute inset-0 noise-texture pointer-events-none"></div>
+
+        <!-- Background Glow -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-gold/10 blur-[150px] rounded-full pointer-events-none">
+        </div>
+
+        <div class="relative z-10 container mx-auto px-6 text-center">
+            <div class="mb-8 flex justify-center" data-aos>
+                <span
+                    class="text-primary-gold font-medium text-[12px] tracking-[0.2em] uppercase px-4 py-1 border border-primary-gold/20 rounded-full bg-primary-gold/5">
+                    Conversion-Optimized Architecture
+                </span>
+            </div>
+
+            <h1 class="font-headline font-extrabold text-pure-white text-[48px] md:text-[84px] leading-[1.05] tracking-tight mb-8 max-w-5xl mx-auto"
+                data-aos>
+                A Website Built From a Template Is a Marketing Tool Built on <span class="text-primary-gold">Someone
+                    Else's Limitations</span>
+            </h1>
+
+            <p class="text-muted-silver font-body font-light text-[18px] md:text-[22px] leading-relaxed max-w-3xl mx-auto mb-12"
+                data-aos>
+                Your website is either generating revenue or losing it to a competitor whose does. VizionTools builds
+                custom web applications engineered for performance, designed for conversion, and built to scale.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6" data-aos>
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}'
+                    class="cursor-pointer group relative px-10 py-5 bg-primary-gold text-deep-navy font-bold text-[16px] rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(202,151,3,0.4)]">
+                    <span class="relative z-10">Get a Free Project Scoping Call</span>
+                    <div
+                        class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Intro Section -->
+    <section class="bg-off-white py-24 md:py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <span class="font-headline font-bold text-primary-gold text-xs tracking-widest uppercase mb-6 block"
+                    data-aos>THE LIMIT OF TEMPLATES</span>
+                <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[56px] leading-tight mb-8"
+                    data-aos>Template websites have a ceiling.</h2>
+
+                <div class="grid md:grid-cols-2 gap-12 text-left mt-16">
+                    <div class="space-y-6" data-aos>
+                        <p class="text-lg leading-relaxed text-dark-teal/80">
+                            You can customize the colors. You can swap the photos. But you cannot change the underlying
+                            architecture when your business needs something the template didn't anticipate — and it
+                            always will.
+                        </p>
+                        <p class="text-lg leading-relaxed text-dark-teal/80">
+                            A business that's serious about digital growth needs a website built on its actual
+                            requirements: the conversion paths, the integrations, and the scalability demands.
+                        </p>
+                    </div>
+                    <div class="bg-dark-teal p-8 rounded-xl text-pure-white" data-aos>
+                        <h3 class="font-headline font-bold text-2xl mb-6 text-primary-gold">Our Modern Stack</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-gold">check_circle</span>
+                                <span>React & Next.js for Performance</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-gold">check_circle</span>
+                                <span>Node.js & Python for Scalable Back-ends</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary-gold">check_circle</span>
+                                <span>Server-side Rendering (SSR) for SEO</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Sections (Carousel) -->
+    <section class="bg-deep-navy py-16 md:py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="relative">
+                <!-- Carousel Viewport -->
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="feature-track">
+        
+                        <!-- Slide 1 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">PERF</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">speed</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Architecture Designed for Performance</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">Page load speed is a revenue variable. A 1-second delay reduces conversions by 7%. We build on Next.js with edge caching and Core Web Vitals as a hard requirement.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Core Web Vitals targets (LCP, FID, CLS)</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Server-side rendering for SEO-critical pages</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Image delivery via CDN (WebP, AVIF)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">CONV</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">auto_graph</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Conversion-Optimized Design</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">Design that looks good but doesn't convert is an expensive decoration. We map user intent at each stage of the funnel and build page hierarchy around it.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Conversion funnel mapping before wireframes</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> A/B test-ready component architecture</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Mobile-first design with touch interaction patterns</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Slide 3 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">INTEG</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">hub</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Full-Stack System Connectivity</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">We build web applications with REST and GraphQL APIs that integrate with Zoho, Odoo, Stripe. Engineered as a full application, not a plugin stack.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> REST and GraphQL API development</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Customer-facing portals and dashboards</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Authentication and secure data handling</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Slide 4 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">SEC</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">security</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Ongoing Maintenance & Security</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">A web application without maintenance is a liability. We offer retainers covering security patching, performance monitoring, and uptime alerts.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Monthly security patching and updates</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Uptime monitoring with automated alerts</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Quarterly performance audits</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile-specific Nav (Below Card, No Overlap) -->
+            <div class="flex justify-between items-center md:hidden px-4 mt-4">
+                <button id="prevBtnMobile" onclick="goToSlide(currentIndex - 1)" class="nav-btn bg-deep-navy/80" aria-label="Previous slide">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button id="nextBtnMobile" onclick="goToSlide(currentIndex + 1)" class="nav-btn bg-deep-navy/80" aria-label="Next slide">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+
+            <!-- Carousel Controls -->
+            <div class="flex justify-center items-center gap-6 mt-6 md:mt-16">
+                <button id="prevBtn" class="nav-btn hidden md:flex" aria-label="Previous slide">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <div class="flex gap-2" id="carousel-dots">
+                    <!-- Dots will be injected by JS -->
+                </div>
+                <button id="nextBtn" class="nav-btn hidden md:flex" aria-label="Next slide">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For -->
+    <section class="bg-off-white py-24 md:py-32">
+        <div class="container mx-auto px-6">
+            <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[56px] text-center mb-16" data-aos>Who
+                is this for?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="bg-pure-white p-8 border-t-4 border-primary-gold shadow-lg" data-aos>
+                    <h3 class="font-headline font-bold text-2xl mb-4">B2B Service Companies</h3>
+                    <p class="text-dark-teal/70 leading-relaxed">Need a website working as a sales tool. We rebuild it
+                        as a conversion system — with clear positioning, structured CTAs, and CRM integration.</p>
+                </div>
+
+                <div class="bg-pure-white p-8 border-t-4 border-primary-gold shadow-lg" data-aos>
+                    <h3 class="font-headline font-bold text-2xl mb-4">E-commerce Brands</h3>
+                    <p class="text-dark-teal/70 leading-relaxed">Need more than a Shopify theme. When your product
+                        catalog, checkout flow, or CX requirements exceed template platform support.</p>
+                </div>
+
+                <div class="bg-pure-white p-8 border-t-4 border-primary-gold shadow-lg" data-aos>
+                    <h3 class="font-headline font-bold text-2xl mb-4">Startups & Scale-ups</h3>
+                    <p class="text-dark-teal/70 leading-relaxed">Launching customer-facing web applications. Portals,
+                        platforms, or marketplaces built from the ground up for scale.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="bg-dark-teal py-24 relative overflow-hidden">
+        <div class="absolute inset-0 grid-overlay opacity-10"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="max-w-4xl mx-auto" data-aos>
+                <span class="material-symbols-outlined text-primary-gold text-[64px] mb-8">format_quote</span>
+                <h2
+                    class="font-headline italic text-pure-white text-[24px] md:text-[32px] font-light leading-relaxed mb-10">
+                    "We'd burned through two agencies on template-based builds that didn't perform. VizionTools rebuilt
+                    our site on Next.js and our organic traffic doubled in four months. More importantly, our demo
+                    request rate went up 3x."
+                </h2>
+                <div class="flex items-center justify-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-primary-gold/20 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary-gold">person</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-pure-white font-bold">Founder</p>
+                        <p class="text-muted-silver text-sm">B2B SaaS Company, San Francisco</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="bg-off-white py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>
+                Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item" data-aos>
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you
+                            build websites on WordPress or Webflow?</span>
+                        <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">We can, but we recommend custom
+                            React/Next.js builds for businesses with performance, integration, or scalability
+                            requirements that template platforms can't reliably support. We'll tell you honestly whether
+                            a template platform is the right tool for your needs.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item" data-aos>
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What is
+                            your web development process?</span>
+                        <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">Discovery → technical architecture → UX
+                            wireframes → visual design → development → QA testing → launch → maintenance. Each phase has
+                            defined deliverables and sign-off checkpoints.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item" data-aos>
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you
+                            handle SEO as part of web development?</span>
+                        <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">Technical SEO is built into every project:
+                            Core Web Vitals optimization, structured data implementation, canonical URL management, and
+                            SEO-optimized page architecture.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item" data-aos>
+                    <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                        <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How long
+                            does a custom website build take?</span>
+                        <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p class="text-dark-teal/70 text-lg leading-relaxed">A marketing website typically takes 6–10
+                            weeks. A web application with custom functionality runs 12–20 weeks depending on complexity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-off-white py-24">
+        <div class="container mx-auto px-6">
+            <div class="bg-dark-teal rounded-3xl p-12 md:p-24 text-center relative overflow-hidden" data-aos>
+                <div class="absolute inset-0 grid-overlay opacity-5"></div>
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <h2
+                        class="font-headline font-extrabold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
+                        Your Website Should Be Your Highest-Converting Salesperson.
+                    </h2>
+                    <p
+                        class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
+                        If it isn't, the problem is almost never the content — it's the architecture. Let VizionTools
+                        run a free scoping call and tell you exactly what's holding your current site back.
+                    </p>
+                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}'
+                        class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
+                        Get a Free Website Scoping Call
+                    </a>
+
+                    <!-- Trust Line -->
+                    <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                        <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                            <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                            No commitment required
+                        </div>
+                        <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                            <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                            Setup walkthrough included
+                        </div>
+                        <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                            <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                            Dedicated implementation support
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Running Line (Marquee Ribbon) -->
+    <div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
+        <div class="flex marquee-animation marquee-slow whitespace-nowrap">
+            <!-- Main Content -->
+            <div
+                class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+                <span>ERP</span> <span class="opacity-40">·</span>
+                <span>ODOO</span> <span class="opacity-40">·</span>
+                <span>ZOHO</span> <span class="opacity-40">·</span>
+                <span>POS RETAIL</span> <span class="opacity-40">·</span>
+                <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+                <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+                <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+                <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+                <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+                <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+                <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+            </div>
+            <!-- Repeat for seamless loop -->
+            <div
+                class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+                <span>ERP</span> <span class="opacity-40">·</span>
+                <span>ODOO</span> <span class="opacity-40">·</span>
+                <span>ZOHO</span> <span class="opacity-40">·</span>
+                <span>POS RETAIL</span> <span class="opacity-40">·</span>
+                <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+                <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+                <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+                <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+                <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+                <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+                <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-trigger').forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const item = trigger.closest('.faq-item');
+                const isActive = item.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                // Open clicked
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Basic AOS (Animate on Scroll)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('aos-animate');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+        // GSAP Carousel Logic
+        gsap.registerPlugin(ScrollTrigger);
+
+        const track = document.getElementById('feature-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const dotsContainer = document.getElementById('carousel-dots');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        
+        let currentIndex = 0;
+        let itemsPerView = 1;
+        let maxIndex = 0;
+
+        // Make goToSlide global for mobile onclick
+        window.goToSlide = function(index) {
+            if (!track || items.length === 0) return;
+            currentIndex = Math.max(0, Math.min(index, maxIndex));
+            
+            const itemWidth = items[0].offsetWidth;
+            const gap = 32; // 2rem
+            const xOffset = -(currentIndex * (itemWidth + gap));
+
+            gsap.to(track, {
+                x: xOffset,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+
+            updateDots();
+            updateButtons();
+        };
+
+        function updateCarouselState() {
+            if (!items.length) return;
+            
+            itemsPerView = window.innerWidth >= 768 ? 2 : 1;
+            maxIndex = items.length - itemsPerView;
+            
+            // Ensure currentIndex is still valid
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+            // Re-generate dots
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i <= maxIndex; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-primary-gold w-6' : 'bg-white/20'}`;
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            // Reset position
+            const itemWidth = items[0].offsetWidth;
+            const gap = 32;
+            const xOffset = -(currentIndex * (itemWidth + gap));
+            gsap.set(track, { x: xOffset });
+            
+            updateButtons();
+        }
+
+        function updateDots() {
+            if (!dotsContainer) return;
+            const dots = dotsContainer.querySelectorAll('button');
+            dots.forEach((dot, i) => {
+                if (i === currentIndex) {
+                    dot.classList.add('bg-primary-gold', 'w-6');
+                    dot.classList.remove('bg-white/20');
+                } else {
+                    dot.classList.remove('bg-primary-gold', 'w-6');
+                    dot.classList.add('bg-white/20');
+                }
+            });
+        }
+
+        function updateButtons() {
+            if (prevBtn) prevBtn.disabled = currentIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+            
+            // Also update mobile buttons if they exist
+            const prevMobile = document.getElementById('prevBtnMobile');
+            const nextMobile = document.getElementById('nextBtnMobile');
+            if (prevMobile) prevMobile.disabled = currentIndex === 0;
+            if (nextMobile) nextMobile.disabled = currentIndex >= maxIndex;
+        }
+
+        if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+        if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+
+        window.addEventListener('resize', updateCarouselState);
+        
+        // Initialize
+        updateCarouselState();
+    </script>
+
+    <script src="../js/components.js"></script>
+
+
+
+</body>
+
+</html>

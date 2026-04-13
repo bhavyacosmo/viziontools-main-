@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AI Integration & Business Automation Services | VizionTools</title>
+    <meta name="description" content="AI-powered automation for business operations, web apps, marketing & reporting. Stop doing manually what machines can do better. Book a free AI audit today.">
+    <link rel="icon" type="image/png" href="../assets/Favicon Transparent.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-gold": "#CA9703",
+                        "dark-teal": "#08415C",
+                        "warm-amber": "#CD8E33",
+                        "deep-navy": "#052D40",
+                        "off-white": "#F7F4EF",
+                        "pure-white": "#FFFFFF",
+                        "muted-silver": "#8A9AAD"
+                    },
+                    fontFamily: {
+                        "headline": ["Bricolage Grotesque", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        .grid-overlay {
+            background-size: 60px 60px;
+            background-image: linear-gradient(to right, rgba(202, 151, 3, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.05) 1px, transparent 1px)
+        }
+        .noise-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBOMjkHA1Zur3sJoMBF0Jf1Iur_c-YVX56NrigEVmWWM9aBjdyODPVTcMW9AVTnBIyyboRBJQyX0sIjihkvuf_3EXRurAjr0QakaXPrvyiW2pdOhZTKEoVN9qXSPbTQ3aMEqfsvfKM9bnVkBq8y_Tj-v0cB41G9qv3i0eJD2PtEbDqyVCVE5353wax-fs8nD-KNpArA9CeR2ggLwBbPPKdjSe90h1msDG1xiUt99pYK7D1esh54GZhk6l11Z1kbRUnZlluxIWlcCKN6);
+            opacity: 0.03
+        }
+        .marquee-animation {
+            animation: marquee 40s linear infinite
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* AI Page Specific UI */
+        .ai-core-glow {
+            background: radial-gradient(circle, rgba(202, 151, 3, 0.15) 0%, rgba(8, 65, 92, 0) 70%);
+        }
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .bento-card:hover {
+            border-color: #CA9703;
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(202, 151, 3, 0.3);
+        }
+        
+        /* Mega Menu Specifics */
+        .mega-menu-trigger:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            --tw-translate-y: 0px !important;
+        }
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            --tw-translate-y: 10px;
+            transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-item-hover:hover {
+            border-left: 2px solid #CA9703;
+            padding-left: 0.75rem;
+            background-color: rgba(202, 151, 3, 0.05);
+        }
+        .nav-item-hover {
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+        .mega-menu-trigger:hover .chevron-rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(8, 65, 92, 0.1);
+        }
+        .faq-trigger:hover .faq-title {
+            color: #CA9703;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-bottom 0.3s ease;
+        }
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #CA9703;
+        }
+
+        /* Expanding Panel Accordion Styles */
+        .accordion-container {
+            display: flex;
+            width: 100%;
+            height: 600px;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        .ai-panel {
+            position: relative;
+            flex: 1;
+            height: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+        }
+        .ai-panel.active {
+            flex: 5;
+            background: rgba(255, 255, 255, 0.07);
+            border-color: #CA9703;
+        }
+        .ai-panel .panel-content {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            pointer-events: none;
+            height: 0;
+            overflow: hidden;
+        }
+        .ai-panel.active .panel-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+            height: auto;
+            overflow: visible;
+            transition: all 0.5s ease 0.4s;
+        }
+        .ai-panel .panel-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            white-space: nowrap;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.5s ease;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            pointer-events: none;
+        }
+        .ai-panel.active .panel-label {
+            opacity: 0;
+            transform: translate(-50%, -100%) rotate(-90deg);
+        }
+        .ai-panel:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(202, 151, 3, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .accordion-container {
+                flex-direction: column;
+                height: auto;
+                min-height: auto;
+                gap: 0.75rem;
+            }
+            .ai-panel {
+                flex: none;
+                height: 100px;
+                width: 100%;
+                padding: 1.5rem;
+            }
+            .ai-panel.active {
+                flex: none;
+                height: auto;
+                min-height: 380px;
+            }
+            .ai-panel .panel-label {
+                transform: translate(-50%, -50%) rotate(0deg);
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
+
+    <div id="navbar-placeholder" class="shrink-0 z-50"></div>
+<!-- AI Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24 px-6">
+    <div class="absolute inset-0 z-0">
+        <img src="../assets/ai_hero_overlay.png" alt="AI Neural Network Infrastructure" class="w-full h-full object-cover opacity-25">
+        <div class="absolute inset-0 bg-gradient-to-t from-deep-navy via-deep-navy/40 to-transparent"></div>
+    </div>
+    <div class="absolute inset-0 grid-overlay opacity-20"></div>
+    <div class="absolute inset-0 noise-texture pointer-events-none"></div>
+    
+    <!-- Central AI Core Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] ai-core-glow animate-pulse-slow pointer-events-none"></div>
+
+    <div class="relative z-10 container mx-auto text-center max-w-5xl">
+        <div class="mb-8 flex justify-center" data-aos>
+            <span class="text-primary-gold font-medium text-[12px] tracking-[0.4em] uppercase px-5 py-2 border border-primary-gold/30 rounded-full bg-primary-gold/5 backdrop-blur-sm">
+                Efficiency Multiplied by Intelligence
+            </span>
+        </div>
+        
+        <h1 class="font-headline font-extrabold text-pure-white text-[44px] md:text-[88px] leading-[1.05] tracking-tight mb-8">
+            Your Team Is Doing Work That <span class="text-primary-gold glow-text italic">Shouldn't Require</span> a Human Anymore.
+        </h1>
+        
+        <p class="text-muted-silver font-body font-light text-[18px] md:text-[24px] leading-relaxed max-w-3xl mx-auto mb-12" data-aos>
+            Manual entry. Weekly reports. Campaign deployment. These are not value-adding activities — they are automation opportunities. 
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6" data-aos>
+            <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer group relative px-12 py-6 bg-primary-gold text-deep-navy font-black text-[16px] uppercase tracking-widest rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(202,151,3,0.5)]">
+                <span class="relative z-10">Book a Free AI Audit</span>
+                <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Page Intro Section -->
+<section class="bg-off-white py-24 md:py-32 relative overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-7" data-aos>
+                    <span class="font-headline font-bold text-primary-gold text-xs tracking-[0.3em] uppercase mb-6 block">THE NEW OPERATIONAL BASELINE</span>
+                    <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[64px] leading-[1.1] mb-8">
+                        Automate the repetitive. Compete on <span class="text-warm-amber">strategy.</span>
+                    </h2>
+                    <p class="text-xl leading-relaxed text-dark-teal/70 mb-8">
+                        AI transformation is not about replacing your team. It is about eliminating the work your team shouldn't be doing: reformatting data, chasing approvals, and answering routine routing questions.
+                    </p>
+                </div>
+                <div class="md:col-span-5 bg-dark-teal p-10 rounded-[32px] text-pure-white relative overflow-hidden" data-aos>
+                    <div class="relative z-10">
+                        <h3 class="font-headline font-bold text-2xl mb-8 text-primary-gold">Operational Impact</h3>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary-gold">hub</span>
+                                <p class="text-sm border-b border-white/10 pb-4">Business Operations: ERP workflows, automated approvals & reporting.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary-gold">deployed_code</span>
+                                <p class="text-sm border-b border-white/10 pb-4">Digital Products: Embedding AI features into web & mobile applications.</p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="material-symbols-outlined text-primary-gold">auto_graph</span>
+                                <p class="text-sm">Marketing Stack: Automated content, scheduling, and behavior-triggers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-gold/10 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Bento Grid Features (4 H2 Blocks) -->
+<section class="bg-deep-navy py-24 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-gold/20 to-transparent"></div>
+    <div class="container mx-auto px-6">
+        <h2 class="text-center font-headline font-bold text-pure-white text-[32px] md:text-[56px] mb-8" data-aos>Automation Layers</h2>
+        <p class="text-center text-muted-silver max-w-2xl mx-auto mb-16" data-aos>Click or hover over each layer to explore our implementation strategy.</p>
+        
+        <div class="accordion-container">
+            
+            <!-- Panel 1: ERP & Ops -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">OPERATIONS</div>
+                <div class="panel-content space-y-6">
+                    <span class="material-symbols-outlined text-primary-gold text-[48px]">database</span>
+                    <h3 class="font-headline font-bold text-pure-white text-4xl">ERP & Operations</h3>
+                    <p class="text-muted-silver leading-relaxed text-lg">Your Odoo or Zoho system already has the data. We build logic to act on it: route POs, automate approvals, and generate predictive inventory reports.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-[11px] uppercase font-bold text-primary-gold bg-primary-gold/10 px-4 py-2 rounded-full border border-primary-gold/20">Conditional Routing</span>
+                        <span class="text-[11px] uppercase font-bold text-primary-gold bg-primary-gold/10 px-4 py-2 rounded-full border border-primary-gold/20">Auto-Invoicing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2: Marketing -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">MARKETING</div>
+                <div class="panel-content space-y-6">
+                    <span class="material-symbols-outlined text-primary-gold text-[48px]">campaign</span>
+                    <h3 class="font-headline font-bold text-pure-white text-4xl">Marketing Logic</h3>
+                    <p class="text-muted-silver leading-relaxed text-lg">Behavior-based journeys, automated social scheduling, and lead scoring that runs autonomously while your team focuses on growth.</p>
+                    <ul class="text-primary-gold/80 font-bold space-y-2 text-sm italic">
+                        <li>/ CRM Trigger Events</li>
+                        <li>/ Behavioral Lead Scoring</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Panel 3: AI Product -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">INTEGRATION</div>
+                <div class="panel-content space-y-6">
+                    <span class="material-symbols-outlined text-primary-gold text-[48px]">smart_toy</span>
+                    <h3 class="font-headline font-bold text-pure-white text-4xl">AI-Powered Features</h3>
+                    <p class="text-muted-silver leading-relaxed text-lg">Embedding LLM-based chat, predictive logic, and personalized recommendation engines directly into your existing app ecosystem.</p>
+                </div>
+            </div>
+
+            <!-- Panel 4: Creative -->
+            <div class="ai-panel" onclick="toggleAIPanel(this)">
+                <div class="panel-label">CREATIVE</div>
+                <div class="panel-content space-y-6">
+                    <div class="flex justify-between items-start">
+                        <div class="space-y-6">
+                            <span class="material-symbols-outlined text-primary-gold text-[48px]">draw</span>
+                            <h3 class="font-headline font-bold text-pure-white text-4xl">Creative Speed</h3>
+                            <p class="text-muted-silver leading-relaxed text-lg text-pretty">AI-assisted copy generation, automated asset resizing, and GPT-powered report drafting that eliminates repetitive production work.</p>
+                        </div>
+                        <div class="hidden md:flex p-6 border border-white/10 rounded-2xl bg-white/5 animate-float">
+                            <span class="material-symbols-outlined text-warm-amber text-[64px]">auto_fix_high</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Who It's For -->
+<section class="bg-off-white py-24 md:py-32">
+    <div class="container mx-auto px-6">
+        <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[56px] text-center mb-20" data-aos>Who is this for?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            
+            <div class="bg-pure-white p-10 rounded-2xl shadow-xl relative overflow-hidden group" data-aos>
+                <span class="absolute -top-4 -right-4 font-headline font-black text-[120px] text-dark-teal/5 select-none transition-colors group-hover:text-primary-gold/10">01</span>
+                <h3 class="font-headline font-bold text-2xl mb-6 relative z-10">Operations Managers</h3>
+                <p class="text-dark-teal/70 leading-relaxed mb-6 relative z-10">Drowning in manual reporting and approval chains. If building a report takes 4 hours, automation will give you time back.</p>
+                <div class="w-12 h-1 bg-primary-gold rounded-full transition-all group-hover:w-full"></div>
+            </div>
+
+            <div class="bg-pure-white p-10 rounded-2xl shadow-xl relative overflow-hidden group" data-aos>
+                <span class="absolute -top-4 -right-4 font-headline font-black text-[120px] text-dark-teal/5 select-none transition-colors group-hover:text-primary-gold/10">02</span>
+                <h3 class="font-headline font-bold text-2xl mb-6 relative z-10">E-commerce Brands</h3>
+                <p class="text-dark-teal/70 leading-relaxed mb-6 relative z-10">Running high-volume marketing flows across email, SMS, and ads. Trigger cart flows and A/B tests without manual intervention.</p>
+                <div class="w-12 h-1 bg-primary-gold rounded-full transition-all group-hover:w-full"></div>
+            </div>
+
+            <div class="bg-pure-white p-10 rounded-2xl shadow-xl relative overflow-hidden group" data-aos>
+                <span class="absolute -top-4 -right-4 font-headline font-black text-[120px] text-dark-teal/5 select-none transition-colors group-hover:text-primary-gold/10">03</span>
+                <h3 class="font-headline font-bold text-2xl mb-6 relative z-10">Tech-Forward SMBs</h3>
+                <p class="text-dark-teal/70 leading-relaxed mb-6 relative z-10">Looking to embed AI features into your existing digital products. We build outcomes-based AI integrations without the overhead.</p>
+                <div class="w-12 h-1 bg-primary-gold rounded-full transition-all group-hover:w-full"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof -->
+<section class="bg-dark-teal py-24 relative overflow-hidden">
+    <div class="absolute inset-0 grid-overlay opacity-10"></div>
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto" data-aos>
+            <span class="material-symbols-outlined text-primary-gold text-[64px] mb-8">auto_awesome</span>
+            <h2 class="font-headline italic text-pure-white text-[24px] md:text-[34px] font-light leading-relaxed mb-10">
+                "VizionTools automated our reporting, approval routing, and onboarding sequences. What took our ops team 14 hours a week now runs automatically. We redirected that time to strategy."
+            </h2>
+            <div class="flex items-center justify-center gap-4">
+                <div class="text-left border-l-2 border-primary-gold pl-6 py-2">
+                    <p class="text-pure-white font-bold">COO</p>
+                    <p class="text-muted-silver text-sm">Professional Services Firm, New York</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section (5 Questions) -->
+<section class="bg-off-white py-24 md:py-32">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do I need an existing ERP or CRM to benefit from automation?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Not necessarily. Some automation workflows operate independently. However, high-leverage automation usually builds on a structured data layer — which is why we often recommend ERP implementation alongside automation design.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">What tools do you use for automation?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We use native Odoo/Zoho engines, n8n, Zapier (where appropriate), Python scripting, and custom API integrations. Tool selection depends on your technical stack and specific requirements.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can you build a custom AI feature into our existing website?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. We integrate OpenAI, Anthropic, and other LLM APIs into existing web applications — adding chatbots, content generation layers, intelligent search, and recommendation engines.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How do you measure ROI on automation projects?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">We document current manual process time costs before implementation, then measure against post-automation baselines. Most clients see full cost recovery within 3–6 months.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Is AI transformation suitable for small businesses?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Absolutely. Every hour saved for a 10–50 employee business has a direct impact on growth capacity. High-ROI automation is often most transformative for agile SMB teams.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA Section -->
+<section class="bg-off-white py-24 px-6 relative overflow-hidden">
+    <div class="container mx-auto">
+        <div class="bg-deep-navy rounded-[48px] p-12 md:p-24 text-center relative overflow-hidden border border-primary-gold/10" data-aos>
+            <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-primary-gold/5 pointer-events-none"></div>
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <h2 class="font-headline font-extrabold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
+                    Find Out What You're Paying to <span class="text-primary-gold">Do Manually.</span>
+                </h2>
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
+                    Most clients are surprised by how much low-hanging fruit exists. We run a free AI audit to identify the highest-value opportunities for your business.
+                </p>
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-2xl inline-block">
+                    Book a Free Automation Audit
+                </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Running Line (Marquee Ribbon) -->
+<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
+    <div class="flex marquee-animation marquee-slow whitespace-nowrap">
+        <!-- Main Content -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+        <!-- Repeat for seamless loop -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+    </div>
+</div>
+
+    <div id="footer-placeholder"></div>
+
+<script>
+
+
+    // FAQ Accordion Logic
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const item = trigger.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        });
+    });
+
+    // AOS Initialization
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+    // Premium AI Animations (GSAP)
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Text Stagger
+    gsap.fromTo("h1", 
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1.2, ease: "power4.out" }
+    );
+
+    // Expanding Accordion Logic
+    function toggleAIPanel(panel) {
+        document.querySelectorAll('.ai-panel').forEach(p => p.classList.remove('active'));
+        panel.classList.add('active');
+        
+        // Internal Content Animation
+        const content = panel.querySelector('.panel-content');
+        gsap.fromTo(content, 
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out", delay: 0.2 }
+        );
+    }
+
+    // Hover Support for Desktop
+    document.querySelectorAll('.ai-panel').forEach(panel => {
+        panel.addEventListener('mouseenter', () => {
+            if (!panel.classList.contains('active')) {
+                toggleAIPanel(panel);
+            }
+        });
+    });
+
+    // Return to Neutral state on Mouse Leave
+    const accordion = document.querySelector('.accordion-container');
+    if (accordion) {
+        accordion.addEventListener('mouseleave', () => {
+            document.querySelectorAll('.ai-panel').forEach(p => p.classList.remove('active'));
+        });
+    }
+
+    // Ensure first panel content is ready for animation if clicked
+    window.addEventListener('load', () => {
+        // We start neutral, so no initial animation needed
+    });
+</script>
+
+
+    <script src="../js/components.js"></script>
+
+</body>
+</html>

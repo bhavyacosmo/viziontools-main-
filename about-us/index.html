@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>About Vizion Tools — Certified Odoo & Zoho ERP Partner</title>
+    <meta name="description" content="Vizion Tools is a certified Odoo and Zoho partner serving 500+ businesses across the US, UAE, and India. We implement. We configure. We stay after go-live. Here's why that matters.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-gold": "#CA9703",
+                        "dark-teal": "#08415C",
+                        "warm-amber": "#CD8E33",
+                        "deep-navy": "#052D40",
+                        "off-white": "#F7F4EF",
+                        "pure-white": "#FFFFFF",
+                        "muted-silver": "#8A9AAD"
+                    },
+                    fontFamily: {
+                        "headline": ["Bricolage Grotesque", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { background-color: #F7F4EF; overflow-x: hidden; font-family: 'DM Sans', sans-serif; }
+        .font-headline { font-family: 'Bricolage Grotesque', sans-serif; }
+        
+        .material-symbols-outlined { font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24 }
+
+        /* Custom UI aesthetics */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Grid Overlay */
+        .grid-overlay {
+            background-size: 80px 80px;
+            background-image: linear-gradient(to right, rgba(202, 151, 3, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.03) 1px, transparent 1px)
+        }
+
+        /* Marquee Animation */
+        .marquee-animation { animation: marquee 35s linear infinite }
+        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+
+        /* Mega menu sync */
+        .mega-menu-trigger:hover .mega-menu { opacity: 1; visibility: visible; --tw-translate-y: 0px !important; }
+        .mega-menu {
+            opacity: 0; visibility: hidden; --tw-translate-y: 10px;
+            transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0));
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-item-hover:hover { border-left: 2px solid #CA9703; padding-left: 0.75rem; background-color: rgba(202, 151, 3, 0.05); }
+        .nav-item-hover { border-left: 2px solid transparent; transition: all 0.2s ease; }
+        .chevron-rotate { transition: transform 0.3s ease; }
+        .mega-menu-trigger:hover .chevron-rotate { transform: rotate(180deg); }
+
+        /* Scroll Scrub Text Reveal */
+        .reveal-text { color: rgba(138, 154, 173, 0.2); transition: color 0.1s; }
+        .reveal-text.active { color: #FFFFFF; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #052D40; }
+        ::-webkit-scrollbar-thumb { background: #CA9703; border-radius: 10px; }
+
+        /* Pulse Animation */
+        .pulse-dot { position: relative; }
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            background-color: #CA9703;
+            border-radius: 50%;
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        @keyframes pulse-ring { 0% { transform: scale(0.33); opacity: 1; } 80%, 100% { opacity: 0; } }
+
+        .time-zone-card {
+            background: #08415C;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s ease;
+        }
+        .time-zone-card:hover { border-color: #CA9703; transform: translateY(-5px); }
+    </style>
+</head>
+<body class="selection:bg-primary-gold selection:text-deep-navy">
+
+    <div id="navbar-placeholder"></div>
+
+<!-- Main Content -->
+<main>
+    <!-- Hero Section -->
+    <section class="relative min-h-screen bg-deep-navy overflow-hidden flex flex-col">
+        <div class="absolute inset-0 grid-overlay opacity-[0.05]"></div>
+        <div class="absolute inset-0">
+            <img src="../assets/about_hero_bg.png" alt="Operational Excellence" class="w-full h-full object-cover mix-blend-screen opacity-50 grayscale transition-transform duration-[10000ms] scale-110" id="hero-bg">
+            <div class="absolute inset-0 bg-gradient-to-r from-deep-navy via-deep-navy/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 pt-20 md:pt-32 flex flex-col flex-grow">
+            <div class="max-w-7xl">
+                <span class="inline-block text-primary-gold font-bold text-xs tracking-[0.5em] uppercase mb-8 hero-entrance-stagger opacity-0">Established Integrity</span>
+                <h1 class="font-headline font-extrabold text-white text-[48px] md:text-[84px] lg:text-[115px] leading-[0.85] tracking-tighter mb-12 hero-entrance-stagger opacity-0">
+                    We Build ERP Systems That <span class="text-primary-gold">Actually Get Used.</span>
+                </h1>
+                <p class="text-muted-silver font-body text-xl md:text-4xl font-light leading-relaxed max-w-5xl hero-entrance-stagger opacity-0">
+                    Vizion Tools is a certified Odoo and Zoho partner serving 500+ businesses across the US, UAE, and India. 
+                </p>
+            </div>
+            
+            <!-- Opening Statement (GSAP Scrub Section) -->
+            <div class="mt-32 md:mt-60 pb-40" id="narrative-trigger">
+                <div class="max-w-5xl">
+                    <p class="font-headline font-bold text-[24px] md:text-[42px] leading-tight" id="narrative-text">
+                        Most ERP implementations fail quietly. The software gets installed. The vendor collects the license fee. The business goes live on a system that was configured in two weeks by a team who never asked how the warehouse actually receives goods, or how payroll handles contract workers, or why the end-of-month close takes four days. Six months later, the spreadsheets are back. The ERP is running in parallel. And nobody wants to admit it didn't work. <br/><br/>
+                        <span class="text-primary-gold underline decoration-primary-gold/30">That's the problem Vizion Tools was built to solve.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Origin Section -->
+    <section class="bg-white py-32 md:py-48 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-24 items-center">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-6 block">The Origin</span>
+                    <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-6xl leading-tight mb-10">Born from <span class="text-warm-amber italic">The Friction Point.</span></h2>
+                    <div class="space-y-8 text-dark-teal/70 text-lg md:text-xl leading-relaxed font-light">
+                        <p>The founders of Vizion came out of implementation work — not software sales. What they kept encountering was the same pattern: resellers who prioritized license volume over configuration depth.</p>
+                        <p>The markets they worked in — across India, the US, and later the Middle East — all had the same structural gap: plenty of partners who could sell Odoo or Zoho, very few who would genuinely configure it for a specific business, train the people who had to use it daily, and stay accountable when something didn't work six months later.</p>
+                        <p>Vizion was built around that gap. Offices in Bengaluru, New Britain CT, and Giza weren't opened for optics — they were opened because the businesses Vizion works with are in those markets, with those time zones, those compliance requirements, and those operational realities.</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 relative">
+                    <div class="relative z-10 rounded-[40px] overflow-hidden shadow-3xl transform rotate-2 hover:rotate-0 transition-transform duration-700">
+                        <img src="../assets/about_origin_blueprint.png" alt="Deep Configuration" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-gold rounded-full blur-[80px] opacity-20"></div>
+                </div>
+            </div>
+            
+            <div class="mt-24 pt-24 border-t border-dark-teal/5">
+                <p class="font-headline font-bold text-dark-teal text-2xl md:text-4xl max-w-4xl">
+                    More clients, more verticals, and a deeper practice in digital services — but the same logic underneath: <span class="text-primary-gold">do the configuration properly, or don't take the engagement.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Presence Section -->
+    <section class="bg-deep-navy py-32 md:py-60 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <img src="../assets/global_connectivity_map.png" alt="Global Network Map" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-navy via-deep-navy/90 to-deep-navy"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-12" data-aos="fade-up">
+                <div class="max-w-2xl">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-6 block">Follow the Sun</span>
+                    <h2 class="font-headline font-extrabold text-white text-4xl md:text-7xl">Coverage exists because the <span class="text-primary-gold">offices are real.</span></h2>
+                </div>
+                <div class="text-muted-silver text-xl font-light md:text-right max-w-md">
+                    Staffed, accountable, and localized for compliance — not a rerouted email support ticket.
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Bengaluru -->
+                <div class="time-zone-card rounded-3xl p-10 flex flex-col justify-between h-[400px]">
+                    <div>
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-4 h-4 rounded-full bg-primary-gold pulse-dot"></div>
+                            <span class="text-white font-bold tracking-widest uppercase text-xs">Bengaluru Hub</span>
+                        </div>
+                        <h3 class="text-white font-headline font-bold text-3xl mb-4">South & SE Asia</h3>
+                        <p class="text-muted-silver font-light">Development capacity for digital services and regional implementation HQ.</p>
+                    </div>
+                    <div class="pt-8 border-t border-white/5">
+                        <p class="text-white/40 text-sm uppercase tracking-widest mb-2 font-bold">Advantage</p>
+                        <p class="text-white text-lg">Starts work as Dubai night support concludes.</p>
+                    </div>
+                </div>
+                <!-- Giza -->
+                <div class="time-zone-card rounded-3xl p-10 flex flex-col justify-between h-[400px]">
+                    <div>
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-4 h-4 rounded-full bg-primary-gold pulse-dot"></div>
+                            <span class="text-white font-bold tracking-widest uppercase text-xs">Giza Gateway</span>
+                        </div>
+                        <h3 class="text-white font-headline font-bold text-3xl mb-4">MENA Region</h3>
+                        <p class="text-muted-silver font-light">Strategic base for UAE, Saudi Arabia, and F&B/Retail practices.</p>
+                    </div>
+                    <div class="pt-8 border-t border-white/5">
+                        <p class="text-white/40 text-sm uppercase tracking-widest mb-2 font-bold">Advantage</p>
+                        <p class="text-white text-lg">In-region compliance and on-site capability.</p>
+                    </div>
+                </div>
+                <!-- CT -->
+                <div class="time-zone-card rounded-3xl p-10 flex flex-col justify-between h-[400px]">
+                    <div>
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-4 h-4 rounded-full bg-primary-gold pulse-dot"></div>
+                            <span class="text-white font-bold tracking-widest uppercase text-xs">New Britain HQ</span>
+                        </div>
+                        <h3 class="text-white font-headline font-bold text-3xl mb-4">North America</h3>
+                        <p class="text-muted-silver font-light">Client relationships and US-market compliance engineering.</p>
+                    </div>
+                    <div class="pt-8 border-t border-white/5">
+                        <p class="text-white/40 text-sm uppercase tracking-widest mb-2 font-bold">Advantage</p>
+                        <p class="text-white text-lg">Operational as Indian morning development kicks in.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 p-10 bg-white/5 rounded-3xl border border-white/10" data-aos="fade-up">
+                <p class="text-muted-silver text-xl italic font-light">
+                    "Being in the room — or at least in the same time zone — changes the quality of the work."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do (The Practice) -->
+    <section class="bg-off-white py-32 md:py-60">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-start">
+                <div class="md:w-[40%] sticky top-32">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-6 block">Our Practice</span>
+                    <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-6xl leading-tight">Two Sides of a <br/> <span class="text-primary-gold italic">Connected Practice.</span></h2>
+                    <p class="mt-8 text-dark-teal/70 text-xl font-light leading-relaxed">
+                        Separating operational software from digital presence creates handoff problems that clients end up managing themselves. Vizion operates on both.
+                    </p>
+                </div>
+                <div class="md:w-[60%] space-y-12">
+                    <div class="bg-white p-12 rounded-[50px] shadow-sm border border-dark-teal/5 transition-all hover:shadow-2xl hover:border-primary-gold/30 group" data-aos="fade-left">
+                        <div class="flex items-center gap-6 mb-8">
+                            <span class="material-symbols-outlined text-[#CA9703] text-5xl">settings_input_component</span>
+                            <h3 class="text-dark-teal font-headline font-bold text-3xl">ERP & POS Implementation</h3>
+                        </div>
+                        <p class="text-dark-teal/60 text-lg leading-relaxed mb-6 font-light">
+                            Deploying and configuring Odoo and Zoho One for businesses in retail, F&B, manufacturing, professional services, and e-commerce. Certified partnerships mean access to technical resources independent consultants don't have.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-dark-teal/80 font-bold text-sm tracking-widest uppercase"><span class="w-1.5 h-1.5 rounded-full bg-primary-gold"></span> Odoo Certified Implementation</li>
+                            <li class="flex items-center gap-3 text-dark-teal/80 font-bold text-sm tracking-widest uppercase"><span class="w-1.5 h-1.5 rounded-full bg-primary-gold"></span> Zoho Premium Engineering</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-12 rounded-[50px] shadow-sm border border-warm-amber/5 transition-all hover:shadow-2xl hover:border-warm-amber/30 group" data-aos="fade-left" data-aos-delay="100">
+                        <div class="flex items-center gap-6 mb-8">
+                            <span class="material-symbols-outlined text-warm-amber text-5xl">cloud_done</span>
+                            <h3 class="text-dark-teal font-headline font-bold text-3xl">Digital Services Hub</h3>
+                        </div>
+                        <p class="text-dark-teal/60 text-lg leading-relaxed mb-6 font-light">
+                            Web development, mobile applications, AI integration, and digital marketing. We build the digital front door that connects back to your operational engine.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-dark-teal/80 font-bold text-sm tracking-widest uppercase"><span class="w-1.5 h-1.5 rounded-full bg-warm-amber"></span> Custom Full-Stack Dev</li>
+                            <li class="flex items-center gap-3 text-dark-teal/80 font-bold text-sm tracking-widest uppercase"><span class="w-1.5 h-1.5 rounded-full bg-warm-amber"></span> AI-Ready Infrastructure</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work (The Methodology) -->
+    <section class="bg-white py-32 md:py-60 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-24 max-w-4xl mx-auto" data-aos="fade-up">
+                <h2 class="font-headline font-black text-dark-teal text-5xl md:text-8xl leading-none mb-10">Configuration over <span class="text-primary-gold">Installation.</span></h2>
+                <div class="w-24 h-2 bg-primary-gold mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="space-y-8 p-12 bg-off-white rounded-[40px]" data-aos="fade-up">
+                    <div class="w-16 h-16 rounded-2xl bg-primary-gold/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary-gold text-3xl">precision_manufacturing</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-2xl text-dark-teal">Installing takes an afternoon. Configuring takes weeks.</h3>
+                    <p class="text-dark-teal/60 text-lg font-light leading-relaxed">
+                        For a 12-outlet chain with custom loyalty and complex book-closing — configuration is the work. Vizion doesn't separate the two.
+                    </p>
+                </div>
+                <div class="space-y-8 p-12 bg-dark-teal rounded-[40px] text-white" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-primary-gold text-3xl">support_agent</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-2xl">We stay after go-live.</h3>
+                    <p class="text-white/60 text-lg font-light leading-relaxed">
+                        30 hours of free onboarding isn't marketing. It's a reflection of reality: most real questions emerge in the first 60 days, not during training.
+                    </p>
+                </div>
+                <div class="space-y-8 p-12 bg-off-white rounded-[40px]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 rounded-2xl bg-warm-amber/10 flex items-center justify-center">
+                        <span class="material-symbols-outlined text-warm-amber text-3xl">warning_amber</span>
+                    </div>
+                    <h3 class="font-headline font-bold text-2xl">We tell you when it's not right.</h3>
+                    <p class="text-dark-teal/60 text-lg font-light leading-relaxed">
+                        Not every business needs Odoo. If your scale is better served by a different tool, we'll say so before the contract is signed.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Philosophy (High Aesthetic) -->
+    <section class="relative bg-deep-navy overflow-hidden">
+        <div class="flex flex-col lg:flex-row h-full">
+            <div class="lg:w-1/2 p-20 md:p-32 flex flex-col justify-center">
+                <div data-aos="fade-right">
+                    <span class="text-primary-gold font-bold text-xs tracking-widest uppercase mb-10 block">Implementation DNA</span>
+                    <h2 class="font-headline font-bold text-white text-4xl md:text-7xl leading-tight mb-12">Less "Tell Me About Your Processes," more <span class="text-primary-gold italic">"Why do you do it over WhatsApp?"</span></h2>
+                    <div class="space-y-10 text-muted-silver text-xl font-light leading-relaxed">
+                        <p>The people who run Vizion implementations have typically worked inside the kind of businesses they now configure software for — in warehouses, in restaurant groups, in agencies.</p>
+                        <p>When a client describes a workflow that sounds inefficient, the response isn't "Odoo can handle that." It's "why does that workflow exist, and is fixing it part of the scope?"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 flex flex-col">
+                <div class="relative h-[400px] md:h-[500px] w-full">
+                    <img src="../assets/about_team_dna.png" alt="Operational Background" class="absolute inset-0 w-full h-full object-cover grayscale brightness-75 mix-blend-screen">
+                    <div class="absolute inset-0 bg-gradient-to-r from-deep-navy via-transparent to-transparent"></div>
+                </div>
+                <div class="flex-grow p-12 md:p-32 pt-0 md:pt-0 flex items-center bg-deep-navy">
+                    <div class="max-w-md w-full" data-aos="fade-up">
+                        <p class="text-white font-bold opacity-100 italic border-l-4 border-primary-gold pl-8 py-4">
+                            That's not something that gets trained in. It comes from having run a shift or closed books on a bad month.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- By the Numbers -->
+    <section class="bg-primary-gold py-24 md:py-40">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                <div data-aos="zoom-in">
+                    <div class="text-deep-navy font-headline font-black text-6xl md:text-9xl mb-4" id="stat-1">0</div>
+                    <p class="text-deep-navy/70 font-bold uppercase tracking-widest text-[10px] md:text-xs">Businesses Served</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-deep-navy font-headline font-black text-6xl md:text-9xl mb-4" id="stat-2">0</div>
+                    <p class="text-deep-navy/70 font-bold uppercase tracking-widest text-[10px] md:text-xs">Global Offices</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-deep-navy font-headline font-black text-6xl md:text-9xl mb-4" id="stat-3">0</div>
+                    <p class="text-deep-navy/70 font-bold uppercase tracking-widest text-[10px] md:text-xs">Certified Partnerships</p>
+                </div>
+                <div data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-deep-navy font-headline font-black text-6xl md:text-9xl mb-4" id="stat-4">0</div>
+                    <p class="text-deep-navy/70 font-bold uppercase tracking-widest text-[10px] md:text-xs">Free Support Hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-deep-navy py-32 md:py-60 relative overflow-hidden">
+        <div class="absolute inset-0 grid-overlay opacity-5"></div>
+        <div class="container mx-auto px-6 text-center relative z-20">
+            <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+                <h2 class="font-headline font-bold text-white text-[32px] md:text-[60px] leading-tight mb-12">
+                    If You Want to Talk Through What You're Running <span class="text-primary-gold">Before Deciding Anything.</span>
+                </h2>
+                <p class="text-muted-silver text-xl md:text-2xl mb-16 max-w-3xl mx-auto font-light leading-relaxed">
+                    Thirty minutes. No pitch deck. Tell us the tools you're on, the problems you're hitting, and the scale you're planning for. We'll tell you what we'd actually do — including whether it involves us.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-8">
+                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer bg-[#CA9703] text-[#052D40] px-16 py-7 rounded-full font-black text-[20px] uppercase tracking-[0.2em] hover:brightness-110 shadow-[0_20px_50px_rgba(202,151,3,0.3)] inline-block transition-transform duration-300 hover:scale-105">
+                        Book a free consultation →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Running Line (Marquee Ribbon) -->
+<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
+    <div class="flex marquee-animation marquee-slow whitespace-nowrap">
+        <!-- Main Content -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+        <!-- Repeat for seamless loop -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+    </div>
+</div>
+
+    <div id="footer-placeholder"></div>
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "name": "About Vizion Tools",
+      "url": "https://viziontools.com/about-us",
+      "description": "Vizion Tools is a certified Odoo and Zoho ERP implementation partner serving 500+ businesses across the US, UAE, Saudi Arabia, and India, with offices in New Britain CT, Giza, and Bengaluru."
+    },
+    {
+      "@type": "Organization",
+      "name": "Vizion Tools",
+      "url": "https://viziontools.com",
+      "email": "support@viziontools.com",
+      "sameAs": [],
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "600 East St Suite 103",
+          "addressLocality": "New Britain",
+          "addressRegion": "CT",
+          "postalCode": "06051",
+          "addressCountry": "US"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "1-109 King Faisal St, Abu Qatadah, Boulaq Al Dakrour",
+          "addressLocality": "Giza",
+          "addressCountry": "EG"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "7th floor, Trend workspace, Dickenson Rd",
+          "addressLocality": "Bengaluru",
+          "addressRegion": "KA",
+          "postalCode": "560042",
+          "addressCountry": "IN"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+1-929-204-4923",
+          "contactType": "customer service",
+          "areaServed": "US"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+20-102-673-9595",
+          "contactType": "customer service",
+          "areaServed": "EG"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-88611-18415",
+          "contactType": "customer service",
+          "areaServed": "IN"
+        }
+      ],
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 10
+      },
+      "areaServed": ["US", "UAE", "Saudi Arabia", "India"]
+    }
+  ]
+}
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1200, once: true, easing: 'ease-out-cubic' });
+
+    // GSAP Engine
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Entry Animation
+    window.addEventListener('load', () => {
+        const tl = gsap.timeline();
+        
+        // Background Zoom
+        gsap.to("#hero-bg", {
+            scale: 1,
+            duration: 3,
+            ease: "power2.out"
+        });
+
+        // Text Stagger
+        tl.to(".hero-entrance-stagger", {
+            y: 0,
+            opacity: 1,
+            duration: 1.5,
+            stagger: 0.2,
+            ease: "expo.out",
+            delay: 0.5
+        });
+    });
+
+    // Narrative Scrub Text Reveal
+    const narrativeText = document.getElementById('narrative-text');
+    const words = narrativeText.innerText.split(' ');
+    narrativeText.innerHTML = '';
+    words.forEach(word => {
+        const span = document.createElement('span');
+        span.innerText = word + ' ';
+        span.className = 'reveal-text';
+        narrativeText.appendChild(span);
+    });
+
+    const spans = document.querySelectorAll('.reveal-text');
+    gsap.to(spans, {
+        scrollTrigger: {
+            trigger: "#narrative-trigger",
+            start: "top center",
+            end: "bottom center",
+            scrub: true,
+        },
+        color: "#FFFFFF",
+        stagger: 0.1,
+    });
+
+    // Stats Counter
+    const animateStat = (id, end) => {
+        gsap.to(id, {
+            innerText: end,
+            duration: 3,
+            scrollTrigger: { trigger: "#stat-1", start: "top 85%" },
+            snap: { innerText: 1 },
+            onUpdate: function() {
+                this.targets()[0].innerHTML = Math.ceil(this.targets()[0].innerText) + (id === "#stat-1" ? "+" : "");
+            }
+        });
+    };
+
+    animateStat("#stat-1", 500);
+    animateStat("#stat-2", 3);
+    animateStat("#stat-3", 2);
+    animateStat("#stat-4", 30);
+
+</script>
+
+    <script src="../js/components.js"></script>
+</body>
+</html>

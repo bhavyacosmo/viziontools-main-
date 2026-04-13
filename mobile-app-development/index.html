@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Custom iOS & Android App Development | VizionTools</title>
+    <meta name="description" content="Custom mobile apps for iOS and Android: customer-facing apps, internal tools, POS companions & field service apps. Built to last. Get a free app scoping call.">
+    <link rel="icon" type="image/png" href="../assets/Favicon Transparent.ico">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-gold": "#CA9703",
+                        "dark-teal": "#08415C",
+                        "warm-amber": "#CD8E33",
+                        "deep-navy": "#052D40",
+                        "off-white": "#F7F4EF",
+                        "pure-white": "#FFFFFF",
+                        "muted-silver": "#8A9AAD"
+                    },
+                    fontFamily: {
+                        "headline": ["Bricolage Grotesque", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+        }
+        .grid-overlay {
+            background-size: 60px 60px;
+            background-image: linear-gradient(to right, rgba(202, 151, 3, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(202, 151, 3, 0.05) 1px, transparent 1px)
+        }
+        .noise-texture {
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBOMjkHA1Zur3sJoMBF0Jf1Iur_c-YVX56NrigEVmWWM9aBjdyODPVTcMW9AVTnBIyyboRBJQyX0sIjihkvuf_3EXRurAjr0QakaXPrvyiW2pdOhZTKEoVN9qXSPbTQ3aMEqfsvfKM9bnVkBq8y_Tj-v0cB41G9qv3i0eJD2PtEbDqyVCVE5353wax-fs8nD-KNpArA9CeR2ggLwBbPPKdjSe90h1msDG1xiUt99pYK7D1esh54GZhk6l11Z1kbRUnZlluxIWlcCKN6);
+            opacity: 0.03
+        }
+        .marquee-animation {
+            animation: marquee 40s linear infinite
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        /* Mega Menu Specifics */
+        .mega-menu-trigger:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            --tw-translate-y: 0px !important;
+        }
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            --tw-translate-y: 10px;
+            transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y, 0)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-item-hover:hover {
+            border-left: 2px solid #CA9703;
+            padding-left: 0.75rem;
+            background-color: rgba(202, 151, 3, 0.05);
+        }
+        .nav-item-hover {
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .chevron-rotate {
+            transition: transform 0.3s ease;
+        }
+        .mega-menu-trigger:hover .chevron-rotate {
+            transform: rotate(180deg);
+        }
+
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        [data-aos].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(8, 65, 92, 0.1);
+        }
+        .faq-trigger:hover .faq-title {
+            color: #CA9703;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding-bottom 0.3s ease;
+        }
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #CA9703;
+        }
+
+        /* Card Stacking Styles */
+        .stack-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20vh; /* Increased gap for scroll runway */
+            padding-bottom: 30vh;
+        }
+        .stack-card {
+            position: sticky;
+            top: 15vh;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            transform-origin: center top;
+            will-change: transform, opacity;
+            box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 768px) {
+            .stack-card {
+                top: 10vh;
+            }
+            .stack-container {
+                gap: 15vh;
+            }
+        }
+    </style>
+</head>
+<body class="bg-off-white text-dark-teal font-body selection:bg-primary-gold selection:text-deep-navy overflow-x-hidden">
+
+    <div id="navbar-placeholder" class="shrink-0 z-50"></div>
+
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center bg-deep-navy overflow-hidden py-24">
+    <div class="absolute inset-0 grid-overlay"></div>
+    <div class="absolute inset-0 noise-texture pointer-events-none"></div>
+    
+    <!-- Background Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-gold/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+    <div class="relative z-10 container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="hero-content text-left">
+                <div class="mb-8 flex">
+                    <span class="text-primary-gold font-medium text-[12px] tracking-[0.2em] uppercase px-4 py-1 border border-primary-gold/20 rounded-full bg-primary-gold/5">
+                        Native & Cross-Platform Mobility
+                    </span>
+                </div>
+                
+                <h1 class="font-headline font-extrabold text-pure-white text-[44px] md:text-[72px] leading-[1.05] tracking-tight mb-8">
+                    Your Business Needs a Mobile App That <span class="text-primary-gold">Actually Works.</span>
+                </h1>
+                
+                <p class="text-muted-silver font-body font-light text-[18px] md:text-[20px] leading-relaxed mb-12 max-w-xl">
+                    VizionTools builds custom applications engineered around your exact operational triggers, not just another shortcut on a home screen.
+                </p>
+        
+                <div class="flex flex-col sm:flex-row items-center justify-start gap-6">
+                    <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer group relative px-10 py-5 bg-primary-gold text-deep-navy font-bold text-[16px] rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(202,151,3,0.4)]">
+                        <span class="relative z-10">Book a Free App Scoping Call</span>
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visual Column (Mobile Mockup) -->
+            <div class="hidden lg:flex justify-center items-center">
+                <div class="floating-device relative p-8 bg-gradient-to-br from-primary-gold/20 to-transparent rounded-[40px] border border-white/10 shadow-2xl backdrop-blur-xl">
+                    <div class="w-72 h-[550px] bg-[#052D40] rounded-[32px] border-[6px] border-[#08415C] shadow-inner flex flex-col items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-4 w-20 h-1 bg-white/20 rounded-full"></div>
+                        <span class="material-symbols-outlined text-primary-gold text-[120px] animate-pulse">developer_mode_tv</span>
+                        <div class="mt-8 space-y-4 px-6 w-full">
+                            <div class="h-2 w-3/4 bg-white/10 rounded"></div>
+                            <div class="h-2 w-1/2 bg-white/10 rounded"></div>
+                            <div class="h-32 w-full bg-primary-gold/5 rounded-xl border border-primary-gold/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary-gold/40 text-[48px]">analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Page Intro Section -->
+<section class="bg-off-white py-24 md:py-32 relative">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="font-headline font-bold text-primary-gold text-xs tracking-widest uppercase mb-6 block" data-aos>THE GAP IN OPERATIONS</span>
+            <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[56px] leading-tight mb-8" data-aos>Manual re-entry has a cost.</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 text-left mt-16">
+                <div class="space-y-6" data-aos>
+                    <p class="text-lg leading-relaxed text-dark-teal/80">
+                        Most businesses know they need a custom app — because they're making something that wasn't built for the job do that job anyway. WhatsApp for field updates, spreadsheets for delivery tracking.
+                    </p>
+                    <p class="text-lg leading-relaxed text-dark-teal/80">
+                        VizionTools builds custom mobile applications for iOS and Android — customer-facing apps, internal operational tools, and field service platforms. 
+                    </p>
+                </div>
+                <div class="bg-dark-teal p-8 rounded-xl text-pure-white" data-aos>
+                    <h3 class="font-headline font-bold text-2xl mb-6 text-primary-gold">Strategic Engineering</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-gold">check_circle</span>
+                            <span>React Native for Cross-Platform Efficiency</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-gold">check_circle</span>
+                            <span>Swift & Kotlin for Native Performance</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary-gold">check_circle</span>
+                            <span>Offline-First Architecture for Field Reliability</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature Sections (Stacking Cards) -->
+<section class="bg-deep-navy py-24 md:py-32 relative overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center mb-20" data-aos>
+            <span class="font-headline font-bold text-primary-gold text-xs tracking-widest uppercase mb-6 block">Capabilities</span>
+            <h2 class="font-headline font-bold text-pure-white text-[36px] md:text-[56px] leading-tight mb-8">Four ways we solve mobile challenges.</h2>
+        </div>
+
+        <div class="stack-container">
+            
+            <!-- Card 1: Customer-Facing -->
+            <div class="stack-card" style="z-index: 10;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">CUST</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">phone_iphone</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">Customer-Facing Apps That Drive Retention</h2>
+                        <p class="text-muted-silver leading-relaxed">A branded mobile app with account management, order tracking, and push notifications is the infrastructure that keeps customers from defaulting to a competitor.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Order history & real-time tracking in-app</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Loyalty points integrated with POS or ERP</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Triggered push notification campaigns</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Operational -->
+            <div class="stack-card" style="z-index: 20;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">OPS</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">fact_check</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">Operational Apps That Eliminate Paper</h2>
+                        <p class="text-muted-silver leading-relaxed">Eliminate paper forms and WhatsApp updates. Capture structured data in the field and sync it to your ERP or CRM in real time for full visibility.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Digital forms with field validation & offline support</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> GPS-tagged tasks for field service workflows</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Real-time sync to Odoo, Zoho, or custom back-ends</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: POS Companion -->
+            <div class="stack-card" style="z-index: 30;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">POS</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">point_of_sale</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">POS Companion & Mobile Checkout</h2>
+                        <p class="text-muted-silver leading-relaxed">Turn tablets into portable order-entry terminals. Tableside ordering for restaurants and queue-busting checkout for retail environments.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Live KDS routing for tableside order entry</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Mobile payment with digital receipting</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Floor-based inventory look-up & accounts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Delivery -->
+            <div class="stack-card" style="z-index: 40;">
+                <div class="location-card p-10 group">
+                    <div class="iso-watermark">FIELD</div>
+                    <div class="flex flex-col gap-6 relative z-10">
+                        <span class="material-symbols-outlined text-primary-gold text-[48px]">local_shipping</span>
+                        <h2 class="font-headline font-bold text-pure-white text-3xl">Delivery & Field Service Visibility</h2>
+                        <p class="text-muted-silver leading-relaxed">Route optimization, live GPS tracking, and digital proof-of-delivery. Dispatchers and customers see real-time status as it happens.</p>
+                        <ul class="space-y-3 text-muted-silver text-sm">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Live GPS tracking for dispatchers & customers</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Digital signature & photo proof-of-delivery</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Automated arrival & completion notifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Who It's For -->
+<section class="bg-off-white py-24 md:py-32">
+    <div class="container mx-auto px-6">
+        <h2 class="font-headline font-bold text-dark-teal text-[36px] md:text-[56px] text-center mb-16" data-aos>Who is this for?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="bg-pure-white p-8 border-t-4 border-primary-gold shadow-lg" data-aos>
+                <h3 class="font-headline font-bold text-2xl mb-4">Logistics & Delivery</h3>
+                <p class="text-dark-teal/70 leading-relaxed">Managing drivers and POD. We replace manifests and WhatsApp with real-time visibility, digital signatures, and exception management.</p>
+            </div>
+
+            <div class="bg-pure-white p-8 border-t-4 border-primary-gold shadow-lg" data-aos>
+                <h3 class="font-headline font-bold text-2xl mb-4">Field Service Companies</h3>
+                <p class="text-dark-teal/70 leading-relaxed">HVAC, maintenance, and inspection. Technicians receive jobs, document work, and capture sign-offs without returning to the office.</p>
+            </div>
+
+            <div class="bg-pure-white p-8 border-t-4 border-primary-gold shadow-lg" data-aos>
+                <h3 class="font-headline font-bold text-2xl mb-4">Retail & F&B Extension</h3>
+                <p class="text-dark-teal/70 leading-relaxed">Taking payments and orders beyond the counter. Equip floor teams and pop-up staff with full untethered POS capabilities.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Social Proof -->
+<section class="bg-dark-teal py-24 relative overflow-hidden">
+    <div class="absolute inset-0 grid-overlay opacity-10"></div>
+    <div class="container mx-auto px-6 relative z-10 text-center">
+        <div class="max-w-4xl mx-auto" data-aos>
+            <span class="material-symbols-outlined text-primary-gold text-[64px] mb-8">format_quote</span>
+            <h2 class="font-headline italic text-pure-white text-[24px] md:text-[32px] font-light leading-relaxed mb-10">
+                "We replaced three different apps and a WhatsApp group with one custom field service app built by VizionTools. Our job completion documentation went from 40% to 100%, and our customer dispute rate dropped to almost nothing because everything is timestamped and signed."
+            </h2>
+            <div class="flex items-center justify-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-primary-gold/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-primary-gold">person</span>
+                </div>
+                <div class="text-left">
+                    <p class="text-pure-white font-bold">Operations Director</p>
+                    <p class="text-muted-silver text-sm">FM Services Company, Saudi Arabia</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="bg-off-white py-24 md:py-32">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <h2 class="font-headline font-bold text-dark-teal text-4xl md:text-5xl mb-16 text-center" data-aos>Frequently Asked Questions</h2>
+        
+        <div class="space-y-4">
+            <!-- FAQ 1 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Do you build for iOS, Android, or both?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Both, typically as a single codebase using React Native for cost efficiency. For applications requiring platform-specific performance, we build natively in Swift for iOS or Kotlin for Android.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">How long does a mobile app build take?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">A focused internal tool or companion app takes 8–12 weeks. A full customer-facing app with complex integrations runs 16–24 weeks. We scope and timeline before development begins.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can the app work offline?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. We architect offline-first functionality for field and delivery apps where connectivity is unreliable. Data queues locally and syncs when connection is restored.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item" data-aos>
+                <button class="faq-trigger w-full flex items-center justify-between py-8 text-left group">
+                    <span class="faq-title font-headline font-bold text-xl md:text-2xl transition-colors">Can the app integrate with Odoo or Zoho?</span>
+                    <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-dark-teal/70 text-lg leading-relaxed">Yes. API integration with Odoo, Zoho, and other third-party platforms is a core part of our mobile development process, ensuring your app speaks to your back-office systems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-off-white py-24">
+    <div class="container mx-auto px-6">
+        <div class="bg-dark-teal rounded-3xl p-12 md:p-24 text-center relative overflow-hidden" data-aos>
+            <div class="absolute inset-0 grid-overlay opacity-5"></div>
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <h2 class="font-headline font-extrabold text-pure-white text-[36px] md:text-[64px] leading-[1.05] mb-8 max-w-4xl mx-auto">
+                    Your Operations Should Run on an App Built for Them — Not Around Them.
+                </h2>
+                <p class="font-body font-light text-muted-silver text-[17px] md:text-[19px] leading-[1.75] max-w-[620px] mx-auto mb-12">
+                    Every workaround your team uses today is a cost you're paying silently. Let VizionTools scope your requirements and provide a clear architecture and timeline.
+                </p>
+                <a data-cal-link="piyushchandak/30min" data-cal-config='{"layout":"month_view"}' class="cursor-pointer w-full sm:w-auto bg-primary-gold text-deep-navy px-10 py-5 rounded-sm font-body font-bold text-[16px] hover:brightness-110 active:scale-95 transition-all shadow-xl inline-block">
+                    Book a Free App Scoping Call
+                </a>
+
+                <!-- Trust Line -->
+                <div class="mt-16 flex flex-wrap justify-center items-center gap-y-4 gap-x-8">
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        No commitment required
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Setup walkthrough included
+                    </div>
+                    <div class="flex items-center gap-2 font-body font-normal text-[13px] text-muted-silver">
+                        <span class="material-symbols-outlined text-primary-gold text-[18px]">check</span>
+                        Dedicated implementation support
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Running Line (Marquee Ribbon) -->
+<div class="bg-[#CA9703] border-y border-[#052D40]/10 overflow-hidden py-3">
+    <div class="flex marquee-animation marquee-slow whitespace-nowrap">
+        <!-- Main Content -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+        <!-- Repeat for seamless loop -->
+        <div class="flex items-center gap-12 px-6 shrink-0 font-body font-medium text-[#08415C] text-[13px] uppercase tracking-wider">
+            <span>ERP</span> <span class="opacity-40">·</span>
+            <span>ODOO</span> <span class="opacity-40">·</span>
+            <span>ZOHO</span> <span class="opacity-40">·</span>
+            <span>POS RETAIL</span> <span class="opacity-40">·</span>
+            <span>POS RESTAURANT</span> <span class="opacity-40">·</span>
+            <span>WEB DESIGN</span> <span class="opacity-40">·</span>
+            <span>GRAPHIC DESIGN</span> <span class="opacity-40">·</span>
+            <span>SOCIAL MEDIA</span> <span class="opacity-40">·</span>
+            <span>MULTI-STORE</span> <span class="opacity-40">·</span>
+            <span>F&B MANAGEMENT</span> <span class="opacity-40">·</span>
+            <span>ENTERPRISE SOLUTIONS</span> <span class="opacity-40">·</span>
+        </div>
+    </div>
+</div>
+
+    <div id="footer-placeholder"></div>
+
+<script>
+
+
+    // FAQ Accordion
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const item = trigger.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            
+            // Open clicked
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // Basic AOS (Animate on Scroll)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
+
+    // Premium Animations (GSAP) - Features Stacking
+    gsap.registerPlugin(ScrollTrigger);
+
+    const cards = gsap.utils.toArray(".stack-card");
+    
+    cards.forEach((card, i) => {
+        // We only want to animate the card that is BEING covered
+        if (i < cards.length - 1) {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: cards[i + 1], // Trigger when the NEXT card starts coming up
+                    start: "top 80%",
+                    end: "top 15%",
+                    scrub: true,
+                },
+                scale: 0.9,
+                opacity: 0.4,
+                ease: "none"
+            });
+        }
+    });
+
+    // Hero Decoration Animation (Subtle float)
+    if (document.querySelector(".floating-device")) {
+        gsap.to(".floating-device", {
+            y: 20,
+            duration: 2.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+    }
+</script>
+
+
+
+    <script src="../js/components.js"></script>
+
+</body>
+</html>
