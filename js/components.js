@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Improved Directory Depth Detection
     // Logic: If we are in an industry page or subfolder, we need to go up one level to find 'components/'
-    const isSubdir = path.includes('/industries/') || 
+    const isSubdir = path.toLowerCase().indexOf('industries') !== -1 || 
                     (path.split('/').filter(p => p).length >= 2 && !path.endsWith('index.html') && !path.endsWith('/'));
     
     const pathPrefix = isSubdir ? '../' : '';
