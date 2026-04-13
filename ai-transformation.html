@@ -222,20 +222,23 @@
             .accordion-container {
                 flex-direction: column;
                 height: auto;
-                min-height: 800px;
+                min-height: auto;
+                gap: 0.75rem;
             }
             .ai-panel {
                 flex: none;
-                height: 120px;
+                height: 100px;
                 width: 100%;
+                padding: 1.5rem;
             }
             .ai-panel.active {
                 flex: none;
-                height: 450px;
+                height: auto;
+                min-height: 380px;
             }
             .ai-panel .panel-label {
                 transform: translate(-50%, -50%) rotate(0deg);
-                font-size: 1.5rem;
+                font-size: 1.25rem;
             }
         }
     </style>

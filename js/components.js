@@ -184,6 +184,22 @@ function initMobileMenu() {
             nav.classList.toggle('translate-x-full', isOpen);
             nav.classList.toggle('translate-x-0', !isOpen);
             document.body.style.overflow = isOpen ? '' : 'hidden'; // Lock scroll
+
+            // Toggle Icon Visibility
+            const menuIcon = toggle.querySelector('.menu-icon');
+            const closeIcon = toggle.querySelector('.close-icon');
+            
+            if (menuIcon && closeIcon) {
+                if (isOpen) {
+                    // We are about to CLOSE the menu: show hamburger, hide cross
+                    menuIcon.style.display = 'block';
+                    closeIcon.style.display = 'none';
+                } else {
+                    // We are about to OPEN the menu: hide hamburger, show cross
+                    menuIcon.style.display = 'none';
+                    closeIcon.style.display = 'block';
+                }
+            }
         };
 
         toggle.addEventListener('click', toggleMenu);

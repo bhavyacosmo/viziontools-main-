@@ -67,12 +67,17 @@
         .growth-track {
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 20px;
             width: 2px;
             height: 100%;
             background: rgba(255, 255, 255, 0.05);
             z-index: 1;
+        }
+        @media (min-width: 768px) {
+            .growth-track {
+                left: 50%;
+                transform: translateX(-50%);
+            }
         }
         .growth-line-fill {
             position: absolute;
@@ -230,12 +235,12 @@
         <div id="growth-fill" class="growth-line-fill"></div>
     </div>
     
-    <div class="container mx-auto px-6 relative z-10 space-y-64">
+    <div class="container mx-auto px-6 relative z-10 space-y-64 pl-12 md:pl-6">
         
         <!-- Feature 1: Strategy -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="space-y-8" data-aos="fade-right">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-8 pointer-events-none">01</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:-left-8 pointer-events-none">01</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Content Strategy Rooted in Real Interests</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">We define content pillars, posting frequency, and voice guidelines before a single post is written—so every piece of content serves a purpose.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">
@@ -255,14 +260,14 @@
         </div>
 
         <!-- Feature 2: Content Creation -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="hidden md:flex justify-start order-2 md:order-1" data-aos="fade-right">
                 <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
                     <img src="social_f2.png" alt="Content Creation" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
             <div class="space-y-8 order-1 md:order-2" data-aos="fade-left">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -right-8 pointer-events-none">02</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:left-auto md:-right-8 pointer-events-none">02</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Original Content Creation That Stands Out</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">No stock photo dependencies. Original social content—graphics, short-form video scripts, reels concepts—designed for your specific voice.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">
@@ -277,9 +282,9 @@
         </div>
 
         <!-- Feature 3: Analytics -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="space-y-8" data-aos="fade-right">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-8 pointer-events-none">03</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:-left-8 pointer-events-none">03</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Analytics Reporting That Connects to Outcomes</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">Monthly vanity metrics are not useful. We report on CTR on linked content, engagement rates by type, and trackable conversion data.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">
@@ -299,14 +304,14 @@
         </div>
 
         <!-- Feature 4: Paid Social -->
-        <div class="grid md:grid-cols-2 gap-24 items-center">
+        <div class="grid md:grid-cols-2 gap-24 items-center relative">
             <div class="hidden md:flex justify-start order-2 md:order-1" data-aos="fade-right">
                 <div class="lg:w-[450px] aspect-video bg-white/5 rounded-[32px] overflow-hidden border border-white/10 backdrop-blur-sm relative group p-4">
                     <img src="social_f4.png" alt="Paid Social" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700">
                 </div>
             </div>
             <div class="space-y-8 order-1 md:order-2" data-aos="fade-left">
-                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -right-8 pointer-events-none">04</span>
+                <span class="text-[80px] font-headline font-black text-white/5 absolute -top-16 -left-10 md:left-auto md:-right-8 pointer-events-none">04</span>
                 <h2 class="font-headline font-bold text-pure-white text-4xl md:text-5xl leading-tight">Paid Campaigns That Remove Reach Limits</h2>
                 <p class="text-muted-silver text-xl leading-relaxed">Paid amplification on Meta, LinkedIn, and TikTok using precision custom, lookalike, and intent-based targeting.</p>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10">

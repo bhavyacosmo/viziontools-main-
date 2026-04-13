@@ -190,6 +190,29 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+        .location-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .location-card:hover {
+            border-color: #CA9703;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .iso-watermark {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 8rem;
+            font-weight: 900;
+            opacity: 0.03;
+            pointer-events: none;
+            color: white;
+        }
     </style>
 </head>
 
@@ -283,91 +306,104 @@
     </section>
 
     <!-- Feature Sections (Carousel) -->
-    <section class="bg-deep-navy py-24 md:py-32 relative overflow-hidden">
+    <section class="bg-deep-navy py-16 md:py-32 relative overflow-hidden">
         <div class="container mx-auto px-6">
-            <div class="carousel-viewport">
-                <div class="carousel-track" id="feature-track">
-    
-                    <!-- Slide 1 -->
-                    <div class="carousel-item">
-                        <div class="location-card p-10 group h-full">
-                            <div class="iso-watermark">PERF</div>
-                            <div class="flex flex-col gap-6 relative z-10">
-                                <span class="material-symbols-outlined text-primary-gold text-[48px]">speed</span>
-                                <h2 class="font-headline font-bold text-pure-white text-3xl">Architecture Designed for Performance</h2>
-                                <p class="text-muted-silver leading-relaxed">Page load speed is a revenue variable. A 1-second delay reduces conversions by 7%. We build on Next.js with edge caching and Core Web Vitals as a hard requirement.</p>
-                                <ul class="space-y-3 text-muted-silver text-sm">
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Core Web Vitals targets (LCP, FID, CLS)</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Server-side rendering for SEO-critical pages</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Image delivery via CDN (WebP, AVIF)</li>
-                                </ul>
+            <div class="relative">
+                <!-- Carousel Viewport -->
+                <div class="carousel-viewport">
+                    <div class="carousel-track" id="feature-track">
+        
+                        <!-- Slide 1 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">PERF</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">speed</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Architecture Designed for Performance</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">Page load speed is a revenue variable. A 1-second delay reduces conversions by 7%. We build on Next.js with edge caching and Core Web Vitals as a hard requirement.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Core Web Vitals targets (LCP, FID, CLS)</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Server-side rendering for SEO-critical pages</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Image delivery via CDN (WebP, AVIF)</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-    
-                    <!-- Slide 2 -->
-                    <div class="carousel-item">
-                        <div class="location-card p-10 group h-full">
-                            <div class="iso-watermark">CONV</div>
-                            <div class="flex flex-col gap-6 relative z-10">
-                                <span class="material-symbols-outlined text-primary-gold text-[48px]">auto_graph</span>
-                                <h2 class="font-headline font-bold text-pure-white text-3xl">Conversion-Optimized Design</h2>
-                                <p class="text-muted-silver leading-relaxed">Design that looks good but doesn't convert is an expensive decoration. We map user intent at each stage of the funnel and build page hierarchy around it.</p>
-                                <ul class="space-y-3 text-muted-silver text-sm">
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Conversion funnel mapping before wireframes</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> A/B test-ready component architecture</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Mobile-first design with touch interaction patterns</li>
-                                </ul>
+        
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">CONV</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">auto_graph</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Conversion-Optimized Design</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">Design that looks good but doesn't convert is an expensive decoration. We map user intent at each stage of the funnel and build page hierarchy around it.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Conversion funnel mapping before wireframes</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> A/B test-ready component architecture</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Mobile-first design with touch interaction patterns</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-    
-                    <!-- Slide 3 -->
-                    <div class="carousel-item">
-                        <div class="location-card p-10 group h-full">
-                            <div class="iso-watermark">INTEG</div>
-                            <div class="flex flex-col gap-6 relative z-10">
-                                <span class="material-symbols-outlined text-primary-gold text-[48px]">hub</span>
-                                <h2 class="font-headline font-bold text-pure-white text-3xl">Full-Stack System Connectivity</h2>
-                                <p class="text-muted-silver leading-relaxed">We build web applications with REST and GraphQL APIs that integrate with Zoho, Odoo, Stripe, systems. Engineered as a full application, not a plugin stack.</p>
-                                <ul class="space-y-3 text-muted-silver text-sm">
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> REST and GraphQL API development</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Customer-facing portals and dashboards</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Authentication and secure data handling</li>
-                                </ul>
+        
+                        <!-- Slide 3 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">INTEG</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">hub</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Full-Stack System Connectivity</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">We build web applications with REST and GraphQL APIs that integrate with Zoho, Odoo, Stripe. Engineered as a full application, not a plugin stack.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> REST and GraphQL API development</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Customer-facing portals and dashboards</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Authentication and secure data handling</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-    
-                    <!-- Slide 4 -->
-                    <div class="carousel-item">
-                        <div class="location-card p-10 group h-full">
-                            <div class="iso-watermark">SEC</div>
-                            <div class="flex flex-col gap-6 relative z-10">
-                                <span class="material-symbols-outlined text-primary-gold text-[48px]">security</span>
-                                <h2 class="font-headline font-bold text-pure-white text-3xl">Ongoing Maintenance & Security</h2>
-                                <p class="text-muted-silver leading-relaxed">A web application without maintenance is a liability. We offer structured retainers covering security patching, performance monitoring, and uptime alerts.</p>
-                                <ul class="space-y-3 text-muted-silver text-sm">
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Monthly security patching and updates</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Uptime monitoring with automated alerts</li>
-                                    <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Quarterly performance audits</li>
-                                </ul>
+        
+                        <!-- Slide 4 -->
+                        <div class="carousel-item">
+                            <div class="location-card p-6 md:p-10 group h-full">
+                                <div class="iso-watermark">SEC</div>
+                                <div class="flex flex-col gap-6 relative z-10">
+                                    <span class="material-symbols-outlined text-primary-gold text-[36px] md:text-[48px]">security</span>
+                                    <h2 class="font-headline font-bold text-pure-white text-2xl md:text-3xl">Ongoing Maintenance & Security</h2>
+                                    <p class="text-muted-silver leading-relaxed text-sm md:text-base">A web application without maintenance is a liability. We offer retainers covering security patching, performance monitoring, and uptime alerts.</p>
+                                    <ul class="space-y-3 text-muted-silver text-xs md:text-sm">
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Monthly security patching and updates</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Uptime monitoring with automated alerts</li>
+                                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-primary-gold rounded-full"></span> Quarterly performance audits</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+        
                     </div>
-    
                 </div>
             </div>
 
+            <!-- Mobile-specific Nav (Below Card, No Overlap) -->
+            <div class="flex justify-between items-center md:hidden px-4 mt-4">
+                <button id="prevBtnMobile" onclick="goToSlide(currentIndex - 1)" class="nav-btn bg-deep-navy/80" aria-label="Previous slide">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <button id="nextBtnMobile" onclick="goToSlide(currentIndex + 1)" class="nav-btn bg-deep-navy/80" aria-label="Next slide">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                </button>
+            </div>
+
             <!-- Carousel Controls -->
-            <div class="flex justify-center items-center gap-6 mt-16">
-                <button id="prevBtn" class="nav-btn" aria-label="Previous slide">
+            <div class="flex justify-center items-center gap-6 mt-6 md:mt-16">
+                <button id="prevBtn" class="nav-btn hidden md:flex" aria-label="Previous slide">
                     <span class="material-symbols-outlined">chevron_left</span>
                 </button>
                 <div class="flex gap-2" id="carousel-dots">
                     <!-- Dots will be injected by JS -->
                 </div>
-                <button id="nextBtn" class="nav-btn" aria-label="Next slide">
+                <button id="nextBtn" class="nav-btn hidden md:flex" aria-label="Next slide">
                     <span class="material-symbols-outlined">chevron_right</span>
                 </button>
             </div>
@@ -607,46 +643,17 @@
 
         const track = document.getElementById('feature-track');
         const items = document.querySelectorAll('.carousel-item');
+        const dotsContainer = document.getElementById('carousel-dots');
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
-        const dotsContainer = document.getElementById('carousel-dots');
         
         let currentIndex = 0;
-        let itemsPerView = window.innerWidth >= 768 ? 2 : 1;
-        const totalSlides = items.length;
-        const maxIndex = totalSlides - itemsPerView;
+        let itemsPerView = 1;
+        let maxIndex = 0;
 
-        // Create dots
-        if (dotsContainer) {
-            for (let i = 0; i <= maxIndex; i++) {
-                const dot = document.createElement('button');
-                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-primary-gold w-6' : 'bg-white/20'}`;
-                dot.addEventListener('click', () => goToSlide(i));
-                dotsContainer.appendChild(dot);
-            }
-        }
-
-        const updateDots = () => {
-            if (!dotsContainer) return;
-            const dots = dotsContainer.querySelectorAll('button');
-            dots.forEach((dot, i) => {
-                if (i === currentIndex) {
-                    dot.classList.add('bg-primary-gold', 'w-6');
-                    dot.classList.remove('bg-white/20');
-                } else {
-                    dot.classList.remove('bg-primary-gold', 'w-6');
-                    dot.classList.add('bg-white/20');
-                }
-            });
-        };
-
-        const updateButtons = () => {
-            if (prevBtn) prevBtn.disabled = currentIndex === 0;
-            if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
-        };
-
-        const goToSlide = (index) => {
-            if (!track) return;
+        // Make goToSlide global for mobile onclick
+        window.goToSlide = function(index) {
+            if (!track || items.length === 0) return;
             currentIndex = Math.max(0, Math.min(index, maxIndex));
             
             const itemWidth = items[0].offsetWidth;
@@ -663,19 +670,67 @@
             updateButtons();
         };
 
+        function updateCarouselState() {
+            if (!items.length) return;
+            
+            itemsPerView = window.innerWidth >= 768 ? 2 : 1;
+            maxIndex = items.length - itemsPerView;
+            
+            // Ensure currentIndex is still valid
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+            // Re-generate dots
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i <= maxIndex; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-primary-gold w-6' : 'bg-white/20'}`;
+                    dot.addEventListener('click', () => goToSlide(i));
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            // Reset position
+            const itemWidth = items[0].offsetWidth;
+            const gap = 32;
+            const xOffset = -(currentIndex * (itemWidth + gap));
+            gsap.set(track, { x: xOffset });
+            
+            updateButtons();
+        }
+
+        function updateDots() {
+            if (!dotsContainer) return;
+            const dots = dotsContainer.querySelectorAll('button');
+            dots.forEach((dot, i) => {
+                if (i === currentIndex) {
+                    dot.classList.add('bg-primary-gold', 'w-6');
+                    dot.classList.remove('bg-white/20');
+                } else {
+                    dot.classList.remove('bg-primary-gold', 'w-6');
+                    dot.classList.add('bg-white/20');
+                }
+            });
+        }
+
+        function updateButtons() {
+            if (prevBtn) prevBtn.disabled = currentIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentIndex >= maxIndex;
+            
+            // Also update mobile buttons if they exist
+            const prevMobile = document.getElementById('prevBtnMobile');
+            const nextMobile = document.getElementById('nextBtnMobile');
+            if (prevMobile) prevMobile.disabled = currentIndex === 0;
+            if (nextMobile) nextMobile.disabled = currentIndex >= maxIndex;
+        }
+
         if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
         if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
 
-        window.addEventListener('resize', () => {
-            const newItemsPerView = window.innerWidth >= 768 ? 2 : 1;
-            if (newItemsPerView !== itemsPerView) {
-                itemsPerView = newItemsPerView;
-                goToSlide(0);
-            }
-        });
-
+        window.addEventListener('resize', updateCarouselState);
+        
         // Initialize
-        updateButtons();
+        updateCarouselState();
     </script>
 
     <script src="js/components.js"></script>

@@ -113,18 +113,19 @@
 <main>
     <!-- Hero Section -->
     <section class="relative min-h-screen bg-deep-navy overflow-hidden flex flex-col">
-        <div class="absolute inset-0 grid-overlay opacity-10"></div>
-        <div class="absolute top-0 right-0 w-[60%] h-full">
-            <img src="about_hero_concept.png" alt="Operational Gap Concept" class="w-full h-full object-cover mix-blend-lighten opacity-40">
+        <div class="absolute inset-0 grid-overlay opacity-[0.05]"></div>
+        <div class="absolute inset-0">
+            <img src="about_hero_bg.png" alt="Operational Excellence" class="w-full h-full object-cover mix-blend-screen opacity-50 grayscale transition-transform duration-[10000ms] scale-110" id="hero-bg">
+            <div class="absolute inset-0 bg-gradient-to-r from-deep-navy via-deep-navy/80 to-transparent"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 pt-40 md:pt-60 flex flex-col flex-grow">
-            <div data-aos="fade-up" class="max-w-4xl">
-                <span class="inline-block text-primary-gold font-bold text-xs tracking-[0.5em] uppercase mb-8">Established Integrity</span>
-                <h1 class="font-headline font-extrabold text-white text-[48px] md:text-[84px] lg:text-[110px] leading-[0.9] tracking-tighter mb-12">
+        <div class="container mx-auto px-6 relative z-10 pt-20 md:pt-32 flex flex-col flex-grow">
+            <div class="max-w-7xl">
+                <span class="inline-block text-primary-gold font-bold text-xs tracking-[0.5em] uppercase mb-8 hero-entrance-stagger opacity-0">Established Integrity</span>
+                <h1 class="font-headline font-extrabold text-white text-[48px] md:text-[84px] lg:text-[115px] leading-[0.85] tracking-tighter mb-12 hero-entrance-stagger opacity-0">
                     We Build ERP Systems That <span class="text-primary-gold">Actually Get Used.</span>
                 </h1>
-                <p class="text-muted-silver font-body text-xl md:text-3xl font-light leading-relaxed max-w-3xl">
+                <p class="text-muted-silver font-body text-xl md:text-4xl font-light leading-relaxed max-w-5xl hero-entrance-stagger opacity-0">
                     Vizion Tools is a certified Odoo and Zoho partner serving 500+ businesses across the US, UAE, and India. 
                 </p>
             </div>
@@ -512,10 +513,30 @@
 <script>
     AOS.init({ duration: 1200, once: true, easing: 'ease-out-cubic' });
 
-
-
     // GSAP Engine
     gsap.registerPlugin(ScrollTrigger);
+
+    // Hero Entry Animation
+    window.addEventListener('load', () => {
+        const tl = gsap.timeline();
+        
+        // Background Zoom
+        gsap.to("#hero-bg", {
+            scale: 1,
+            duration: 3,
+            ease: "power2.out"
+        });
+
+        // Text Stagger
+        tl.to(".hero-entrance-stagger", {
+            y: 0,
+            opacity: 1,
+            duration: 1.5,
+            stagger: 0.2,
+            ease: "expo.out",
+            delay: 0.5
+        });
+    });
 
     // Narrative Scrub Text Reveal
     const narrativeText = document.getElementById('narrative-text');

@@ -169,22 +169,40 @@
             width: 100%;
         }
         .pin-container {
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             width: 100%;
+            position: relative;
+        }
+        @media (min-width: 1024px) {
+            .pin-container {
+                height: 100vh;
+                overflow: hidden;
+            }
         }
         .horizontal-track {
             display: flex;
-            gap: 4rem;
-            padding-left: 10vw;
-            padding-right: 10vw;
+            flex-direction: column;
+            gap: 3rem;
+            padding: 2rem;
+            width: 100%;
             will-change: transform;
+        }
+        @media (min-width: 1024px) {
+            .horizontal-track {
+                flex-direction: row;
+                flex: 1;
+                align-items: center;
+                gap: 4rem;
+                padding-left: 10vw;
+                padding-right: 10vw;
+                width: auto;
+            }
         }
         .scroll-card {
             flex-shrink: 0;
-            width: 85vw;
+            width: 100%;
         }
         @media (min-width: 1024px) {
             .scroll-card {
@@ -269,9 +287,9 @@
 </section>
 
 <!-- Premium Sticky Horizontal Scroll Section -->
-<section id="design-services" class="bg-deep-navy section-height">
+<section id="design-services" class="bg-deep-navy section-height py-20 lg:py-0">
     <div class="pin-container">
-        <div class="absolute top-0 left-0 w-full p-24 text-center z-20 pointer-events-none">
+        <div class="relative w-full pt-16 pb-8 lg:pt-24 lg:pb-12 text-center z-20 pointer-events-none">
             <h2 class="font-headline font-bold text-pure-white text-3xl md:text-5xl tracking-tight" data-aos>Core Design Services</h2>
         </div>
         
@@ -580,27 +598,30 @@
     // Premium Sticky Horizontal Scroll Animation
     gsap.registerPlugin(ScrollTrigger);
 
-    const track = document.querySelector('.horizontal-track');
-    
-    if (track) {
-        const getScrollAmount = () => {
-            let trackWidth = track.scrollWidth;
-            return -(trackWidth - window.innerWidth);
-        };
+    let mm = gsap.matchMedia();
 
-        const tween = gsap.to(track, {
-            x: getScrollAmount,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".section-height",
-                start: "top top",
-                end: () => `+=${track.scrollWidth}`,
-                pin: true,
-                scrub: 1,
-                invalidateOnRefresh: true,
-            }
-        });
-    }
+    mm.add("(min-width: 1024px)", () => {
+        const track = document.querySelector('.horizontal-track');
+        if (track) {
+            const getScrollAmount = () => {
+                let trackWidth = track.scrollWidth;
+                return -(trackWidth - window.innerWidth);
+            };
+
+            gsap.to(track, {
+                x: getScrollAmount,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".section-height",
+                    start: "top top",
+                    end: () => `+=${track.scrollWidth}`,
+                    pin: true,
+                    scrub: 1,
+                    invalidateOnRefresh: true,
+                }
+            });
+        }
+    });
 
     document.querySelectorAll('[data-aos]').forEach(el => observer.observe(el));
 </script>
