@@ -78,22 +78,25 @@
         /* Form Styling */
         .form-input {
             width: 100%;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid rgba(8, 65, 92, 0.1);
-            padding: 1rem 0;
+            background: rgba(8, 65, 92, 0.02);
+            border: 1px solid rgba(8, 65, 92, 0.1);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
             outline: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 0.95rem;
+            color: #08415C;
         }
         .form-input:focus {
-            border-bottom-color: #CA9703;
+            background: white;
+            border-color: #CA9703;
+            box-shadow: 0 10px 25px -5px rgba(202, 151, 3, 0.1);
         }
         .form-label {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: #8A9AAD;
             margin-bottom: 0.5rem;
             font-weight: 700;
@@ -126,17 +129,17 @@
 <!-- Main Content -->
 <main>
     <!-- Hero + Form Section -->
-    <section class="relative min-h-screen bg-off-white overflow-hidden py-32 md:py-48">
+    <section class="relative min-h-screen bg-off-white overflow-hidden py-12 md:py-16">
         <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-dark-teal/5 to-transparent"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row gap-20 items-start">
                 <!-- Content Side -->
                 <div class="lg:w-1/2" data-aos="fade-right">
                     <span class="inline-block text-primary-gold font-bold text-xs tracking-[0.5em] uppercase mb-8">Direct Access</span>
-                    <h1 class="font-headline font-extrabold text-dark-teal text-[42px] md:text-[72px] lg:text-[84px] leading-[0.95] tracking-tighter mb-10">
+                    <h1 class="font-headline font-extrabold text-dark-teal text-[42px] md:text-[72px] lg:text-[72px] leading-[0.95] tracking-tighter mb-6">
                         Let's Look at Your Setup. <br/> <span class="text-primary-gold italic">30 Minutes. No Pitch.</span>
                     </h1>
-                    <p class="text-dark-teal/70 font-body text-xl md:text-2xl font-light leading-relaxed max-w-xl mb-12">
+                    <p class="text-dark-teal/70 font-body text-xl md:text-2xl font-light leading-relaxed max-w-xl mb-8">
                         Fill in the form below and tell us what you're currently running and where it's breaking. Before the call, our team reviews your tools so you're not spending the first 15 minutes explaining what QuickBooks is.
                     </p>
                     <div class="space-y-8">
@@ -163,11 +166,11 @@
 
                 <!-- Form Side -->
                 <div class="lg:w-1/2 w-full" data-aos="fade-left">
-                    <div class="bg-white rounded-[40px] p-8 md:p-14 shadow-2xl border border-dark-teal/5 relative overflow-hidden">
+                    <div class="bg-white rounded-[40px] p-8 md:p-10 shadow-2xl border border-dark-teal/5 relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-primary-gold/5 blur-[60px] rounded-full"></div>
                         
-                        <form class="space-y-10 relative z-10" id="contact-form">
-                            <div class="grid md:grid-cols-2 gap-10">
+                        <form class="space-y-8 relative z-10" id="contact-form">
+                            <div class="grid md:grid-cols-2 gap-8">
                                 <div class="relative">
                                     <label class="form-label">Full Name</label>
                                     <input type="text" name="full_name" class="form-input" placeholder="Your full name" required>
@@ -192,7 +195,7 @@
                                 </div>
                                 <div class="relative">
                                     <label class="form-label">Preferred contact method</label>
-                                    <div class="flex items-center gap-6 mt-4">
+                                    <div class="flex flex-wrap items-center gap-6 mt-4">
                                         <label class="flex items-center gap-2 cursor-pointer text-sm">
                                             <input type="radio" name="contact_method" value="email" class="text-primary-gold focus:ring-primary-gold" checked> Email
                                         </label>
@@ -211,10 +214,10 @@
                             </div>
                             <div class="relative">
                                 <label class="form-label">Biggest operational challenge right now</label>
-                                <textarea name="challenge" rows="3" class="form-input" placeholder="What's the thing that costs you the most time, money, or stress each week? Inventory reconciliation? Knowing if a project is profitable? End-of-month close taking forever? Be specific — it helps us prepare."></textarea>
+                                <textarea name="challenge" rows="4" class="form-input" placeholder="What's the thing that costs you the most time, money, or stress each week? Inventory reconciliation? Knowing if a project is profitable? End-of-month close taking forever? Be specific — it helps us prepare."></textarea>
                             </div>
                             
-                            <button type="submit" class="w-full bg-dark-teal text-white font-headline font-black py-7 rounded-2xl uppercase tracking-widest text-lg hover:bg-primary-gold hover:text-deep-navy transition-all duration-500 shadow-xl group">
+                            <button type="submit" class="w-full bg-dark-teal text-white font-headline font-black py-5 rounded-2xl uppercase tracking-widest text-lg hover:bg-primary-gold hover:text-deep-navy transition-all duration-500 shadow-xl group cursor-pointer">
                                 Send My Details — I'm Ready to Talk
                                 <span class="material-symbols-outlined ml-2 align-middle group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
                             </button>
